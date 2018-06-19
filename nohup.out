@@ -1,0 +1,323 @@
+events.js:183
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES 0.0.0.0:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at Server.setupListenHandle [as _listen2] (net.js:1338:19)
+    at listenInCluster (net.js:1396:12)
+    at Server.listen (net.js:1480:7)
+    at Object.<anonymous> (/home/ubuntu/photoapp/app.js:19:8)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+Server Running
+Server Running
+Server Running
+Server Running
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Error: Failed to lookup view "index" in views directory "/home/ubuntu/photoapp/views"
+    at Function.render (/home/ubuntu/photoapp/node_modules/express/lib/application.js:580:17)
+    at ServerResponse.render (/home/ubuntu/photoapp/node_modules/express/lib/response.js:1008:7)
+    at /home/ubuntu/photoapp/routes/routes.js:7:15
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/photoapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/photoapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/photoapp/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/photoapp/node_modules/express/lib/router/index.js:275:10)
+Server Running
+Server Running
+Server Running
+Server Running
+Server Running
+events.js:183
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE :::3000
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at Server.setupListenHandle [as _listen2] (net.js:1355:14)
+    at listenInCluster (net.js:1396:12)
+    at Server.listen (net.js:1480:7)
+    at Object.<anonymous> (/home/ubuntu/photoapp/app.js:19:8)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+events.js:183
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE :::3000
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at Server.setupListenHandle [as _listen2] (net.js:1355:14)
+    at listenInCluster (net.js:1396:12)
+    at Server.listen (net.js:1480:7)
+    at Object.<anonymous> (/home/ubuntu/photoapp/app.js:19:8)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+events.js:183
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE :::3000
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at Server.setupListenHandle [as _listen2] (net.js:1355:14)
+    at listenInCluster (net.js:1396:12)
+    at Server.listen (net.js:1480:7)
+    at Object.<anonymous> (/home/ubuntu/photoapp/app.js:19:8)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+Server Running
