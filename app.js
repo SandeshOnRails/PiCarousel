@@ -7,12 +7,11 @@ const app = express();
 
 // add ejs templating engine. remove html engine
 
-app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('hogan-express'));
-app.set('view engine', 'html');
+
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./routes/routes.js')(express,app);
+require('./routes/about.js')(express,app);
 
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
