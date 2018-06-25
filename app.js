@@ -5,6 +5,8 @@ const path = require('path');
 const app = express();
 
 
+// add ejs templating engine. remove html engine
+
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
