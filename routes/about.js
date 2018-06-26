@@ -1,9 +1,8 @@
 module.exports = function (express, app) {
 
-   
-   var aboutPages = ['david', 'ekta', 'arnold', 'sandesh', 'cavit', 'mike'];
+   var aboutPages = ['ekta', 'david', 'cavit', 'arnold', 'mike', 'sandesh'];
 
-
+    var flag = true;
 	var router = express.Router();
 
 	router.get('/', function(req, res, next) {
@@ -14,18 +13,18 @@ module.exports = function (express, app) {
 
 	router.get('/:name', function(req, res, next){
 
-
-        if(aboutPages.includes(req.params.name)){
-
+          for(var i =0; i < aboutPages.length; i ++){
+        if(aboutPages[i]== req.params.name){
+              flag = false;
 		res.render(req.params.name);
 
     }
-
-    else {
-
+}
+   
+        if(flag){
         res.writeHead(400);
         res.end("Sorry, the requested page was not found.");
-    }
+   }
 
 
 	});
