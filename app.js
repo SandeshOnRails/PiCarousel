@@ -5,8 +5,23 @@ const path = require('path');
 const app = express();
 
 
-// add ejs templating engine. remove html engine
-
+var mysql = require('mysql');
+var pool  = mysql.createPool({
+  host     : 'picarousel.ctftzezisj7n.us-east-2.rds.amazonaws.com',
+  user     : 'admin',
+  port     : 3000,
+  password : 'sfsucsc648',
+  database : 'picarousel'
+});
+ 
+pool.getConnection(function(err, connection) {
+  if(err){
+  	console.log("error connecting: " + err)
+  }
+  else {
+  	console.log('connection successful')
+  }
+});
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
