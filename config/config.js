@@ -1,5 +1,6 @@
 
 var mysql = require('mysql');
+
 var pool  = mysql.createPool({
   host     : 'picarousel.ctftzezisj7n.us-east-2.rds.amazonaws.com',
   user     : 'admin',

@@ -1,0 +1,21 @@
+
+
+<%- include partials/search-header.ejs %>
+
+
+
+  <% for(var i=0; i < result.length; i ++){ %>
+
+
+<% console.log(result[i].filepath) %>
+
+
+
+  <img src="<%= result[i].filepath %>" class="img-fluid rounded-circle" style="width:250px;height:250px;">
+
+
+
+
+
+
+<% } %>

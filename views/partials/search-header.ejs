@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<h2>Please enter your search key</h2>
+
+<p>Popular Searches: bird, pegion</p>
+<form name='search-form' class="example" method='POST' action="/search/results" style="margin:auto;max-width:300px" onsubmit='return validate()'>
+  <input type="text" placeholder="Search.." name="searchKey">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<p id='noSearchKey'> </p>
+
+
+
+<script>
+
+function validate() {
+
+	 if(!document.forms['search-form']['searchKey'].value) {
+
+          document.getElementById('noSearchKey').innerHTML = 'Please provide a search key ... '
+            
+          return false
+
+       }
+}
+
+
+</script>
+
+
+</body>
+</html> 
+

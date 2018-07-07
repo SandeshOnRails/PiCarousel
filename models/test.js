@@ -1,9 +1,9 @@
 
-
 module.exports = function (key, pool) {
 
 
 var animal = key
+
  
 pool.getConnection(function(err, connection) {
   if(err){
@@ -20,13 +20,15 @@ pool.getConnection(function(err, connection) {
       }
         else { 
            
-           console.log(result)
+
 
         }
 });
 
 });
-
+  
+  console.log(results)
+  return results
 }
 
 

@@ -2,7 +2,7 @@ module.exports = function (express, app) {
 
    var aboutPages = ['ekta', 'david', 'cavit', 'arnold', 'mike', 'sandesh'];
 
-    var flag = true;
+  var flag = true;
 	var router = express.Router();
 
 	router.get('/', function(req, res, next) {
