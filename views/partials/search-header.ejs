@@ -8,7 +8,7 @@
 
 <h2>Please enter your search key</h2>
 
-<p>Popular Searches: bird, pegion</p>
+<p>Popular Searches: bird, cute, dog</p>
 <form name='search-form' class="example" method='POST' action="/search/results" style="margin:auto;max-width:300px" onsubmit='return validate()'>
   <input type="text" placeholder="Search.." name="searchKey">
   <button type="submit"><i class="fa fa-search"></i></button>
@@ -25,7 +25,7 @@ function validate() {
 	 if(!document.forms['search-form']['searchKey'].value) {
 
           document.getElementById('noSearchKey').innerHTML = 'Please provide a search key ... '
-            
+
           return false
 
        }

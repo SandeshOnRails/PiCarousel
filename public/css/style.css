@@ -83,7 +83,7 @@ form.example::after {
     display: table;
 }
 
-h2, p {
+h2, p, h3 {
 
     text-align: center
 }
