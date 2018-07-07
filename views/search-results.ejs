@@ -5,7 +5,15 @@
 
 <% if (result.length < 1) { %>
 
-<h3> Sorry our database is small and could not match your search query. Please see popular searches for search terms. </h3>
+
+<script>
+
+	(function(){
+       
+       document.getElementById('noSearchKey').innerHTML = 'Sorry our database is small and we could not look up your search. Please check popular searches.'
+	})()
+
+</script>
 
 <% } else { %>
 
