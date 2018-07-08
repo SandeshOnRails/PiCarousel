@@ -1,11 +1,14 @@
 
-module.exports = function (key, pool) {
+var check = function (key, pool, callback) {
 
 
 var animal = key
 
- 
+
+var self = this
+
 pool.getConnection(function(err, connection) {
+
   if(err){
   	console.log("error connecting: " + err)
   }
@@ -13,22 +16,27 @@ pool.getConnection(function(err, connection) {
   	console.log('connection successful')
   }
 
-  connection.query("SELECT * FROM photos WHERE description LIKE '%" + animal + "%'", function(err, result, fields){
+ connection.query("SELECT * FROM photos WHERE description LIKE '%" + animal + "%'", function(err, result, fields){
 
       if(err){
         console.log(err)
       }
         else { 
-           
+             
+             callback(result)
 
 
         }
 });
 
+
 });
   
-  console.log(results)
-  return results
+
 }
 
+
+
+
+module.exports = check
 

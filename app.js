@@ -14,7 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 const con = require('./config/config.js')
 
-//var search = require('./models/test.js')
+const search = require('./models/test.js')
+
+const checkForKey = require('./search-key/keycheck.js')
+
+
+
 
 
 app.set('view engine', 'ejs');
@@ -48,22 +53,9 @@ app.post('/search/results', function(req, res){
 
 	  if(!searchTerm) searchTerm = req.body.searchKey
 	  
-     
-     con.getConnection(function(err, connection) {
+         
+         search(searchTerm, con, function(result){
 
-  if(err){
-  	console.log("error connecting: " + err)
-  }
-  else {
-  	console.log('connection successful')
-  }
-
-  connection.query("SELECT * FROM photos WHERE description LIKE '%" + searchTerm + "%'", function(err, result, fields){
-
-      if(err) {
-      	console.log("SQL ERROR AT : " + err)
-      }
-        else { 
                   if(result.length > 0) {
         	var showingResult = result[0].description
         	var alldescription = showingResult.split(',')
@@ -78,8 +70,7 @@ app.post('/search/results', function(req, res){
         	}
         
 
-              console.log(req.body.searchKey)
-              console.log(searchTerm)
+             
         	
            
                res.render('search-results', {result: result, searchKey:req.body.searchKey, actualResult: searchTerm})
@@ -93,38 +84,15 @@ app.post('/search/results', function(req, res){
            }
 
 
-        }
-});
-
-});
+        
+})
       
 
 
 })
 
 
-const checkForKey = (searchKey)=> {
-  
-  var database = ['parrot', 'bird', 'dog', 'kingfisher', 'huskey', 'cute']
 
-
-             for(var i =0; i < database.length; i++) {
-
-             	   if(database[i].length > searchKey.length) {
-                         
-                         if(database[i].match(searchKey)) return database[i]
-             	   }
-
-             	else {
-                         
-                         if(searchKey.match(database[i])) return database[i]
-
-             	}
-             }
-   return ''
-
-                
-}
 
 
 server.listen(process.env.PORT || 3000, ()=> console.log("Server Running"));
