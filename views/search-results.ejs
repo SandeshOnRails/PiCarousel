@@ -11,18 +11,39 @@
 	(function(){
        
        document.getElementById('noSearchKey').innerHTML = 'Sorry our database is small and we could not look up your search. Please check popular searches.'
+
+       
+
 	})()
 
 </script>
 
 <% } else { %>
 
+<% console.log("Serarch Key: " + searchKey) %>
+<% console.log("Actual Result: " + actualResult) %>
 
+		<% if ( searchKey != actualResult) { %>
+
+
+<script>
+
+	(function(){
+
+       
+       document.getElementById('noSearchKey').innerHTML = 'Did you mean ' + '<b><i><%=actualResult%></i></b> ? '+ 'Showing results for ' + '<b><i><%=actualResult%></b></i>' + ' instead'
+
+       
+
+	})()
+
+</script>
+
+	<% } %>
 
   <% for(var i=0; i < result.length; i ++){ %>
 
 
-<% console.log(result[i].filepath) %>
 
 
 
