@@ -8,7 +8,7 @@ const app = express();
 
 app.use(bodyParser.json())
 
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 
 
@@ -48,8 +48,12 @@ app.post('/search/results', function(req, res){
 	  var actualResult = ''
 
 
-	  var searchTerm = checkForKey(req.body.searchKey)
-       
+    checkForKey(req.body.searchKey, function(result){
+      var searchTerm = result
+      console.log("Result: " + result)
+
+
+
 
 	  if(!searchTerm) searchTerm = req.body.searchKey
 	  
@@ -70,8 +74,7 @@ app.post('/search/results', function(req, res){
         	}
         
 
-             
-        	
+            
            
                res.render('search-results', {result: result, searchKey:req.body.searchKey, actualResult: searchTerm})
            }
@@ -87,7 +90,7 @@ app.post('/search/results', function(req, res){
         
 })
       
-
+})
 
 })
 

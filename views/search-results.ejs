@@ -2,6 +2,12 @@
 
 <%- include partials/search-header.ejs %>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
 
 <% if (result.length < 1) { %>
 
@@ -43,15 +49,29 @@
 
   <% for(var i=0; i < result.length; i ++){ %>
 
+<div class="card" style="width: 18rem;display:inline-block;margin-left:50px;margin-top:20px;">
+  <img src="<%=result[i].filepath%>" alt="Card image cap" style='height:250px;width:100%'>
+  <div class="card-body">
+    <h5 class="card-title">Description</h5>
+  </div>
+
+     <ul class="list-group list-group-flush">
+
+  <% var allDescription = result[i].description %>
+  <% allDescription = allDescription.split(',') %>
+  <% for (var j =0; j < allDescription.length; j++) { %> 
+    <li class="list-group-item"><%=allDescription[j]%></li>
+   
+   <% } %>
+  </ul>
+</div>
 
 
-
-
-  <img src="<%= result[i].filepath %>" class="img-fluid rounded-circle" style="width:250px;height:250px;">
-
-
-
+  
 
 
 
 <% }  } %>
+
+
+
