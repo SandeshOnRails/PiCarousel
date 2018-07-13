@@ -33,7 +33,7 @@ var database = []
             database = [].concat.apply([], database);
 
 
-                           for(var i =0; i < database.length; i++) {
+                    for(var i =0; i < database.length; i++) {
 
                    if(database[i].length > searchKey.length) {
                          

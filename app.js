@@ -59,21 +59,15 @@ require('./routes/about.js')(express,app);
               if(!searchTerm) searchTerm = req.body.searchKey
      	  
               search(searchTerm, con, function(result){
+                         
 
                         if(result.length > 0) {
-                          	var showingResult = result[0].description
-                          	var alldescription = showingResult.split(',')
 
-                          	for(var i=0; i < alldescription.length; i++) {
+                          let matchPercent = findMatchPercent(req.body.searchKey, searchTerm).toFixed(0)
+                          matchPercent = matchPercent +"% match"
 
-                          		   if(alldescription[i].match(req.body.searchKey)) {
-
-                          		   	  actualResult = alldescription[i]
-
-                          		   }
-                          	}
-                             res.render('search-results', {result: result, searchKey:req.body.searchKey, actualResult: searchTerm})
-                        }else {
+                             res.render('search-results', {result: result, searchKey:req.body.searchKey, actualResult: searchTerm, matchPercent: matchPercent})
+                        } else {
 
                             res.render('search-results', {result: result})
                         }
@@ -85,7 +79,6 @@ require('./routes/about.js')(express,app);
           })
 
       })
-
 
       app.post('/upload', isFileValid, function(req, res) {
         if (!req.files)
@@ -118,5 +111,23 @@ function isFileValid(req, res, next) {
       res.render('imgupload', {error:error})
 }
 
+// find match percent 
+
+function findMatchPercent (searchKey, tag) {
+
+  let count = 0
+
+     for(let i =0; i < tag.length; i++) {
+
+           if(searchKey[i]) {
+                
+                if(tag[i]===searchKey[i]) count++
+           }
+     }
+
+     if (searchKey.length > tag.length) return (count/searchKey.length * 100)
+      else  return (count/tag.length * 100)
+     
+   }
 
 app.listen(process.env.PORT || 3000, ()=> console.log("Server Running"));
