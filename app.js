@@ -7,7 +7,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
-//app.use(express.static(path.join(__dirname, 'operationsdb')));
+
 
 
 const con = require('./config/config.js')
@@ -49,16 +49,23 @@ require('./routes/about.js')(express,app);
       app.get('/admin', function(req, res){
 
 
+          if (req.query.operation == null){
+            
+            res.render('admin',{operation:''});
+            console.log("app.js users");
+          }
+
           if (req.query.operation == "users"){
+
             res.render('admin', {operation:'users'});
-          
-          console.log("app.js users");
+            console.log("app.js users");
+
           }
 
            if (req.query.operation == "photos"){
-            console.log("app.js photos");
-            var ret = dbRequest.getUsers(con,"",function(result){
-                         
+            
+              console.log("app.js photos");
+              var ret = dbRequest.getUsers(con,"",function(result){
 
                         if(result.length > 0) {
                              res.render('admin', {operation:'photos'});
@@ -66,15 +73,29 @@ require('./routes/about.js')(express,app);
 
                             res.render('admin', {operation:'photos'});
                         }
-
-
               
                     });
 
           }
 
           if (req.query.operation == "categories"){
-            res.render('admin', {operation:'categories'});
+
+              var ret = dbRequest.getCategories(con,"",function(result){
+                  for (i=0 ; i<result.length; i++){
+                      console.log("cat: "+(result[i].categorie)); 
+                      console.log("id "+(result[i].categorie_id));   
+                  };
+                  //console.log("db categorie:"+JSON.stringify(result));    
+
+                        if(result.length > 0) {
+                             res.render('admin', {operation:'categories'});
+                        } else {
+
+                            res.render('admin', {operation:'categories'});
+                        }
+                    });
+            
+
           
           console.log("app.js cat");
           }

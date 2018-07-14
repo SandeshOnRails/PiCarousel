@@ -51,6 +51,7 @@
       <div class="collapse navbar-collapse" id="submyNavbar">
       <ul class="nav navbar-nav">
   <% if (operation =="photos") { %>
+        <li><a href="/admin?operation=photos_pending" ><font size="3" color="red">Photos >> </font></a></li>
         <li id="btnphotos" class="active"><a href="/admin?operation=photos_pending" >Pending</a></li>
         <li id = "btnusers" ><a href="/admin?operation=photos_toverify">to verify</a></li>
         <li id = "btnusers" ><a href="/admin?operation=photos_suspended">suspended</a></li>
@@ -58,18 +59,19 @@
         <li id = "btnusers" ><a href="/admin?operation=photos_uploadimage">upload image</a></li>
   <% }%>
   <% if (operation =="users") { %>
+  <li><a href="/admin?operation=photos_pending" ><font size="3" color="red">Users >> </font></a></li>
         <li id="btnphotos" class="active"><a href="/admin?operation=users_verify" >list</a></li>
         <li id = "btnusers" ><a href="/admin?operation=users_toverify">verify</a></li>
         <li id = "btnusers" ><a href="/admin?operation=users_suspended">search</a></li>
         <li id = "btnusers" ><a href="/admin?operation=users_search">suspend</a></li>
        
   <% }%>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      
-        <li id="btnaccount"><a href="/admin?operation=verified"><span class="glyphicon glyphicon-log-in"></span> verified</a></li>
+    <% if (operation =="categories") { %>
+        <%- include viewCategorie/categoriemenu.ejs %>
        
+  <% }%>
       </ul>
+
     </div>
   </div>
   //
@@ -80,7 +82,7 @@
     <h1>Dashboard</h1>      
   </div>
 </div>
-  
+<% if (operation == "photos") { %>
 <div class="container-fluid bg-3 text-center">    
   <h3>Approve or Disapprove the following pictures</h3><br>
   <div class="row">
@@ -115,6 +117,11 @@
     </div>
   </div>
 </div><br><br>
+<%}%>
+<% if (operation == "categories") { %>
+    <%- include viewCategorie/categoriemain.ejs %>
+<%}%>
+
 
 <footer class="container-fluid text-center">
   <p>Footer Text</p>

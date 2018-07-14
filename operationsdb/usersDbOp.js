@@ -26,13 +26,20 @@ module.exports = {
                     //con.release();
 
                   });
-                //console.log(this.resulta);
-                // whatever
-               
-
             },
            
+            getCategories: function(con, sql, callback) {
+               
+                var returnValue;
+                this.resulta = con.query("Select * from categorie", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
 
+                  });
+            },
  
 };
 
