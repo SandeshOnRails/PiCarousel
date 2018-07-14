@@ -61,7 +61,7 @@ require('./routes/about.js')(express,app);
             console.log("app.js users");
 
           }
-
+//photo section
            if (req.query.operation == "photos"){
             
               console.log("app.js photos");
@@ -78,6 +78,24 @@ require('./routes/about.js')(express,app);
 
           }
 
+          if (req.query.operation == "photos_uploadimage"){
+            
+              console.log("app.js photos");
+             
+                             res.render('admin', {operation:'photos',submenu:'uploadimage'});
+               
+
+          }
+
+          if (req.query.operation == "photos_uploadimage"){
+            
+              console.log("app.js photos");
+             
+                             res.render('admin', {operation:'photos',submenu:'uploadimage'});
+               
+
+          }
+//photo section
           if (req.query.operation == "categories"){
 
               var ret = dbRequest.getCategories(con,"",function(result){
