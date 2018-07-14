@@ -1,6 +1,6 @@
 
 var mysql = require('mysql');
-
+/*
 var pool  = mysql.createConnection({
   host     : 'picarousel.ctftzezisj7n.us-east-2.rds.amazonaws.com',
   user     : 'admin',
@@ -8,6 +8,12 @@ var pool  = mysql.createConnection({
   password : 'sfsucsc648',
   database : 'picarousel'
 });
-
+*/
+var pool  = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'cavit',
+  database : 'picarousel'
+});
 
 module.exports = pool;

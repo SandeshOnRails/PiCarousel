@@ -7,13 +7,16 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
+//app.use(express.static(path.join(__dirname, 'operationsdb')));
 
 
 const con = require('./config/config.js')
 const search = require('./models/test.js')
-const checkForKey = require('./search-key/keycheck.js')
+const t = require('./search-key/keycheck.js')
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+
+
 
 const fileUpload = require('express-fileupload');
 app.use(fileUpload());
@@ -40,6 +43,53 @@ require('./routes/about.js')(express,app);
       app.get('/imgupload', function(req, res){
 
          res.render('imgupload', {error:false})
+      })
+      
+      var dbRequest = require('./operationsdb/usersDbOp.js');
+      app.get('/admin', function(req, res){
+
+
+          if (req.query.operation == "users"){
+            res.render('admin', {operation:'users'});
+          
+          console.log("app.js users");
+          }
+
+           if (req.query.operation == "photos"){
+            console.log("app.js photos");
+            var ret = dbRequest.getUsers(con,"",function(result){
+                         
+
+                        if(result.length > 0) {
+                             res.render('admin', {operation:'photos'});
+                        } else {
+
+                            res.render('admin', {operation:'photos'});
+                        }
+
+
+              
+                    });
+
+          }
+
+          if (req.query.operation == "categories"){
+            res.render('admin', {operation:'categories'});
+          
+          console.log("app.js cat");
+          }
+
+          if (req.query.operation == "downloadanalytics"){
+            res.render('admin', {operation:'downloadanalytics'});
+          
+          console.log("app.js down");
+          }
+
+          if (req.query.operation == "shared"){
+            res.render('admin', {operation:'shared'});
+          
+          console.log("app.js down");
+          }
       })
 
 

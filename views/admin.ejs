@@ -21,7 +21,7 @@
     }
   </style>
 </head>
-<body>
+<body onload="checkButtons();">
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -31,18 +31,48 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">PiCarousel</a>
+      <a class="navbar-brand" href="/admin?operation=picarousel">PiCarousel</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Photos</a></li>
-        <li><a href="#">Users</a></li>
+        <li id="mbtnphotos"><a href="/admin?operation=photos">Photos</a></li>
+        <li><a href="/admin?operation=users">Users</a></li>
+         <li><a href="/admin?operation=categories">categories</a></li>
+         <li><a href="/admin?operation=downloadanalytics">download analytics</a></li>
+         <li><a href="/admin?operation=shared">shared</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> My Account</a></li>
+        <li><a href="/admin?operation=myaccount"><span class="glyphicon glyphicon-log-in"></span> My Account</a></li>
       </ul>
     </div>
   </div>
+
+  //
+      <div class="collapse navbar-collapse" id="submyNavbar">
+      <ul class="nav navbar-nav">
+  <% if (operation =="photos") { %>
+        <li id="btnphotos" class="active"><a href="/admin?operation=photos_pending" >Pending</a></li>
+        <li id = "btnusers" ><a href="/admin?operation=photos_toverify">to verify</a></li>
+        <li id = "btnusers" ><a href="/admin?operation=photos_suspended">suspended</a></li>
+        <li id = "btnusers" ><a href="/admin?operation=photos_search">search</a></li>
+        <li id = "btnusers" ><a href="/admin?operation=photos_uploadimage">upload image</a></li>
+  <% }%>
+  <% if (operation =="users") { %>
+        <li id="btnphotos" class="active"><a href="/admin?operation=users_verify" >list</a></li>
+        <li id = "btnusers" ><a href="/admin?operation=users_toverify">verify</a></li>
+        <li id = "btnusers" ><a href="/admin?operation=users_suspended">search</a></li>
+        <li id = "btnusers" ><a href="/admin?operation=users_search">suspend</a></li>
+       
+  <% }%>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li id="btnaccount"><a href="/admin?operation=verified"><span class="glyphicon glyphicon-log-in"></span> verified</a></li>
+       
+      </ul>
+    </div>
+  </div>
+  //
 </nav>
 
 <div class="jumbotron">
@@ -92,3 +122,30 @@
 
 </body>
 </html>
+  
+
+   <script>
+    function checkButtons(){
+
+      var x = document.getElementsByClassName("active");
+var i;
+for (i = 0; i < x.length; i++) {
+    x[i].className = "";
+} 
+/*
+        var activeBtns = document.getElementsByClassName("active"); 
+        for (i=0; i< activeBtns.length; i++){
+
+          if (activeBtns[i] !=null ){
+           alert(activeBtns[i].id);
+           activeBtns[i].className="";
+          }
+        }
+     */
+        var elem = document.getElementById("btn<%= operation%>");
+        elem.className ="active";
+        console.log("<%= operation%>");
+      }
+     
+  </script>
+  
