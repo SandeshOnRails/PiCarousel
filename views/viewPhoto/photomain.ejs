@@ -5,23 +5,23 @@
         <%- include photoupload.ejs %>
        
   <% }}%>
- <%  if ( typeof resultimg !== 'undefined' && resultimg ){%>
-<div class="container-fluid bg-3 text-center">    
- <% for (i=0; i<resultimg.length; i++) {%>
+ <%  if ( submenu == "list" ){%>
+          <div class="container-fluid bg-3 text-center">    
+           <% for (i=0; i<resultimg.length; i++) {%>
 
- <% if ((i % 4 ==0) ) { %>
-  <div class="row">
-  <% k=1; %>
-  <%}%>
+           <% if ((i % 4 ==0) ) { %>
+            <div class="row">
+            <% k=1; %>
+            <%}%>
 
-    <div class="col-sm-3">
-    <%let a = resultimg[i].filepath.split("/");%>
-      <img src="<%= a[1]%>" class="img-responsive" width="20" height="20" style="width:20%;height:20%" alt="Image">
-    </div>
+              <div class="col-sm-3">
+              <%let a = resultimg[i].filepath.split("/");%>
+                <img src="<%= a[1]%>" class="img-responsive" width="20" height="20" style="width:20%;height:20%" alt="Image">
+              </div>
 
-   <% if ((i+1 % 4 ==0) ){ %> 
-  </div>
-  <%}%>
+             <% if ((i+1 % 4 ==0) ){ %> 
+            </div>
+            <%}%>
 <%}%>
 
 </div><br>

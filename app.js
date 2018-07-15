@@ -120,8 +120,8 @@ require('./routes/about.js')(express,app);
 
                           }
 
-                         if ( !req.query.submenu  ){
-                           res.redirect('admin/?operation=photos&submenu=list' );
+                          if ( req.query.submenu == undefined ){
+                           res.redirect('admin?operation=photos&submenu=list' );
                             //res.render('admin', {operation:'photos',submenu:'list'});
                           }
 
@@ -132,19 +132,28 @@ require('./routes/about.js')(express,app);
 
     //photo sub menu
 //photo section
-          if (req.query.operation == "categories"){
+          if (req.query.operation == "categorie"){
 
-              var ret = dbRequest.getCategories(con,"",function(result){
- 
-                  //console.log("db categorie:"+JSON.stringify(result));    
+                          if (req.query.submenu == "list"){
+                             console.log("in photo="+req.query.submenu);
 
-                        if(result.length > 0) {
-                             res.render('admin', {operation:'categories'});
-                        } else {
+                              console.log("app.js photos");
 
-                            res.render('admin', {operation:'categories'});
-                        }
-                    });
+                              dbRequest.getCategories(con,"",function(result){
+                                    let listcategories = result;
+                                      console.log("in photo="+req.query.operation);
+               
+                                   res.render('admin', {operation:'categorie',submenu:'list',result:listcategories});
+                                   //console.log("data:"+JSON.stringify(selectdata[0].categorie_id));
+                          
+                                });
+
+                          }
+
+                          if ( req.query.submenu == undefined ){
+                           res.redirect('admin?operation=categorie&submenu=list' );
+                            //res.render('admin', {operation:'photos',submenu:'list'});
+                          }
             
 
           

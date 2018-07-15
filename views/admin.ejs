@@ -40,10 +40,10 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li id="mbtnphotos"><a href="/admin?operation=photos">Photos</a></li>
-        <li><a href="/admin?operation=users&submenu=a">Users</a></li>
-         <li><a href="/admin?operation=categories&submenu=a">categories</a></li>
-         <li><a href="/admin?operation=downloadanalytics&submenu=a">download analytics</a></li>
-         <li><a href="/admin?operation=shared&submenu=a">shared</a></li>
+        <li><a href="/admin?operation=users">Users</a></li>
+         <li><a href="/admin?operation=categorie">categories</a></li>
+         <li><a href="/admin?operation=downloadanalytics">download analytics</a></li>
+         <li><a href="/admin?operation=shared">shared</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/admin?operation=myaccount"><span class="glyphicon glyphicon-log-in"></span> My Account</a></li>
@@ -66,7 +66,7 @@
         <li id = "btnusers" ><a href="/admin?operation=users_search">suspend</a></li>
        
   <% }%>
-    <% if (operation =="categories") { %>
+    <% if (operation =="categorie") { %>
         <%- include viewCategorie/categoriemenu.ejs %>
        
   <% }%>
@@ -81,7 +81,7 @@
 <% if (operation == "photos") { %>
     <%- include viewPhoto/photomain.ejs %>
 <%}%>
-<% if (operation == "categories") { %>
+<% if (operation == "categorie") { %>
     <%- include viewCategorie/categoriemain.ejs %>
 <%}%>
 
