@@ -46,6 +46,7 @@ require('./routes/about.js')(express,app);
       })
       
       var dbRequest = require('./operationsdb/usersDbOp.js');
+
       app.get('/admin', function(req, res){
 
 
@@ -62,10 +63,10 @@ require('./routes/about.js')(express,app);
 
           }
 //photo section
-           if (req.query.operation == "photos"){
-            
-              console.log("app.js photos");
-              var ret = dbRequest.getUsers(con,"",function(result){
+/*
+                var ret = dbRequest.getUsers(con,"",function(result){
+                console.log("in photo="+req.query.operation);
+               
 
                         if(result.length > 0) {
                              res.render('admin', {operation:'photos'});
@@ -75,34 +76,64 @@ require('./routes/about.js')(express,app);
                         }
               
                     });
-
-          }
-
-          if (req.query.operation == "photos_uploadimage"){
+                    */
+           if (req.query.operation == "photos"){
             
               console.log("app.js photos");
-             
-                             res.render('admin', {operation:'photos',submenu:'uploadimage'});
+
+                          if (req.query.submenu == "uploadimage"){
+                             console.log("in photo="+req.query.submenu);
+
+                              console.log("app.js photos");
+
+                              dbRequest.getCategories(con,"",function(result){
+                                    let selectdata = result;
+                                      console.log("in photo="+req.query.operation);
                
+                                   res.render('admin', {operation:'photos',submenu:'uploadimage',result:selectdata});
+                                   console.log("data:"+JSON.stringify(selectdata[0].categorie_id));
+                          
+                                });
+
+                          }
+
+
+                          if (req.query.submenu == "list"){
+                             console.log("in photo="+req.query.submenu);
+
+                              console.log("app.js photos");
+                             
+                                             res.render('admin', {operation:'photos',submenu:'list'});
+                               
+
+                          }
+
+                         if ( !req.query.submenu  ){
+                            res.render('admin', {operation:'photos',submenu:'list'});
+                          }
 
           }
+    //photo sub menu
 
-          if (req.query.operation == "photos_uploadimage"){
-            
-              console.log("app.js photos");
-             
-                             res.render('admin', {operation:'photos',submenu:'uploadimage'});
-               
+        //upload image
 
-          }
+
+
+        //upload image
+        //upload image
+
+  
+
+       
+
+        //upload image 
+
+    //photo sub menu
 //photo section
           if (req.query.operation == "categories"){
 
               var ret = dbRequest.getCategories(con,"",function(result){
-                  for (i=0 ; i<result.length; i++){
-                      console.log("cat: "+(result[i].categorie)); 
-                      console.log("id "+(result[i].categorie_id));   
-                  };
+ 
                   //console.log("db categorie:"+JSON.stringify(result));    
 
                         if(result.length > 0) {
@@ -168,8 +199,18 @@ require('./routes/about.js')(express,app);
           })
 
       })
+      function callInsertImage(res){
+                      dbRequest.insertImage(con,"",function(result){
 
-      app.post('/upload', isFileValid, function(req, res) {
+                                   let selectdata = result;
+                                   res.redirect('admin/?operation=photos&submenu=uploadimage' );
+                          
+                                });
+            
+      }
+      app.post('/upload', function(req, res) {
+        console.log("form vriabe des: "+req.body.imageDescription);
+        console.log("form vriabe id: "+req.body.imageCategorieId);
         if (!req.files)
           return res.status(400).send('No files were uploaded.');
        
@@ -180,43 +221,49 @@ require('./routes/about.js')(express,app);
         // Use the mv() method to place the file somewhere on your server
         sampleFile.mv('assets/'+req.files.sampleFile.name, function(err) {
           if (err)
-            return res.status(500).send(err);
-       
-          res.send('File uploaded!');
+            res.render('admin', {operation:'photos',submenu:'uploadimage',error:err});
+          else{
+            console.log("img categorie id :"+req.imageCategorieId);
+            callInsertImage(res);
+            
+        
+            // res.render('admin', {operation:'photos'});
+          }
+          
         });
       });
 
 
 //middleware to check if the file is valid jpeg or png format
 
-function isFileValid(req, res, next) {
+      function isFileValid(req, res, next) {
 
-  let error = 'whatever';
+        let error = 'whatever';
 
-  let type = req.files.sampleFile.mimetype.toString();
-  
+        let type = req.files.sampleFile.mimetype.toString();
+        
 
-    if(type === 'image/jpeg' || type === 'image/png') return next()
-      res.render('imgupload', {error:error})
-}
+          if(type === 'image/jpeg' || type === 'image/png') return next()
+             res.render('admin', {operation:'photos',submenu:'uploadimage',error:error});
+      }
 
 // find match percent 
 
-function findMatchPercent (searchKey, tag) {
+        function findMatchPercent (searchKey, tag) {
 
-  let count = 0
+          let count = 0
 
-     for(let i =0; i < tag.length; i++) {
+             for(let i =0; i < tag.length; i++) {
 
-           if(searchKey[i]) {
-                
-                if(tag[i]===searchKey[i]) count++
+                   if(searchKey[i]) {
+                        
+                        if(tag[i]===searchKey[i]) count++
+                   }
+             }
+
+             if (searchKey.length > tag.length) return (count/searchKey.length * 100)
+              else  return (count/tag.length * 100)
+             
            }
-     }
-
-     if (searchKey.length > tag.length) return (count/searchKey.length * 100)
-      else  return (count/tag.length * 100)
-     
-   }
 
 app.listen(process.env.PORT || 3000, ()=> console.log("Server Running"));

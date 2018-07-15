@@ -15,7 +15,20 @@ module.exports = {
 
             },
 
-            getUsers: function(con, sql, callback) {
+            insertImage: function(con, sqldata, callback) {
+               
+                var returnValue;
+                this.resulta = con.query("insert into image (filepath,description) values ('c.jpg','ver')", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + fields);
+                    callback(fields);
+                    //con.release();
+
+                  });
+            },
+
+            getUsers: function(con, sqldata, callback) {
                
                 var returnValue;
                 this.resulta = con.query("Select * from user", function (err, result , fields) {

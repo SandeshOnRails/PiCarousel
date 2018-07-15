@@ -12,7 +12,7 @@ var pool  = mysql.createConnection({
 var pool  = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'root',
+  password : 'cavit',
   database : 'picarousel'
 });
 

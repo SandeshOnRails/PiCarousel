@@ -1,13 +1,23 @@
 
-    <form ref='uploadForm' 
-      id='uploadForm' 
-      action='/upload' 
-      method='post' 
-      encType="multipart/form-data">
-        <input type="file" name="sampleFile" />
-        <input type='submit' value='Upload!' />
+    <form ref='uploadForm' id='imageUploadForm'  action='/upload' method='post' encType="multipart/form-data">
+    	categorie:<br>
+		    <select name="imageCategorieId" id ="imageCategorieId">
+				  	<option value="0">Select</option>
+				  	<% for (i=0; i<result.length; i++) {%>
+				  	
+				  	<option name="<%=result[i].categorie_id%>" value="<%=result[i].categorie_id%>"><%=result[i].categorie%></option>
+				  	<%}%>
+			</select> <br>
+    	description:<br>
+  			 <textarea name="imageDescription" id="imageDescription" rows="4" cols="50">
+
+			</textarea> 
+
+
+        	<input type="file" name="sampleFile" /><br>
+        	<input type='submit' value='Upload!' /><br>
     </form> 
-    <p id="wrongFileFormat"></p>
+
 
  
 

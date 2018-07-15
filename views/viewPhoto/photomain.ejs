@@ -1,7 +1,10 @@
-  <% if (submenu =="uploadimage") { %>
+ 
+  <%  if ( typeof submenu !== 'undefined' && submenu ){%>
+
+  <%if (submenu =="uploadimage") { %>
         <%- include photoupload.ejs %>
        
-  <% }%>
+  <% }}%>
 
 <div class="container-fluid bg-3 text-center">    
   <h3>Approve or Disapprove the following pictures</h3><br>
