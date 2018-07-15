@@ -41,8 +41,8 @@ module.exports = {
                   ")", function (err, result , fields) {
                    
                     if (err) throw err;
-                    console.log("in sendQuery Result: " + fields);
-                    callback(fields);
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
                     //con.release();
 
                   });
@@ -56,12 +56,25 @@ module.exports = {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + fields);
-                    callback(fields);
+                    callback(result);
                     //con.release();
 
                   });
             },
-           
+            
+            getImages: function(con, sqldata, callback) {
+               
+                var returnValue;
+                this.resulta = con.query("Select * from image", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + fields);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+
             getCategories: function(con, sql, callback) {
                
                 var returnValue;

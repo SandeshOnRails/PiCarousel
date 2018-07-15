@@ -93,7 +93,7 @@ require('./routes/about.js')(express,app);
                                       console.log("in photo="+req.query.operation);
                
                                    res.render('admin', {operation:'photos',submenu:'uploadimage',result:selectdata});
-                                   console.log("data:"+JSON.stringify(selectdata[0].categorie_id));
+                                   //console.log("data:"+JSON.stringify(selectdata[0].categorie_id));
                           
                                 });
 
@@ -104,31 +104,31 @@ require('./routes/about.js')(express,app);
                              console.log("in photo="+req.query.submenu);
 
                               console.log("app.js photos list");
+
+
+                                    var ret = dbRequest.getImages(con,"",function(result){
+                                        let imageList = result;
+                                        console.log("list db return "+JSON.stringify(imageList));
+                                        //console.log("in photo="+req.query.operation);
+                                        res.render('admin', {operation:'photos',submenu:'list',resultimg:imageList});
+
+                                    });
+
                              
-                                             res.render('admin', {operation:'photos',submenu:'list'});
+                             
                                
 
                           }
 
                          if ( !req.query.submenu  ){
-                            res.render('admin', {operation:'photos',submenu:'list'});
+                           res.redirect('admin/?operation=photos&submenu=list' );
+                            //res.render('admin', {operation:'photos',submenu:'list'});
                           }
 
           }
     //photo sub menu
 
-        //upload image
 
-
-
-        //upload image
-        //upload image
-
-  
-
-       
-
-        //upload image 
 
     //photo sub menu
 //photo section
@@ -216,13 +216,7 @@ require('./routes/about.js')(express,app);
 
       //image upload
       app.post('/upload', function(req, res) {
-        //var req = req;
-        //var res = res;
-        console.log("form vriabe des: "+req.body.imageDescription);
-        console.log("form vriabe id: "+req.body.imageCategorieId);
-        console.log("form vriabe licencetype: "+req.body.licenceType);
-        console.log("form vriabe privacy: "+req.body.privacy);
-        console.log("form vriabe publish: "+req.body.publish);
+
         validator.checkText(req.body.imageDescription,function(status){
               
               if (status ==="ok"){
