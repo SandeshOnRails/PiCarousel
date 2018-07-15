@@ -16,9 +16,29 @@ module.exports = {
             },
 
             insertImage: function(con, sqldata, callback) {
-               
+                console.log("sql catching the form:"+sqldata.imageDescription);
                 var returnValue;
-                this.resulta = con.query("insert into image (filepath,description) values ('c.jpg','ver')", function (err, result , fields) {
+                
+                this.resulta = con.query("insert into image ("+
+                  "filepath,"+
+                  "photo_categorie_id"+
+                  ",description,"+
+                  "owner_user_id,"+
+                  "adminverified,"+
+                  "licencetype,"+
+                  "privacy,"+
+                  "published"+
+                  ") values ('"+
+                  sqldata.filepath+"',"+
+                  sqldata.photo_categorie_id+",'"+
+                  sqldata.description+"',"+
+                  sqldata.owner_user_id+","+
+                  sqldata.adminverified+","+
+                  sqldata.licencetype+","+
+                  sqldata.privacy+","+
+                  sqldata.published+
+    
+                  ")", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + fields);
@@ -26,6 +46,7 @@ module.exports = {
                     //con.release();
 
                   });
+                  
             },
 
             getUsers: function(con, sqldata, callback) {

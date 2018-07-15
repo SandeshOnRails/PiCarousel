@@ -44,6 +44,8 @@ require('./routes/about.js')(express,app);
 
          res.render('imgupload', {error:false})
       })
+
+      var validator = require('./services/validateData.js');
       
       var dbRequest = require('./operationsdb/usersDbOp.js');
 
@@ -101,7 +103,7 @@ require('./routes/about.js')(express,app);
                           if (req.query.submenu == "list"){
                              console.log("in photo="+req.query.submenu);
 
-                              console.log("app.js photos");
+                              console.log("app.js photos list");
                              
                                              res.render('admin', {operation:'photos',submenu:'list'});
                                
@@ -199,42 +201,76 @@ require('./routes/about.js')(express,app);
           })
 
       })
-      function callInsertImage(res){
-                      dbRequest.insertImage(con,"",function(result){
-
+      
+      //image insert data to db after the upload
+      function callInsertImage(data,res){
+                      dbRequest.insertImage(con,data,function(result){
+                                    console.log("data object:"+data.filepath);
                                    let selectdata = result;
                                    res.redirect('admin/?operation=photos&submenu=uploadimage' );
                           
-                                });
+                      });
             
       }
+      //image insert end
+
+      //image upload
       app.post('/upload', function(req, res) {
+        //var req = req;
+        //var res = res;
         console.log("form vriabe des: "+req.body.imageDescription);
         console.log("form vriabe id: "+req.body.imageCategorieId);
-        if (!req.files)
-          return res.status(400).send('No files were uploaded.');
-       
-        // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-        let sampleFile = req.files.sampleFile;
-        console.log(typeof req.files.sampleFile.mimetype);
-       
-        // Use the mv() method to place the file somewhere on your server
-        sampleFile.mv('assets/'+req.files.sampleFile.name, function(err) {
-          if (err)
-            res.render('admin', {operation:'photos',submenu:'uploadimage',error:err});
-          else{
-            console.log("img categorie id :"+req.imageCategorieId);
-            callInsertImage(res);
+        console.log("form vriabe licencetype: "+req.body.licenceType);
+        console.log("form vriabe privacy: "+req.body.privacy);
+        console.log("form vriabe publish: "+req.body.publish);
+        validator.checkText(req.body.imageDescription,function(status){
+              
+              if (status ==="ok"){
+                    if (!req.files)
+                      return res.status(400).send('No files were uploaded.');
+         
+                    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+                    let sampleFile = req.files.sampleFile;
+                    console.log(typeof req.files.sampleFile.mimetype);
+         
+                    // Use the mv() method to place the file somewhere on your server
+                  sampleFile.mv('assets/'+req.files.sampleFile.name, function(err) {
+                    if (err)
+                      res.render('admin', {operation:'photos',submenu:'uploadimage',error:err});
+                    else{
+                      console.log("img categorie id :"+req.imageCategorieId);
+                      let data={
             
-        
-            // res.render('admin', {operation:'photos'});
+                        filepath:'assets/'+req.files.sampleFile.name,           
+                        photo_categorie_id :req.body.imageCategorieId,
+                        description:req.body.imageDescription,        
+                        owner_user_id:0,      
+                        adminverified:0,      
+                        licencetype:req.body.licenceType,        
+                        privacy:req.body.privacy,            
+                        published:req.body.publish          
+                        
+                      };
+
+                      callInsertImage(data,res);
+                      
+
+                    }
+                    
+                  });
+          }else{
+             //res.send('admin',{operation:'photos',submenu:'uploadimage',error:valideData});
+             console.log("-------------validator error :"+status);
+             res.redirect('admin/?operation=photos&submenu=uploadimage&error='+ status);
+            //res.render('admin', {operation:'photos',submenu:'uploadimage',error:valideData});
           }
-          
         });
+          
+
       });
+      //image upload end
 
-
-//middleware to check if the file is valid jpeg or png format
+      //middleware to check if the file is valid jpeg or png format
 
       function isFileValid(req, res, next) {
 
@@ -247,7 +283,7 @@ require('./routes/about.js')(express,app);
              res.render('admin', {operation:'photos',submenu:'uploadimage',error:error});
       }
 
-// find match percent 
+      // find match percent 
 
         function findMatchPercent (searchKey, tag) {
 
