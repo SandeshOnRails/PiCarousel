@@ -4,7 +4,7 @@
   <table>
   <tr><td>categorie name</td><td></td></tr>
    <% for (i=0; i<result.length; i++) {%>
-  <tr><td><a href="<%=result[i].categorie_id %>"><%=result[i].categorie %></a></td><td><a href="<%=result[i].categorie_id %>">delete<a/></td></tr>
+  <tr id = "categorie<%=result[i].categorie_id %>"><td ><a onclick="makeCategorieEditable(<%=result[i].categorie_id %>,'<%=result[i].categorie %>');" href="#<%=result[i].categorie_id %>"><%=result[i].categorie %></a></td><td><a  href="#<%=result[i].categorie_id %>">delete<a/></td></tr>
   <%}%>
   </table>
 </div><br>
