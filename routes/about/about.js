@@ -7,7 +7,7 @@ module.exports = function (express, app) {
 
 	router.get('/', function(req, res, next) {
           
-          res.render('about-us', {});
+          res.render('about/about-us', {});
 	});
 
 
@@ -16,7 +16,7 @@ module.exports = function (express, app) {
           for(var i =0; i < aboutPages.length; i ++){
         if(aboutPages[i]== req.params.name){
               flag = false;
-		res.render(req.params.name);
+		res.render('about/'+req.params.name);
 
     }
 }

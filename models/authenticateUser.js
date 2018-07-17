@@ -1,7 +1,8 @@
 
 const authenticateUser = function (userEmail, con, callback) {
 
-  
+  // connect to the db
+
 con.connect(function(err) {
 
   if(err) {
@@ -10,7 +11,7 @@ con.connect(function(err) {
   else {
   	console.log('connection successful')
   }
-
+// query the database
  con.query("SELECT * FROM user WHERE email=" + userEmail, function(err, result, fields) {
               
 
@@ -21,9 +22,9 @@ con.connect(function(err) {
 
         else { 
              
-             if(result.length > 0) callback(false)
+             if(result.length > 0) callback(false) // if the user exists callback function with false parameter
 
-              else callback(true)
+              else callback(true) // if the user does not exis, callback function with true paramter
 
         }
 });
