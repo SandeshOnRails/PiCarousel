@@ -1,13 +1,8 @@
 
-var check = function (key, pool, callback) {
+var check = function (key, con, callback) {
 
 
-var animal = key
-
-
-var self = this
-
-pool.connect(function(err) {
+con.connect(function(err) {
 
   if(err){
   	console.log("error connecting: " + err)
@@ -16,10 +11,10 @@ pool.connect(function(err) {
   	console.log('connection successful')
   }
 
- pool.query("SELECT * FROM photos WHERE description LIKE '%" + animal + "%'", function(err, result, fields){
+ con.query("SELECT * FROM photos WHERE description LIKE '%" + key + "%'", function(err, result, fields) {
               
 
-      if(err){
+      if (err) {
         console.log(err)
       }
         else { 

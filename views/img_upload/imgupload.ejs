@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <form ref='uploadForm' 
+      id='uploadForm' 
+      action='/upload' 
+      method='post' 
+      encType="multipart/form-data">
+        <input type="file" name="sampleFile" />
+        <input type='submit' value='Upload!' />
+    </form> 
+    <p id="wrongFileFormat"></p>
+
+    <% if (error){  %>
+  
+  <script>
+  
+  document.getElementById('wrongFileFormat').innerHTML = '<%=error%>';
+
+  </script>
+
+  <% } %>
+
+
+  </body>
+</html>
