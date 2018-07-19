@@ -2,58 +2,49 @@
   <link rel="stylesheet" href="styleupload.css">
 </head>
 <div class="wrapper">
-    <header>
-      <h1>UPLOAD</h1>
-      <span>SFSU Team 23</span>
-    </header>
+  <header>
+    <h1>UPLOAD</h1>
+    <span>SFSU Team 23</span>
+  </header>
+  
+
+  
+  <div class="sections">
     
-    <div class="ways">
-      <ul>
-        <li class="active">
-          submit
-        </li>
-        <li>
-          discussion
-        </li>
-      </ul>
-    </div>
-    
-    <div class="sections">
+    <section class="active">
+      <input type="text" placeholder="TITLE" id="title"/>
+     
+      <select id="category">
+        <option value="summmer">summer</option>
+        <option value="winter">winter</option>
+        <option value="working">working</option>
+        <option value="road">road</option>
+      </select>
       
-      <section class="active">
-        <input type="text" placeholder="TITLE" id="title"/>
-       
-        <select id="category">
-          <option value="summmer">summer</option>
-          <option value="winter">winter</option>
-          <option value="working">working</option>
-          <option value="road">road</option>
-        </select>
-        
-        
-        <div class="select-option">
-          <div class="head">Category</div>
-          <div class="option"></div>
-        </div>
-         <section class="active">
-        <input type="text" placeholder="TAGS" id="title"/>
-        
-        
+      
+      <div class="select-option">
+        <div class="head">Category</div>
+        <div class="option"></div>
+      </div>
+       <section class="active">
+      <input type="text" placeholder="TAGS" id="title"/>
+      
+      
+
+      
+    </section>
+
+    <section>
+      <input type="text" placeholder="Topic" id="topic"/>
+      <textarea placeholder="something..." id="msg"></textarea>
+    </section>
   
-        
-      </section>
+  </div>
   
-      <section>
-        <input type="text" placeholder="Topic" id="topic"/>
-        <textarea placeholder="something..." id="msg"></textarea>
-      </section>
-    
-    </div>
-    
-  
-  
-  <form action="upload.php" method="POST">
-    <input type="file" multiple>
-    <p>Drag your files here or click in this area.</p>
-    <button type="submit">Upload</button>
-  </form>
+
+
+<form action="upload.php" method="POST">
+  <input type="file" multiple>
+  <p>Drag your files here or click in this area.</p>
+  <button type="submit">Upload</button>
+</form>
