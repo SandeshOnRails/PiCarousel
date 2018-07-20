@@ -33,10 +33,7 @@ app.get('/imgupload', function(req, res){
       })
 
 
-app.get('/test', (req, res)=> {
 
-    res.render('upload-download/upload')
-})
 
 
       //post search results to the search-results.ejs page
