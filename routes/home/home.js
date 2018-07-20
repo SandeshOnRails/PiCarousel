@@ -3,6 +3,7 @@ module.exports = function (app) {
 
 	 app.get('/', function(req, res){
 
-	 	 res.render('about/about-us')
+	 	 res.render('home/homepage')
 	 })
 }
+
