@@ -21,6 +21,7 @@
     "hogan-express": "^0.5.2",
     "mysql": "^2.15.0",
     "node-virustotal": "^2.4.2",
+    "simple-crypto-js": "^2.0.2",
     "socket.io": "^2.1.1",
     "virustotal": "0.0.1"
   }
