@@ -42,4 +42,13 @@ require('./routes/home/home.js')(app)
 require('./routes/img-upload/upload.js')(app, vt, fs)
 
 
+// tesst
+
+
+app.get('/forms', function(req, res){
+
+	res.render('forms/forms')
+})
+
+
 app.listen(process.env.PORT || 3000, ()=> console.log("Server Running"));
