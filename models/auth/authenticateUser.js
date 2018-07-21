@@ -12,7 +12,7 @@ con.connect(function(err) {
   	console.log('connection successful')
   }
 // query the database
- con.query("SELECT * FROM user WHERE email=" + userEmail, function(err, result, fields) {
+ con.query("SELECT * FROM user WHERE email = '" + userEmail + "'", function(err, result, fields) {
               
 
       if(err) {
