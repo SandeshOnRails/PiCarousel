@@ -35,6 +35,23 @@ button:hover {
     opacity:1;
 }
 
+#button {
+    width: 6em;
+   background: #2196f3;
+}
+
+a {
+    display: block;
+    width: 100%;
+    line-height: 2em;
+    text-align: center;
+}
+
+a:hover {
+    background: #1976d2;
+}
+
+
 /* Extra styles for the cancel button */
 .cancelbtn {
     padding: 14px 20px;
@@ -117,6 +134,9 @@ hr {
   <form class="modal-content" action="/action_page.php" style="width:450px;">
     <div class="container" style="width:450px;">
       <h1>PiCarousel Sign In</h1>
+      <p>Don't have an account?
+
+		<div id="button"><a href="signUp.html">Sign Up</a></div> </p>
       <hr>
 
       <label for="email"><b>Email</b></label>
@@ -124,6 +144,7 @@ hr {
 
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
+      <div id="button1"><a href="passwordReset.html">Forgot Password?</a></div> </p>
 
 
       <div class="clearfix">
