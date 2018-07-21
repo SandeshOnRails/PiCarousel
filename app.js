@@ -46,7 +46,6 @@ require('./routes/about/about.js')(express,app);
 require('./routes/search/search.js')(app,con,search,checkForKey,searchMatchPercent)
 require('./routes/home/home.js')(app)
 require('./routes/img-upload/upload.js')(app, vt, fs)
-require('./routes/login/login.js')(app)
 require('./routes/register/register.js')(app, authenticate, register, con, crypto)
 
 

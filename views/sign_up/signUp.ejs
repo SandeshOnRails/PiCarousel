@@ -70,7 +70,7 @@ a:hover {
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -177,6 +177,12 @@ hr {
 		<div id="button"><a href="SignIn.html">Sign In</a></div> </p>
 
             <p>OR Please fill in this form to create an account.</p>
+             
+             <% if (user_exists_error) { %>
+             
+            <p style="color:red;"> * User with the email account already exists </p>
+
+            <% } %>
 
       <label for="first"><b>First Name</b></label>
       <input type="text" placeholder="Enter Frist Name" name="first" required>
