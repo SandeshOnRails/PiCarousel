@@ -8,6 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+
+  /*For the image design*/
 img {
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -19,6 +21,8 @@ img:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
+
+/*For the dropdown styling*/
 .dropbtn {
     background-color: #4169e1;
     color: white;
@@ -62,6 +66,31 @@ img:hover {
     background-color: #4169e1;
 }
 
+/*For the page numbers*/
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.round {
+    border-radius: 50%;
+}
 
 </style>
 </head>
@@ -85,7 +114,9 @@ img:hover {
         <th>Images</th>
         <th>Firstname</th>
         <th>Email</th>
-        <th>Buttons</th>
+        <th>RadioButtons</th>
+        <th>Checkboxes</th>
+        <th>Dropdown</th>
       </tr>
     </thead>
     <tbody>
@@ -93,22 +124,34 @@ img:hover {
         <td><a target="_blank" href="pics/1.jpg"><img src="pics/1.jpg" alt="Image" style="width:150px"></a></td>
         <td>John</td>
         <td>john@example.com</td>
+        <td><input type="radio" name="gender" value="male"> Male<br><input type="radio" name="gender" value="female"> Female<br></td>
+        <td><input type="checkbox" name="option1" value="option1"> Option 1<br> <input type="checkbox" name="option2" value="option2"> Option 2<br></td>
         <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
       </tr>
       <tr>
         <td><a target="_blank" href="pics/2.jpg"><img src="pics/2.jpg" alt="Image" style="width:150px"></a></td>
         <td>Jenna</td>
         <td>mary@example.com</td>
+        <td><input type="radio" name="gender" value="male"> Male<br><input type="radio" name="gender" value="female"> Female<br></td>
+        <td><input type="checkbox" name="option1" value="option1"> Option 1<br> <input type="checkbox" name="option2" value="option2"> Option 2<br></td>
         <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
       </tr>
       <tr>
         <td><a target="_blank" href="pics/3.jpg"><img src="pics/3.jpg" alt="Image" style="width:150px"></a></td>
         <td>Austin</td>
         <td>july@example.com</td>
+        <td><input type="radio" name="gender" value="male"> Male<br><input type="radio" name="gender" value="female"> Female<br></td>
+        <td><input type="checkbox" name="option1" value="option1"> Option 1<br> <input type="checkbox" name="option2" value="option2"> Option 2<br></td>
         <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
       </tr>
     </tbody>
   </table>
+            <a href="#" class="first">&laquo; First</a>
+            <a href="#" class="next round"> 5 </a>
+            <a href="#" class="next round"> 6 </a>
+            <a href="#" class="next round"> 7 </a>
+            <a href="#" class="last">Last &raquo;</a>
+
     </div>
     <div id="users" class="tab-pane fade">
       <h3>USERS</h3>
@@ -138,8 +181,18 @@ img:hover {
       </tr>
     </tbody>
   </table>
+      <a href="#" class="first">&laquo; First</a>
+      <a href="#" class="next round"> 5 </a>
+      <a href="#" class="next round"> 6 </a>
+      <a href="#" class="next round"> 7 </a>
+      <a href="#" class="last">Last &raquo;</a>
+
+
     </div>
   </div>
+
+
+
 </div>
 
 </body>
