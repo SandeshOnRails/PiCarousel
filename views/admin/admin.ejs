@@ -8,87 +8,139 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #1E90FF;
-      padding: 25px;
-    }
-  </style>
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.dropbtn {
+    background-color: #4169e1;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    font-weight:bold;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+        font-weight:bold;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    font-weight:bold;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #008000}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #4169e1;
+}
+
+
+</style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">PiCarousel</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Photos</a></li>
-        <li><a href="#">Users</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> My Account</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div class="container">
+  <h2>PiCarousel</h2>
+  <p>Admin Dashboard</p>
 
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>Dashboard</h1>      
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#images">Images</a></li>
+    <li><a data-toggle="tab" href="#users">Users</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="images" class="tab-pane fade in active">
+      <h3>IMAGES</h3>
+      <table id="imagesTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Images</th>
+        <th>Firstname</th>
+        <th>Email</th>
+        <th>Buttons</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a target="_blank" href="pics/1.jpg"><img src="pics/1.jpg" alt="Image" style="width:150px"></a></td>
+        <td>John</td>
+        <td>john@example.com</td>
+        <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
+      </tr>
+      <tr>
+        <td><a target="_blank" href="pics/2.jpg"><img src="pics/2.jpg" alt="Image" style="width:150px"></a></td>
+        <td>Jenna</td>
+        <td>mary@example.com</td>
+        <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
+      </tr>
+      <tr>
+        <td><a target="_blank" href="pics/3.jpg"><img src="pics/3.jpg" alt="Image" style="width:150px"></a></td>
+        <td>Austin</td>
+        <td>july@example.com</td>
+        <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+    <div id="users" class="tab-pane fade">
+      <h3>USERS</h3>
+      <table id="usersTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
   </div>
 </div>
-  
-<div class="container-fluid bg-3 text-center">    
-  <h3>Approve or Disapprove the following pictures</h3><br>
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-  </div>
-</div><br>
-
-<div class="container-fluid bg-3 text-center">    
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-  </div>
-</div><br><br>
-
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
 
 </body>
 </html>
