@@ -3,6 +3,8 @@ module.exports = function(app, authenticate, register, con, crypto) {
 
 	  app.get('/register', (req, res)=> {
 
+    
+
 	  	    res.render('sign_up/signUp' ,{user_exists_error: false})
 	  })
 
@@ -19,13 +21,15 @@ module.exports = function(app, authenticate, register, con, crypto) {
                 // if the user is succesfully authenticated, register user
               	
               	 if(isAuthenticated) { 
+                        
+                  req.session.username = req.body.first
 
               	 	register(con, {
 
               	 	first: req.body.first, 
               	 	last: req.body.last,
               	 	email: req.body.email,
-              	 	pass: crypto.encrypt(req.body.psw),
+              	 	pass: crypto.cipher('secretKey', req.body.psw, 'aes256'),
               	 	accountType: req.body.accountType,
               	 	age: req.body.age,
               	 	gender: req.body.gender
@@ -33,8 +37,8 @@ module.exports = function(app, authenticate, register, con, crypto) {
 
               	 })
               	 
+                 res.send('registration success')
 
-              	 res.send('registration successful')
               	}
 
               	else {
