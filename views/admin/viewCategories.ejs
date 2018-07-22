@@ -37,13 +37,13 @@
       <% if ( typeof page != 'undefined' ) { %>
 
 
-            <a href="#" onclick="navigateToPage('categorieChangePage',-1);" class="first">&laquo; First</a>
+            <a href="#" onclick="navigateToPage('categorieChangePage','-');" class="first">&laquo; prev</a>
             <%var k=0;%>
             <% for ( k=1; k<=totalpage; k++) { %>
-            <a href="#" class="next round" onclick="navigateToPage('categorieChangePage',<%= k%>)"> <%= k%> </a>
+            <a href="#" class="next round" onclick="navigateToPage('categorieChangePage','<%= k%>')"> <%= k%> </a>
             
             <%}%>
-            <a href="#" class="last">Last &raquo;</a>
+            <a href="#" onclick="navigateToPage('categorieChangePage','+');"class="last">next &raquo;</a>
       <% } %>
 
     </div>

@@ -6,8 +6,7 @@ module.exports = function (app,dbRequest,con) {
 	 app.get('/categories', function(req, res){
 	 	if (req.query.page)
 	 		page = req.query.page;
-	 	else
-	 		page = 1;
+	 	
 	 	console.log("route here ");
 	 	
 	 	 
@@ -100,8 +99,13 @@ module.exports = function (app,dbRequest,con) {
 		
 		console.log("navigate:"+JSON.stringify(req.body.page));
 		console.log("navigate :"+req.body);
-		page = req.body.page;
-		res.redirect('/categories?page='+req.body.page);
+		if (req.body.page == '+')
+			page++;
+		else if (req.body.page == '-')
+			page--;
+		else
+		page = Number.parseInt(req.body.page,10);
+		res.redirect('/categories');
     	
 
          //res.render('viewCategorie/categoriemain');
