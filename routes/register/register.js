@@ -3,20 +3,24 @@ module.exports = function(app, authenticate, register, con, crypto) {
 
 	  app.get('/register', (req, res)=> {
 
-	  	    res.render('register/signUp')
+	  	    res.render('sign_up/signUp' ,{user_exists_error: false})
 	  })
 
 	  app.post('/register', (req, res)=> {
 
-	  	 // authenticate module to authenticate if the user with the email exists
+	  	/*
 
+	  	 // authenticate module to authenticate if the user with the email exists
+          
 	  	   
               authenticate(req.body.email, con,  function(isAuthenticated){
                 
 
                 // if the user is succesfully authenticated, register user
               	
-              	 if(isAuthenticated) { regsiter(con, {
+              	 if(isAuthenticated) { 
+
+              	 	register(con, {
 
               	 	first: req.body.first, 
               	 	last: req.body.last,
@@ -33,11 +37,32 @@ module.exports = function(app, authenticate, register, con, crypto) {
               	 res.send('registration successful')
               	}
 
+              	else {
+
+              		res.render('sign_up/signUp', {user_exists_error: true})
+              	}
+
+
+
               })
 
               
 
 
 	  })
+
+
+
 }
+  */
+
+  res.send('done')
+
+})
+
+  }
+
+
+
+
 
