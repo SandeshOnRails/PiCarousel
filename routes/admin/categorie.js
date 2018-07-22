@@ -2,14 +2,11 @@ module.exports = function (app,dbRequest,con) {
 	var page =0;
 	 app.get('/categories', function(req, res){
 
-	 	page = req.param('page');
+	 	page = req.query.page;
 
 	 	 dbRequest.getCategories(con,"",function(result){
 
 			let listcategories = result;
-			console.log("in photo="+req.query.operation);
-			
-			//console.log("data:"+JSON.stringify(result[0].categorie));
 			next(result);
                          
     	});
@@ -19,8 +16,6 @@ module.exports = function (app,dbRequest,con) {
     		dbRequest.getCategorieCount(con,"",function(pagecount){
 
 				let listcategories = result;
-				console.log("in photo="+req.query.operation);
-				
 				res.render('admin/viewCategories', {operation:'categorielist',result:listcategories,page:pagecount});//from views categories.ejs
 				console.log("page:"+page);
 				page = 5;
@@ -38,10 +33,8 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.getCategories(con,"",function(result){
 
 			let listcategories = result;
-			console.log("in photo="+req.query.operation);
 			res.redirect('/categories?page=1');
-			//res.render('admin/viewCategories', {operation:'categorielist',result:listcategories});//from views categories.ejs
-			//console.log("data:"+JSON.stringify(result[0].categorie));
+
                          
     	});
 
@@ -56,7 +49,6 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.updateCategorie(con,req.body,function(result){
 
 			let listcategories = result;
-			console.log("in photo="+req.query.operation);
 			res.redirect('/categories');
                          
     	});
@@ -73,7 +65,6 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.insertCategorie(con,req.body,function(result){
 
 			let listcategories = result;
-			//console.log("in photo="+req.query.operation);
 			res.redirect('/categories');
                          
     	});
@@ -90,7 +81,6 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.deleteCategorie(con,req.body,function(result){
 
 			let listcategories = result;
-			//console.log("in photo="+req.query.operation);
 			res.redirect('/categories');
                          
     	});
