@@ -63,7 +63,7 @@ function deleteCategorie(tagid){
    	data.resultDiv = "categories";
    	deleteData(data);
 }
-
+//general functions
 function gotoMenu(menu){
      //alert('cav');
      //#idForm is the id
@@ -143,7 +143,29 @@ function deleteData(data){
             contentType: "application/json; charset=utf-8",
             success: function (data) {
               //alert('suc');
-                console.log('success edit categorie');
+                console.log('success delete data');
+                            //console.log(JSON.stringify(data));
+                            //alert(resultdiv);
+                            document.getElementById(resultdiv).innerHTML=data;
+            }
+        });
+};
+
+function navigateToPage(section,page){
+     //alert('editing categorie');
+     //alert(data.operation);
+     //#idForm is the id
+     //data: $("#idForm").serialize(),
+     var resultdiv= data.resultDiv;
+
+     $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/"+data.operation,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+              //alert('suc');
+                console.log('success navigate to page');
                             //console.log(JSON.stringify(data));
                             //alert(resultdiv);
                             document.getElementById(resultdiv).innerHTML=data;

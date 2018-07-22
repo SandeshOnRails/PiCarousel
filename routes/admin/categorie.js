@@ -1,9 +1,10 @@
 module.exports = function (app,dbRequest,con) {
 	var page =0;
 	 app.get('/categories', function(req, res){
+	 	
+	 		page = req.query.page;
 
-	 	page = req.query.page;
-
+	 	console.log("route here ");
 	 	 dbRequest.getCategories(con,"",function(result){
 
 			let listcategories = result;
@@ -16,8 +17,8 @@ module.exports = function (app,dbRequest,con) {
     		dbRequest.getCategorieCount(con,"",function(pagecount){
 
 				let listcategories = result;
-				res.render('admin/viewCategories', {operation:'categorielist',result:listcategories,page:pagecount});//from views categories.ejs
-				console.log("page:"+page);
+				res.render('admin/viewCategories', {operation:'categorielist',result:listcategories,page:page});//from views categories.ejs
+				console.log("page *:"+page);
 				page = 5;
                          
     		});
@@ -33,7 +34,7 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.getCategories(con,"",function(result){
 
 			let listcategories = result;
-			res.redirect('/categories?page=1');
+			res.redirect('/categories');
 
                          
     	});
@@ -49,7 +50,7 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.updateCategorie(con,req.body,function(result){
 
 			let listcategories = result;
-			res.redirect('/categories');
+			res.redirect('/categories?page=2');
                          
     	});
     	
@@ -65,7 +66,7 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.insertCategorie(con,req.body,function(result){
 
 			let listcategories = result;
-			res.redirect('/categories');
+			res.redirect('/categories?page=3');
                          
     	});
     	
@@ -81,7 +82,23 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.deleteCategorie(con,req.body,function(result){
 
 			let listcategories = result;
-			res.redirect('/categories');
+			res.redirect('/categories?page=4');
+                         
+    	});
+    	
+
+         //res.render('viewCategorie/categoriemain');
+
+    });
+
+    app.post('/categorieChangePage', function(req, res){
+		
+		console.log("cat save new:"+JSON.stringify(req.body));
+		
+		dbRequest.deleteCategorie(con,req.body,function(result){
+
+			let listcategories = result;
+			res.redirect('/categories?page=4');
                          
     	});
     	

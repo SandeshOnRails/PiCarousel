@@ -34,13 +34,14 @@
            
           </tbody>
       </table>
-            <a href="categories/1" class="first">&laquo; First</a>
+      <% if ( typeof page != 'undefined' ) { %>
+
+
+            <a href="#" onclick="navigateToPage('categorieChangePage',-1);" class="first">&laquo; First</a>
             <a href="#" class="next round"> 5 </a>
             <a href="#" class="next round"> 6 </a>
             <a href="#" class="next round"> 7 </a>
             <a href="#" class="last">Last &raquo;</a>
+      <% } %>
 
     </div>
-   
-
-                      
