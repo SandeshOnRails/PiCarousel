@@ -176,7 +176,7 @@ hr {
      <h1>PiCarousel Sign Up</h1>
       <p>Already have an account?
 
-		<div id="button"><a href="SignIn.html">Sign In</a></div> </p>
+		<div id="button"><a href="/login">Sign In</a></div> </p>
 
             <p>OR Please fill in this form to create an account.</p>
              
@@ -190,9 +190,9 @@ hr {
 
             <div style="color:red; padding-top:20px;" id='first_errors'></div>
             <div style="color:red; padding-top:20px;" id='last_errors'></div>
+            <div style="color:red; padding-top:20px;" id='email_errors'></div>
             <div style="color:red; padding-top:20px;" id='pass_errors'></div>
             <div style="color:red; padding-top:20px;" id='age_errors'></div>
-            <div style="color:red; padding-top:20px;" id='email_errors'></div>
 
 
 
@@ -343,6 +343,8 @@ function removeSpaces(string){
 return string.split(' ').join('');
 }
 
+// FIELDS VALIDATION //
+
 document.getElementById('first').onkeyup = ()=> {
   
 
@@ -379,7 +381,7 @@ document.getElementById('first').onkeyup = ()=> {
 
               // elements below are appended to the div id 'errors' in DOM to show errors
 
-        var text = document.createElement('p')
+        var text = document.createElement('b')
         text.appendChild(document.createTextNode('- First name'))
         var li_one = document.createElement('li')
         var li_two = document.createElement('li')
@@ -437,8 +439,8 @@ document.getElementById('last').onkeyup = ()=> {
 
         document.getElementById('last_label').style.color = 'red'
         document.getElementById('symbol_last').innerHTML = ''
-        var text = document.createElement('p')
-        text.appendChild(document.createTextNode('- Last Name'))
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('Last Name'))
         var li_one = document.createElement('li')
         var li_two = document.createElement('li')
         li_one.appendChild(document.createTextNode('should be more than 2 chars and less than 25 chars '))
@@ -487,7 +489,7 @@ document.getElementById("age").onkeyup = ()=> {
         document.getElementById('symbol_age').innerHTML = ''
         document.getElementById('age_label').style.color = 'red'
 
-        var text = document.createElement('p')
+        var text = document.createElement('b')
         text.appendChild(document.createTextNode('- Age'))
         var li_one = document.createElement('li')
         var li_two = document.createElement('li')
@@ -532,7 +534,7 @@ var errors = document.getElementById('pass_errors')
 
         document.getElementById('psw_label').style.color = 'red'   
         document.getElementById('symbol_pass').innerHTML = ''
-        var text = document.createElement('p')
+        var text = document.createElement('b')
         text.appendChild(document.createTextNode('- Password'))
         var li_one = document.createElement('li')
         li_one.appendChild(document.createTextNode('should be at least 8 characters long'))
@@ -571,7 +573,7 @@ document.getElementById('email').onkeyup = function () {
               
          document.getElementById('email_label').style.color = 'red'   
         document.getElementById('symbol_email').innerHTML = ''
-        var text = document.createElement('p')
+        var text = document.createElement('b')
         text.appendChild(document.createTextNode('- Email'))
         var li_one = document.createElement('li')
 

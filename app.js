@@ -47,7 +47,7 @@ require('./routes/search/search.js')(app,con,search,checkForKey,searchMatchPerce
 require('./routes/home/home.js')(app)
 require('./routes/img-upload/upload.js')(app, vt, fs)
 require('./routes/register/register.js')(app, authenticate, register, con, crypto)
-
+require('./routes/login/login.js')(app, authenticate, con)
 
 
 app.listen(process.env.PORT || 3000, ()=> console.log("Server Running"));

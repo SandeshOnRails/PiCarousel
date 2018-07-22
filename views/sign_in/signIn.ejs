@@ -131,12 +131,18 @@ hr {
 <body>
 
 <div id="SignIn" class="tabcontent">
-  <form class="modal-content" action="/action_page.php" style="width:450px;">
+  <form class="modal-content" action="/login" style="width:450px;" method="POST">
     <div class="container" style="width:450px;">
       <h1>PiCarousel Sign In</h1>
       <p>Don't have an account?
 
-		<div id="button"><a href="signUp.html">Sign Up</a></div> </p>
+		<div id="button"><a href="/login">Sign Up</a></div> </p>
+
+     <% if (no_account_found) {  %>
+
+      <p style="color:red;">* Invalid email or password </p>
+
+      <% } %>
       <hr>
 
       <label for="email"><b>Email</b></label>

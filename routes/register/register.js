@@ -8,7 +8,7 @@ module.exports = function(app, authenticate, register, con, crypto) {
 
 	  app.post('/register', (req, res)=> {
 
-	  	/*
+	  	
 
 	  	 // authenticate module to authenticate if the user with the email exists
           
@@ -54,13 +54,9 @@ module.exports = function(app, authenticate, register, con, crypto) {
 
 
 }
-  */
+  
 
-  res.send('done')
 
-})
-
-  }
 
 
 
