@@ -16,7 +16,7 @@ const register = require('./models/register.js') // register user function once 
 var crypto = require('simple-crypto-js').default // user password encryption and decryption using AES-CBC encryption algorithm.
 var secretKey = crypto.generateRandom() // generate random secret key
 crypto = new crypto(secretKey) // initialize the instance of the crypto function using the secretkey
-
+const dbRequest = require('./services/dboperations.js')
 
 
 app.use(bodyParser.json()) // body parser package to support json format files as well
@@ -47,7 +47,7 @@ require('./routes/search/search.js')(app,con,search,checkForKey,searchMatchPerce
 require('./routes/home/home.js')(app)
 require('./routes/admin/admin.js')(app)
 require('./routes/img-upload/upload.js')(app, vt, fs)
-require('./routes/admin/categorie.js')(app)
+require('./routes/admin/categorie.js')(app,dbRequest,con)
 require('./routes/register/register.js')(app, authenticate, register, con, crypto)
 require('./routes/login/login.js')(app, authenticate, con)
 
