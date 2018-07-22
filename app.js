@@ -13,10 +13,14 @@ var vt = require("node-virustotal"); // virus scanner package from mulitple diff
 const fs = require('fs') // file i/o native node.js module
 const authenticate = require('./models/auth/authenticateUser.js') // user authentication function through database using user email
 const register = require('./models/register.js') // register user function once the user is authenticated
-var crypto = require('simple-crypto-js').default // user password encryption and decryption using AES-CBC encryption algorithm.
-var secretKey = crypto.generateRandom() // generate random secret key
-crypto = new crypto(secretKey) // initialize the instance of the crypto function using the secretkey
 const dbRequest = require('./services/dboperations.js')
+var crypto = require('encryptionhelper');
+var session = require('express-session')
+var loginUser = require('./models/auth/loginUser.js')
+
+
+app.use(session({ secret: 'secret_word', resave: false,
+  saveUninitialized: true}))
 
 
 app.use(bodyParser.json()) // body parser package to support json format files as well
@@ -34,8 +38,8 @@ app.use('/imgupload', function(req, res, next){
 })
 
 
-
-
+ 
+ 
 // template engine ejs set for server side rendering
 
 app.set('view engine', 'ejs');
@@ -49,7 +53,7 @@ require('./routes/admin/admin.js')(app)
 require('./routes/img-upload/upload.js')(app, vt, fs)
 require('./routes/admin/categorie.js')(app,dbRequest,con)
 require('./routes/register/register.js')(app, authenticate, register, con, crypto)
-require('./routes/login/login.js')(app, authenticate, con)
+require('./routes/login/login.js')(app, loginUser, con, crypto)
 
 
 app.listen(process.env.PORT || 3000, ()=> console.log("Server Running"));
