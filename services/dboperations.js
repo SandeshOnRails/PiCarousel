@@ -90,9 +90,9 @@ module.exports = {
             },
             
             getCategorieCount: function(con, data, callback) {
-               
+               //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
                 var returnValue;
-                this.resulta = con.query("Select * from categorie", function (err, result , fields) {
+                this.resulta = con.query("Select count(*)  as itemcount from categorie", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);

@@ -1,9 +1,12 @@
 module.exports = function (app,dbRequest,con) {
+	var _self = this;
 	var page =0;
+	var totalpage=0;
 	 app.get('/categories', function(req, res){
-	 	
-	 		page = req.query.page;
-
+	 	if (req.query.page)
+	 		_self.page = req.query.page;
+	 	else
+	 		_self.page = 0;
 	 	console.log("route here ");
 	 	 dbRequest.getCategories(con,"",function(result){
 
@@ -14,12 +17,17 @@ module.exports = function (app,dbRequest,con) {
 	 	function next(result){
     		console.log("after list : ");
 
-    		dbRequest.getCategorieCount(con,"",function(pagecount){
+    		dbRequest.getCategorieCount(con,"",function(itemcount){
 
+    			console.log("itcnt:"+itemcount[0].itemcount);
 				let listcategories = result;
-				res.render('admin/viewCategories', {operation:'categorielist',result:listcategories,page:page});//from views categories.ejs
-				console.log("page *:"+page);
-				page = 5;
+				_self.totalpage= Math.ceil(Number.parseInt(itemcount[0].itemcount,10) / 2);
+				
+				console.log("page *:"+_self.page);
+				console.log("total page *:"+_self.totalpage);
+				console.log("item count*:"+itemcount[0].itemcount);
+				console.log(JSON.stringify(itemcount));
+				res.render('admin/viewCategories', {operation:'categorielist',result:listcategories,totalpage:_self.totalpage,page:_self.page});//from views categories.ejs
                          
     		});
 
@@ -82,7 +90,7 @@ module.exports = function (app,dbRequest,con) {
 		dbRequest.deleteCategorie(con,req.body,function(result){
 
 			let listcategories = result;
-			res.redirect('/categories?page=4');
+			res.redirect('/categories?page');
                          
     	});
     	
