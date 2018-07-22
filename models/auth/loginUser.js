@@ -27,9 +27,9 @@ con.connect(function(err) {
                   var decrypted = crypto.decipher('secretKey', password)
 
 
-             if(result.length > 0 && decrypted === user.pass) callback(true, result[0].firstname) // if the user exists callback function with false parameter
+             if(result.length > 0 && decrypted === user.pass) callback(true, result[0].firstname) // if the user exists callback function with true parameter and username
 
-              else callback(false, '') // if the user does not exist, callback function with true paramter
+              else callback(false, '') // if the user does not exist, callback function with false paramter, and empty string
 
         }
 });

@@ -14,9 +14,9 @@ const fs = require('fs') // file i/o native node.js module
 const authenticate = require('./models/auth/authenticateUser.js') // user authentication function through database using user email
 const register = require('./models/register.js') // register user function once the user is authenticated
 const dbRequest = require('./services/dboperations.js')
-var crypto = require('encryptionhelper');
-var session = require('express-session')
-var loginUser = require('./models/auth/loginUser.js')
+var crypto = require('encryptionhelper') // encryption and decryption package for user password
+var session = require('express-session') // user session handling express package
+var loginUser = require('./models/auth/loginUser.js') // login and authenticate user
 
 
 app.use(session({ secret: 'secret_word', resave: false,
@@ -38,6 +38,10 @@ app.use('/imgupload', function(req, res, next){
 })
 
 
+app.get('/img', (req, res)=> {
+
+	  res.render('upload-download/upload.ejs')
+})
  
  
 // template engine ejs set for server side rendering
@@ -54,6 +58,11 @@ require('./routes/img-upload/upload.js')(app, vt, fs)
 require('./routes/admin/categorie.js')(app,dbRequest,con)
 require('./routes/register/register.js')(app, authenticate, register, con, crypto)
 require('./routes/login/login.js')(app, loginUser, con, crypto)
+
+
+
+
+
 
 
 app.listen(process.env.PORT || 3000, ()=> console.log("Server Running"));
