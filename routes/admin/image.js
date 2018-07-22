@@ -1,6 +1,6 @@
 module.exports = function (app,dbRequest,con) {
 
-	app.post('/categories', function(req, res){
+	app.post('/images', function(req, res){
 		
 		console.log('admin categorie');
 		

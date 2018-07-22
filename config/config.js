@@ -10,7 +10,16 @@ var con  = mysql.createConnection({
   database : 'picarousel'
 
 });
+/*
+var con  = mysql.createConnection({
 
+  host     : 'localhost',
+  user     : 'root',
+  password : 'cavit',
+  database : 'picarousel'
+
+});
+*/
 
 
 module.exports = con;
