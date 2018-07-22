@@ -76,10 +76,11 @@ module.exports = {
                   });
             },
 
-            getCategories: function(con, data, callback) {
+            getCategories: function(con,page,recPerPage, data, callback) {
+                let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from categorie", function (err, result , fields) {
+                this.resulta = con.query("Select * from categorie limit "+first+",2;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);

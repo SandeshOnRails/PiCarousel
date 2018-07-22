@@ -1,54 +1,51 @@
 module.exports = function (app,dbRequest,con) {
-	var _self = this;
-	var page =0;
+	
+	var recPerPage = 2;
+	var page =1;
 	var totalpage=0;
 	 app.get('/categories', function(req, res){
 	 	if (req.query.page)
-	 		_self.page = req.query.page;
+	 		page = req.query.page;
 	 	else
-	 		_self.page = 0;
+	 		page = 1;
 	 	console.log("route here ");
-	 	 dbRequest.getCategories(con,"",function(result){
-
-			let listcategories = result;
-			next(result);
-                         
-    	});
-	 	function next(result){
-    		console.log("after list : ");
-
-    		dbRequest.getCategorieCount(con,"",function(itemcount){
+	 	
+	 	 
+	 	 dbRequest.getCategorieCount(con,"",function(itemcount){
 
     			console.log("itcnt:"+itemcount[0].itemcount);
-				let listcategories = result;
-				_self.totalpage= Math.ceil(Number.parseInt(itemcount[0].itemcount,10) / 2);
+				totalpage= Math.ceil(Number.parseInt(itemcount[0].itemcount,10) / Number.parseInt(recPerPage,10));
 				
-				console.log("page *:"+_self.page);
-				console.log("total page *:"+_self.totalpage);
+				console.log("page *:"+page);
+				console.log("total page *:"+totalpage);
 				console.log("item count*:"+itemcount[0].itemcount);
 				console.log(JSON.stringify(itemcount));
-				res.render('admin/viewCategories', {operation:'categorielist',result:listcategories,totalpage:_self.totalpage,page:_self.page});//from views categories.ejs
+				next(totalpage,page);				
                          
     		});
 
+	 	function next(totalpage,page){
+    		console.log("after list : ");
+    		 dbRequest.getCategories(con,page,recPerPage,"",function(result){
+
+				let listcategories = result;
+
+				res.render('admin/viewCategories', {operation:'categorielist',result:listcategories,totalpage:totalpage,page:page});//from views categories.ejs
+                         
+    		});
     		
-    	}
+
+    		
+    	};
+
+
+
 	 })
 
 	app.post('/categories', function(req, res){
 		
 		console.log('admin categorie');
-		
-		dbRequest.getCategories(con,"",function(result){
-
-			let listcategories = result;
-			res.redirect('/categories');
-
-                         
-    	});
-
-         //res.render('viewCategorie/categoriemain');
-
+		res.redirect('/categories');
     });
 
     app.post('/categoriesEdit', function(req, res){
@@ -101,14 +98,10 @@ module.exports = function (app,dbRequest,con) {
 
     app.post('/categorieChangePage', function(req, res){
 		
-		console.log("cat save new:"+JSON.stringify(req.body));
-		
-		dbRequest.deleteCategorie(con,req.body,function(result){
-
-			let listcategories = result;
-			res.redirect('/categories?page=4');
-                         
-    	});
+		console.log("navigate:"+JSON.stringify(req.body.page));
+		console.log("navigate :"+req.body);
+		page = req.body.page;
+		res.redirect('/categories?page='+req.body.page);
     	
 
          //res.render('viewCategorie/categoriemain');

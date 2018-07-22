@@ -19,7 +19,7 @@ var con  = mysql.createConnection({
   database : 'picarousel'
 
 });
-*/
 
+*/
 
 module.exports = con;

@@ -156,6 +156,10 @@ function navigateToPage(section,page){
      //alert(data.operation);
      //#idForm is the id
      //data: $("#idForm").serialize(),
+     var data={};
+   	data.operation = section;
+   	data.page = page;
+   	data.resultDiv = "categories";
      var resultdiv= data.resultDiv;
 
      $.ajax({
