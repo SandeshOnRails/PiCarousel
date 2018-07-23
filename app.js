@@ -53,6 +53,7 @@ require('./routes/img-upload/upload.js')(app, vt, fs)
 require('./routes/admin/categorie.js')(app,dbRequest,con)
  require('./routes/register/register.js')(app, authenticate, register, con, crypto)
  require('./routes/login/login.js')(app, loginUser, con, crypto)
+ require('./routes/logout/logout.js')(app)
 
 
 
