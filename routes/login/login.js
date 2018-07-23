@@ -18,7 +18,7 @@ module.exports = function (app, login, con, crypto) {
                              // set session for the user
                        
                     req.session.user = username
-	   	    	  	res.send("Welcome "  + req.session.user)
+	   	    	  	res.render('home/homepage', {session_username: req.session.user})
 
 	   	    	  }
 	   	    	  	else{ res.render('sign_in/signIn', {no_account_found: true}) }

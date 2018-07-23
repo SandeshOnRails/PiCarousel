@@ -13,28 +13,29 @@
 </head>
 
 <body id="home" data-spy="scroll" data-target="#main-nav">
-  <nav class="navbar navbar-expand-md navbar-light fixed-top py-4" id="main-nav">
-    <div class="container">
-      <a href="/about" class="navbar-brand">
+  <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="">Picarousel</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-      	<!-- Logo will go below here if needed else remove it !-->
-        <h3 class="d-inline align-middle">Photostock</h3>
-      </a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a href="" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="/about" class="nav-link">Meet The Hackers</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">Meet the Hackers</a>
+            </li>
+            <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Sign In</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
 
 <section id="hackers" class="my-5 text-center">
@@ -43,12 +44,12 @@
         <div class="col">
           <div class="info-header mb-5">
             <h1 class="text-primary pb-3 pt-3">
-              Meet The Team
+              Meet the Team
             </h1>
             <p class="lead">
             </p>
             <h1 class="text-primary pb-3">
-              Backend
+              < Backend />
             </h1>
           </div>
         </div>
@@ -154,7 +155,7 @@
         <div class="col">
           <div class="info-header mb-5">
             <h1 class="text-primary pb-3">
-              Frontend
+              < Frontend />
             </h1>
           </div>
         </div>
