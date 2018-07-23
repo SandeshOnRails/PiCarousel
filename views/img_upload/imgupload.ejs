@@ -1,14 +1,48 @@
 <html>
-  <body>
-    <form ref='uploadForm' 
+
+<head>
+    
+  <link rel="stylesheet" href="../css/styleupload.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div class="wrapper">
+  <header>
+    <h1>UPLOAD</h1>
+    <span>SFSU Team 23</span>
+  </header>
+  
+
+  
+  
+
+
+
+
+<form ref='uploadForm' 
       id='uploadForm' 
       action='/upload' 
       method='post' 
       encType="multipart/form-data">
+      <div class="sections">
+    
+    <section class="active">
+      <input type="text" placeholder="TITLE" id="title"/>
+     
+
+      
+      
+      
+       <section class="active">
+      <input type="text" placeholder="Info about photo" id="title"/>
+      
+      
+
+      
+   
+  
+  </div>
         <input type="file" name="sampleFile" />
-        <input type='submit' value='Upload!' />
-    </form> 
-    <p id="wrongFileFormat"></p>
+         <p id="wrongFileFormat"></p>
 
     <% if (error){  %>
   
@@ -19,7 +53,46 @@
   </script>
 
   <% } %>
+        <div class="input_fields_wrap">
+  
+    <h2> Add Tags <i class="fa fa-plus-square-o" id="add_field_button"style="height:25px;width:25px;color:black"></i></h2>
+    <div><input type="text" name="mytext[]"></div>
+</div>
+<br>
+
+        <input type='submit' value='Upload!' />
+
+    </form> 
+    
 
 
-  </body>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $("#add_field_button"); //Add button ID
+    
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field" style="margin-right:30px;"><i class="fa fa-window-close-o" style="font-size:25px;color:red;"></i></a></div>'); //add input box
+        }
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+
+
+</script>
 </html>

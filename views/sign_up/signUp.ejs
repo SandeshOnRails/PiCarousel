@@ -70,7 +70,7 @@ a:hover {
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -160,6 +160,8 @@ hr {
 
 #CaptchaInput { margin: 1px 0px 1px 0px; width: 135px; }
 
+
+
 </style>
 <body>
 
@@ -169,26 +171,50 @@ hr {
 
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/register"  method="POST" onsubmit="return checkform(this);" style="width:450px;">
+  <form class="modal-content" action="/register" name="registration" method="POST" onsubmit="return checkform(this);" style="width:450px;">
     <div class="container" style="width:450px;">
      <h1>PiCarousel Sign Up</h1>
       <p>Already have an account?
 
-		<div id="button"><a href="SignIn.html">Sign In</a></div> </p>
+		<div id="button"><a href="/login">Sign In</a></div> </p>
 
             <p>OR Please fill in this form to create an account.</p>
+             
+             <% if (user_exists_error) { %>
 
-      <label for="first"><b>First Name</b></label>
-      <input type="text" placeholder="Enter Frist Name" name="first" required>
+            <p style="color:red;"> * User with the email account already exists </p>
 
-      <label for="last"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="last" required>
+            <% } %>
 
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required>
+            <!--  All the errors from the form validation -->
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+            <div style="color:red; padding-top:20px;" id='first_errors'></div>
+            <div style="color:red; padding-top:20px;" id='last_errors'></div>
+            <div style="color:red; padding-top:20px;" id='email_errors'></div>
+            <div style="color:red; padding-top:20px;" id='pass_errors'></div>
+            <div style="color:red; padding-top:20px;" id='age_errors'></div>
+
+
+
+
+      <hr class="my-4" style=' border: 0;
+                                clear:both;
+                                display:block;
+                                 width: 96%;               
+                                 background-color:grey;
+                                 height: 1px;'>
+
+      <label for="first" id='first_label'><b>First Name <span id='symbol_first'></span></b></label>
+      <input type="text" placeholder="Enter Frist Name" name="first" id="first" required>
+
+      <label for="last" id='last_label'><b>Last Name <span id='symbol_last'></span></b></label>
+      <input type="text" placeholder="Enter Last Name" name="last" id="last" required>
+
+      <label for="email" id='email_label'><b>Email</b><span id='symbol_email'></span></label>
+      <input type="email" placeholder="Enter Email" name="email"  id="email" required>
+
+      <label for="psw" id='psw_label'><b>Password</b> <span id='symbol_pass'></span></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
       <label for="Accttype"><b>Account Type</b></label>
       <select name='accountType'>
@@ -200,8 +226,8 @@ hr {
   
       <br></br>
 
-      <label for="age"><b>Age</b></label>
-      <input type="number" placeholder="Enter Age" name="age" notrequired>
+      <label for="age" id='age_label'><b>Age  <span id='symbol_age'></span></b></label>
+      <input type="number" placeholder="Enter Age" name="age" id="age" notrequired>
       
       <br></br>
 
@@ -279,6 +305,16 @@ if(why != ""){
 alert(why);
 return false;
 }
+
+var first_errors = document.getElementById('first_errors')
+var last_errors = document.getElementById('last_errors')
+var age_errors = document.getElementById('age_errors')
+var pass_errors = document.getElementById('pass_errors')
+var email_errors = document.getElementById('email_errors')
+
+if(first_errors.childNodes.length >=1 || last_errors.childNodes.length >=1 || age_errors.childNodes.length >=1
+|| pass_errors.childNodes.length >=1 || email_errors.childNodes.length >=1 ) return false
+
 }
 
 var a = Math.ceil(Math.random() * 9)+ '';
@@ -306,6 +342,272 @@ return false;
 function removeSpaces(string){
 return string.split(' ').join('');
 }
+
+// FIELDS VALIDATION //
+
+document.getElementById('first').onkeyup = ()=> {
+  
+
+  // get all the values of the form from the document object of the DOM
+
+        var errors = document.getElementById('first_errors') 
+        var firstname = document.forms['registration']['first'].value
+      
+
+        // check if the string contains characters other than a-z || A-Z
+
+        var pattern = /[^a-z][^A-Z]/g
+
+       
+
+       // firstname should be less than 2 chars and not more than 25 chars and 
+
+
+       if(firstname.length <= 2 ||  firstname.length >= 25 || firstname.match(pattern) ){
+
+                    
+           // set empty string for the symbol everytime a key is pressed
+
+
+
+
+        document.getElementById('symbol_first').innerHTML = ''
+
+        document.getElementById('first_label').style.color = 'red'
+              
+              // create a paragraph element and and textNode as a child
+
+              // create list element and append text nodes as child to it 
+
+              // elements below are appended to the div id 'errors' in DOM to show errors
+
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- First name'))
+        var li_one = document.createElement('li')
+        var li_two = document.createElement('li')
+        li_one.appendChild(document.createTextNode('should be more than 2 chars'))
+        li_two.appendChild(document.createTextNode('should be A-Z or a-z'))
+
+        // check if the child node is already appended to avoid repitition of the error messages on the form
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+                errors.appendChild(li_two)
+
+      }
+        }
+
+        // if the user entered firstname is valid 
+
+
+        else {
+
+               // remove the errors displayed as <p> and <li> created above
+
+                // remove the elements until the parent element 'errors' <div> has no child
+
+                document.getElementById('first_label').style.color = 'black'
+
+            if(document.getElementById('first_errors').childNodes.length > 1) {
+                       
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+
+            // set the green check symbol in the case the validation is successful without any errors
+
+            document.getElementById('symbol_first').innerHTML = '&#9989;'
+        }     
+        
+}
+
+// same execution method as the firstname 
+
+document.getElementById('last').onkeyup = ()=> {
+        
+        var errors = document.getElementById('last_errors') 
+        var lastname = document.forms['registration']['last'].value
+
+        var pattern = /[^a-z][^A-Z]/g
+
+
+       if(lastname.length <= 2 || lastname.length >=25 || lastname.match(pattern) ){
+
+        document.getElementById('last_label').style.color = 'red'
+        document.getElementById('symbol_last').innerHTML = ''
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('Last Name'))
+        var li_one = document.createElement('li')
+        var li_two = document.createElement('li')
+        li_one.appendChild(document.createTextNode('should be more than 2 chars and less than 25 chars '))
+        li_two.appendChild(document.createTextNode('should be A-Z or a-z'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+                errors.appendChild(li_two)
+
+      }
+        }
+        else {
+
+
+            if(document.getElementById('last_errors').childNodes.length > 1) {
+                       
+                       document.getElementById('last_label').style.color = 'black'
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_last').innerHTML = '&#9989;'
+        }     
+
+}
+
+
+document.getElementById("age").onkeyup = ()=> {
+
+  // extract age from the form using document object and parse it to an integer
+     
+     var age = parseInt(document.forms['registration']['age'].value)
+     var errors = document.getElementById('age_errors')
+ 
+ // check if the user's age is a number and more than =13 and less than =99
+
+
+ // DOM traversal same as first 
+
+
+     if(isNaN(age) || age >= 99 || age <=13 ) {
+              
+        document.getElementById('symbol_age').innerHTML = ''
+        document.getElementById('age_label').style.color = 'red'
+
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- Age'))
+        var li_one = document.createElement('li')
+        var li_two = document.createElement('li')
+        li_one.appendChild(document.createTextNode('should be number'))
+        li_two.appendChild(document.createTextNode('should be 14 or above and 99 or less'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+                errors.appendChild(li_two)
+
+      }
+        }
+        else {
+
+
+            if(document.getElementById('age_errors').childNodes.length > 1) {
+                       
+                       document.getElementById('age_label').style.color = 'black'
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_age').innerHTML = '&#9989;'
+
+         }
+}
+
+document.getElementById("psw").onkeyup = ()=> {
+
+
+var pass = document.getElementById('psw').value
+var errors = document.getElementById('pass_errors')
+
+
+// check to see if password length is at least 8 characters long
+
+           if(pass.length < 8 ) {
+
+
+        document.getElementById('psw_label').style.color = 'red'   
+        document.getElementById('symbol_pass').innerHTML = ''
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- Password'))
+        var li_one = document.createElement('li')
+        li_one.appendChild(document.createTextNode('should be at least 8 characters long'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+
+      }
+        }
+        else {
+
+            document.getElementById('psw_label').style.color = 'black'   
+
+            if(document.getElementById('pass_errors').childNodes.length > 1) {
+                       
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_pass').innerHTML = '&#9989;'
+
+         }
+
+}
+
+
+document.getElementById('email').onkeyup = function () {
+
+     var email = document.getElementById('email').value
+     var errors = document.getElementById('email_errors')
+
+      if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+              
+         document.getElementById('email_label').style.color = 'red'   
+        document.getElementById('symbol_email').innerHTML = ''
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- Email'))
+        var li_one = document.createElement('li')
+
+        li_one.appendChild(document.createTextNode('should be valid'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+
+      }
+
+      }
+
+      else {
+              
+              document.getElementById('email_label').style.color = 'black'   
+
+            if(document.getElementById('email_errors').childNodes.length > 1) {
+                       
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_email').innerHTML = '&#9989;'
+
+
+      }
+
+}
+
+
+
 </script>
 
 </body>
