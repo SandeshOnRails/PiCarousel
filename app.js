@@ -14,13 +14,13 @@ const fs = require('fs') // file i/o native node.js module
 const authenticate = require('./models/auth/authenticateUser.js') // user authentication function through database using user email
 const register = require('./models/register.js') // register user function once the user is authenticated
 const dbRequest = require('./services/dboperations.js')
-var crypto = require('encryptionhelper') // encryption and decryption package for user password
-var session = require('express-session') // user session handling express package
-var loginUser = require('./models/auth/loginUser.js') // login and authenticate user
+// var crypto = require('encryptionhelper') // encryption and decryption package for user password
+// var session = require('express-session') // user session handling express package
+// var loginUser = require('./models/auth/loginUser.js') // login and authenticate user
 
 
-app.use(session({ secret: 'secret_word', resave: false,
-  saveUninitialized: true}))
+// app.use(session({ secret: 'secret_word', resave: false,
+//   saveUninitialized: true}))
 
 
 app.use(bodyParser.json()) // body parser package to support json format files as well
@@ -56,8 +56,8 @@ require('./routes/home/home.js')(app)
 require('./routes/admin/admin.js')(app)
 require('./routes/img-upload/upload.js')(app, vt, fs)
 require('./routes/admin/categorie.js')(app,dbRequest,con)
-require('./routes/register/register.js')(app, authenticate, register, con, crypto)
-require('./routes/login/login.js')(app, loginUser, con, crypto)
+// require('./routes/register/register.js')(app, authenticate, register, con, crypto)
+// require('./routes/login/login.js')(app, loginUser, con, crypto)
 
 
 
