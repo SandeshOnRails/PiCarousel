@@ -30,8 +30,18 @@
             </li>
             <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
             <li class="nav-item">
+              <% if (!session_username) { %>
               <a class="nav-link" href="/register">Sign In</a>
-            </li>
+              <% } else { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
+                 <div class="dropdown-menu" style="padding-right:50px;">
+                  <a class="dropdown-item" href="#">View Profile</a>
+                   <a class="dropdown-item" href="#">Posts</a>
+                    <a class="dropdown-item" href="/imgupload">Upload</a>
+                     </li>
+              <% } %>
+              </li>
           </ul>
         </div>
       </nav>

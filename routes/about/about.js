@@ -7,7 +7,7 @@ module.exports = function (express, app) {
 
 	router.get('/', function(req, res, next) {
           
-          res.render('about/about-us', {});
+          res.render('about/about-us', {session_username: req.session.user || ''});
 	});
 
 

@@ -29,7 +29,11 @@ module.exports = function (app) {
 
 app.get('/imgupload', function(req, res){
 
-         res.render('img_upload/imgupload', {error:''})
+      let user = req.session.user || ''
+
+      console.log("User: " + user)
+
+         res.render('img_upload/imgupload', {error:'', user: user})
       })
 
 
@@ -44,6 +48,7 @@ app.get('/imgupload', function(req, res){
 
 
       app.post('/upload', isFileFormatValid, isFileSizeValid, function(req, res) {
+        /*
         if (!req.files)
           return res.status(400).send('No files were uploaded.');
        
@@ -63,6 +68,9 @@ app.get('/imgupload', function(req, res){
        
           res.send('File uploaded!');
         });
+        */
+
+        res.send(req.body)
      });
 
 }
