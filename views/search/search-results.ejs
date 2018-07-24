@@ -1,4 +1,39 @@
+<header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="">Picarousel</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">Meet the hackers</a>
+            </li>
+            <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
+            <li class="nav-item">
+              <% if (!session_username) { %>
+              <a class="nav-link" href="/register">Sign In</a>
+              <% } else { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
+                 <div class="dropdown-menu" style="padding-right:50px;">
+                  <a class="dropdown-item" href="#">View Profile</a>
+                   <a class="dropdown-item" href="#">Posts</a>
+                    <a class="dropdown-item" href="/imgupload">Upload</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
+
+                     </li>
+              <% } %>
+              </li>
+
+          </ul>
+        </div>
+      </nav>
+    </header>
 
 <%- include partials/search-header.ejs %>
 

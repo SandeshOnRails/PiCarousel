@@ -19,6 +19,7 @@ var session = require('express-session') // user session handling express packag
 var loginUser = require('./models/auth/loginUser.js') // login and authenticate user
 
 
+
  app.use(session({ secret: 'secret_word', resave: false,
   saveUninitialized: true}))
 

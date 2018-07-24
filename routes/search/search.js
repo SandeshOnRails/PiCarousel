@@ -44,13 +44,13 @@ module.exports = function (app, con, search, checkForKey, findMatchPercent) {
 
                           matchPercent = matchPercent +"% match"
 
-                             res.render('search/search-results', {result: result, searchKey:req.body.searchKey, actualResult: searchTerm, matchPercent: matchPercent})
+                             res.render('search/search-results', {result: result, searchKey:req.body.searchKey, actualResult: searchTerm, matchPercent: matchPercent, session_username: req.session.user || ''})
                         } 
 
                                  // if no match in the database then return empty result object to search-results page
                         else {
 
-                            res.render('search/search-results', {result: result})
+                            res.render('search/search-results', {result: result, session_username: req.session.user || ''})
                         }
 
 
