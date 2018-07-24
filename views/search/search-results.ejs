@@ -1,3 +1,14 @@
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+
 <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
           <a class="navbar-brand" href="">Picarousel</a>
@@ -35,14 +46,18 @@
       </nav>
     </header>
 
-<%- include partials/search-header.ejs %>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
+       <div class="container searchContainer">
+    <div class="search card card-body">
+      <h2>Search Picarousel</h2>
+      <p class="lead"> Search Terms: bi, bird, birdie, dog, doggie, cute, parr, parrots, parrot, husk, huskey, king</p>
+      
+    <form name='search-form' class="example" method='POST' action="/search/results" style="margin:auto;max-width:300px" onsubmit='return validate()'>
+  <input type="text" placeholder="Search.." name="searchKey">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+</div>
+</div>
 
 <% if (result.length < 1) { %>
 
@@ -106,6 +121,23 @@
 
 
 <% }  } %>
+
+<script>
+
+function validate() {
+
+   if(!document.forms['search-form']['searchKey'].value) {
+
+          document.getElementById('noSearchKey').innerHTML = 'Please provide a search key ... '
+
+          return false
+
+       }
+}
+
+
+</script>
+
 
 
 

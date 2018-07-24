@@ -18,6 +18,8 @@ module.exports = function (app, login, con, crypto) {
                              // set session for the user
                        
                     req.session.user = username
+
+                    console.log(req.session.user)
 	   	    	  	res.render('home/homepage', {session_username: req.session.user})
 
 	   	    	  }

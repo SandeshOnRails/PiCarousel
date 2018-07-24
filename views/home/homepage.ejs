@@ -15,7 +15,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a class="navbar-brand" href="">Logo Placeholder</a>
+          <a class="navbar-brand" href="">Picarousel</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -23,15 +23,27 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="">Home</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">About Us</a>
+              <a class="nav-link" href="/about">Meet the Hackers</a>
             </li>
             <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
             <li class="nav-item">
+              <% if (!session_username) { %>
               <a class="nav-link" href="/register">Sign In</a>
-            </li>
+              <% } else { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
+                 <div class="dropdown-menu" style="padding-right:50px;">
+                  <a class="dropdown-item" href="#">View Profile</a>
+                   <a class="dropdown-item" href="#">Posts</a>
+                    <a class="dropdown-item" href="/imgupload">Upload</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
+
+                     </li>
+              <% } %>
+              </li>
           </ul>
         </div>
       </nav>
@@ -46,6 +58,26 @@
           <a class="btn btn-primary btn-lg" href="/register" role="button">Register Here.</a>
         </p>
       </div>
+
+
+      <!-- search bar -->
+
+
+
+       <div class="container searchContainer">
+    <div class="search card card-body">
+      <h2>Search Picarousel</h2>
+      <p class="lead"> Search Terms: bi, bird, birdie, dog, doggie, cute, parr, parrots, parrot, husk, huskey, king</p>
+      
+    <form name='search-form' class="example" method='POST' action="/search/results" style="margin:auto;max-width:300px" onsubmit='return validate()'>
+  <input type="text" placeholder="Search.." name="searchKey">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+</div>
+</div>
+
+<hr>
+<h2> Categories </h2>
 
     <main role="main">
 
@@ -161,6 +193,19 @@
       <!-- Footer -->
 
     </main>
+
+
+<script>
+
+function validate() {
+
+   if(!document.forms['search-form']['searchKey'].value) return false
+
+       
+}
+
+
+</script>
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
