@@ -16,7 +16,7 @@ module.exports = function (express, app) {
           for(var i =0; i < aboutPages.length; i ++){
         if(aboutPages[i]== req.params.name){
               flag = false;
-		res.render('about/'+req.params.name);
+		res.render('about/'+req.params.name, {session_username: req.session.user || ''});
 
     }
 }

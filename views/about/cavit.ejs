@@ -13,28 +13,41 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top py-4" id="main-nav">
-        <div class="container">
-          <a href="/" class="navbar-brand">
-    
-              <!-- Logo will go below here if needed else remove it !-->
-            <h3 class="d-inline align-middle">Photostock</h3>
-          </a>
-          <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <a href="/"><img src="/logo.jpg" id="logo" style="width:100px"/></a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a href="/" class="nav-link">Home</a>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">Meet the Hackers</a>
+            </li>
+            <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
+            <li class="nav-item">
+              <% if (!session_username) { %>
+              <a class="nav-link" href="/register">Sign In</a>
+              <% } else { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
+                 <div class="dropdown-menu" style="padding-right:50px;">
+                  <a class="dropdown-item" href="#">View Profile</a>
+                   <a class="dropdown-item" href="#">Posts</a>
+                    <a class="dropdown-item" href="/imgupload">Upload</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
+
+                     </li>
+              <% } %>
               </li>
-              <li class="nav-item">
-                <a href="/" class="nav-link">Meet The Hackers</a>
-              </li>
-            </ul>
-          </div>
+          </ul>
         </div>
       </nav>
+    </header>
 
     <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
