@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous">
     <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 
         <title>Upload</title>
 
-
+<h2 class='lead'> Start uploading images and develop your portfolio with PiCarousel </h2>
  <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
           <a class="navbar-brand" href="">Picarousel</a>
@@ -71,24 +71,26 @@
       encType="multipart/form-data">
       <div class="sections">
     
-    <section class="active">
-      <input type="text" placeholder="TITLE" id="title" name='title'/>
-     </section>
+      <div align='center'>
+      <input type="text" placeholder="title of the post" id="title" name='title' style="width: 250px;"/>
+      </div>
 
       
       
       
-       <section class="active">
-      <input type="text" placeholder="Info about photo" id="title" name='info'/>
-      </section>
+       <div align="center" style="margin-top:20px;">
+        <textarea id="subject" name="subject" placeholder="Image decription ...." style="height:150px;width:250px;"></textarea>
+      </div>
       
 
       
    
   
   </div>
+  <div align='center'style="margin-top:20px;">
         <input type="file" name="sampleFile" required/>
          <p id="wrongFileFormat"></p>
+       </div>
 
     <% if (error){  %>
   
@@ -102,11 +104,13 @@
         <div class="input_fields_wrap">
   
     <h2> Add Tags <span id="add_field_button"style="height:25px;width:25px;color:black">&oplus;</span></h2>
-    <div><input type="text" name="mytext" required></div>
+    <div align='center'><input type="text" name="mytext" style="margin: auto;
+               border: 1px solid black;
+               padding: 10px;" required></div>
 </div>
 <br>
-
-        <input type='submit' value='Upload!' />
+        
+        <div align="center" ><input type='submit' value='Upload!' /></div>
 
     </form> 
     
@@ -130,7 +134,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div><input type="text" name="mytext" required/><a href="#" class="remove_field"><span style="">&bigotimes;</span></a></div>'); //add input box
+            $(wrapper).append('<div align="center"><input type="text" name="mytext" style="margin-top:10px;margin-left:30px;border: 1px solid black;padding: 10px;"required/><a href="#" class="remove_field"><span style="margin-left: 20px;">&bigotimes;</span></a></div>'); //add input box
         }
     });
     
