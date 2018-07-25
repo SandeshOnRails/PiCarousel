@@ -94,7 +94,10 @@
   <input type="text" placeholder="Search.." name="searchKey">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
+<p class= 'lead' id='noSearchKey'> </p>
+
 </div>
+
 </div>
 
 
@@ -248,9 +251,32 @@
 
 function validate() {
 
-   if(!document.forms['search-form']['searchKey'].value) return false
+  if(!document.forms['search-form']['searchKey'].value) {
 
-       
+          document.getElementById('noSearchKey').innerHTML = 'Please provide a search key ... '
+
+          return false
+
+       }
+
+       if(document.forms['search-form']['searchKey'].value.length > 10) {
+
+          document.getElementById('noSearchKey').innerHTML = 'Search query too big. Try again with characters of length <= 10'
+
+          return false
+       }
+
+       let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+
+        if(special.test(document.forms['search-form']['searchKey'].value)) {
+
+          document.getElementById('noSearchKey').innerHTML = 'Invalid characters encountered. Try again'
+
+          return false
+
+        }
+
+
 }
 
 

@@ -16,6 +16,9 @@
         <title>Upload</title>
 
 <h2 class='lead'> Start uploading images and develop your portfolio with PiCarousel </h2>
+<ul style="list-style-type: none;" align="center" class='lead'>
+  <li> Add tags to enhance post's search </li>
+  </ul>
  <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
           <a class="navbar-brand" href="">Picarousel</a>
@@ -33,11 +36,9 @@
             </li>
             <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
             <li class="nav-item">
-              <% if (!user) { %>
-              <a class="nav-link" href="/register">Sign In</a>
-              <% } else { %>
+              <% if (user) { %>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=user%></a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
                  <div class="dropdown-menu" style="padding-right:50px;">
                   <!-- <a class="dropdown-item" href="#">View Profile</a>
                    <a class="dropdown-item" href="#">Posts</a> -->
@@ -45,6 +46,9 @@
                     <a class="dropdown-item" href="/logout">Logout</a>
 
                      </li>
+              <% } else { %>
+                               <a class="nav-link" href="/register">Sign In</a>
+
               <% } %>
               </li>
 
@@ -63,14 +67,14 @@
       <div class="sections">
     
       <div align='center'>
-      <input type="text" placeholder="title of the post" id="title" name='title' style="width: 250px;"/>
+     <h3>Title</h3> <input type="text" placeholder="title of the post" id="title" name='title' style="width: 250px;" required/>
       </div>
 
       
       
       
        <div align="center" style="margin-top:20px;">
-        <textarea id="subject" name="subject" placeholder="Image decription ...." style="height:150px;width:250px;"></textarea>
+        <h3>Description</h3><textarea id="subject" name="subject" placeholder="Image decription ...." style="height:150px;width:250px;" required></textarea>
       </div>
       
 
@@ -80,9 +84,29 @@
   </div>
   <div align='center'style="margin-top:20px;">
         <input type="file" name="sampleFile" required/>
-         <p id="wrongFileFormat"></p>
+         <p id="wrongFileFormat" style="color:red;"></p>
        </div>
 
+<div align='center'style="margin:20px;">
+       <h3>Select Category</h3> <select name='category'>
+  <option value="all">All</option>
+  <option value="Animals">Animals</option>
+  <option value="Birds">Birds</option>
+  <option value="Cities">Cities</option>
+  <option value="Dogs">Dogs</option>
+  <option value="Flowers">Flowers </option>
+  <option value="Houses">Houses</option>
+  <option vallue="Nature">Nature</option>
+</select>
+</div>
+
+
+<div align='center'style="margin:20px;">
+       <h3>Post Accesibility</h3> <select name='accessType'required>
+  <option value="public">Public</option>
+  <option value="private">Private</option>
+</select>
+</div>
     <% if (error){  %>
   
   <script>
