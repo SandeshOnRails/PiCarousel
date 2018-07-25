@@ -349,11 +349,13 @@ document.getElementById('first').onkeyup = ()=> {
 
         // check if the string contains characters other than a-z || A-Z
 
-        var pattern = /[^a-z][^A-Z]/g
+        var pattern = /[^a-z][^A-Z]/i
 
        
 
        // firstname should be less than 2 chars and not more than 25 chars and 
+
+       console.log('sandesh'.match(pattern))
 
 
        if(firstname.length <= 2 ||  firstname.length >= 25 || firstname.match(pattern) ){
@@ -425,7 +427,7 @@ document.getElementById('last').onkeyup = ()=> {
         var errors = document.getElementById('last_errors') 
         var lastname = document.forms['registration']['last'].value
 
-        var pattern = /[^a-z][^A-Z]/g
+        var pattern = /[^a-z][^A-Z]/i
 
 
        if(lastname.length <= 2 || lastname.length >=25 || lastname.match(pattern) ){
