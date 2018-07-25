@@ -22,7 +22,8 @@ module.exports = function(app, authenticate, register, con, crypto) {
               	
               	 if(isAuthenticated) { 
                         
-                  req.session.username = req.body.first
+                  req.session.user = req.body.first
+                  
 
               	 	register(con, {
 
@@ -37,13 +38,13 @@ module.exports = function(app, authenticate, register, con, crypto) {
 
               	 })
               	 
-                 res.send('registration success')
+                 res.render('home/homepage', {user_exists_error: false, session_username: req.session.user || ''})
 
               	}
 
               	else {
 
-              		res.render('sign_up/signUp', {user_exists_error: true})
+              		res.render('sign_up/signUp', {user_exists_error: true, session_username: req.session.user || ''})
               	}
 
 

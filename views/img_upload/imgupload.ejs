@@ -36,7 +36,7 @@
             </li>
             <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
             <li class="nav-item">
-              <% if (user) { %>
+              <% if (session_username) { %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
                  <div class="dropdown-menu" style="padding-right:50px;">
