@@ -23,6 +23,7 @@ module.exports = function(app, authenticate, register, con, crypto) {
               	 if(isAuthenticated) { 
                         
                   req.session.user = req.body.first
+                  
 
               	 	register(con, {
 
