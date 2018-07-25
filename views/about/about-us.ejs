@@ -10,9 +10,20 @@
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/style.css">
   <title>About</title>
+
+  <style>
+      a{
+        font-size: 24px;
+      }
+  
+      h2{
+        text-align:center;
+        color:white;
+      }
+    </style>
 </head>
 
-<body id="home" data-spy="scroll" data-target="#main-nav">
+<body>
   <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
          <a href="/"><img src="/logo.jpg" id="logo" style="width:100px"/></a>
@@ -31,7 +42,7 @@
             <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
             <li class="nav-item">
               <% if (!session_username) { %>
-              <a class="nav-link" href="/register">Sign In</a>
+              <a class="nav-link" href="/login">Sign In</a>
               <% } else { %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
