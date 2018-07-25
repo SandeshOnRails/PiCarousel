@@ -1,5 +1,5 @@
 
-
+<br>
     <div id="categories" class="tab-pane fade in active">
       <h3>Categories</h3>
       <p><button style="color:white;background-color:#d65151;" type="button" onclick="adNewCategorie();" class="btn btn-secondary btn-sm">add categorie</button></p>
@@ -40,8 +40,11 @@
             <a href="#" onclick="navigateToPage('categorieChangePage','-');" class="first">&laquo; prev</a>
             <%var k=0;%>
             <% for ( k=1; k<=totalpage; k++) { %>
-            <a href="#" class="next round" onclick="navigateToPage('categorieChangePage','<%= k%>')"> <%= k%> </a>
-            
+            <%if (page !=k){%>
+              <a href="#" class="next round " onclick="navigateToPage('categorieChangePage','<%= k%>')"> <%= k%> </a>
+            <%}else{%>
+              <a href="#" class="next round " style="background-color:#d65151;" onclick="navigateToPage('categorieChangePage','<%= k%>')"> <%= k%> </a>
+            <%}%>
             <%}%>
             <a href="#" onclick="navigateToPage('categorieChangePage','+');"class="last">next &raquo;</a>
       <% } %>

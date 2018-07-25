@@ -68,6 +68,7 @@ function gotoMenu(menu){
      //alert('cav');
      //#idForm is the id
      //data: $("#idForm").serialize(),
+     //alert(menu);
      var data = {};
           data.title = "title";
           data.message = "message";
@@ -77,10 +78,10 @@ function gotoMenu(menu){
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-              //alert('suc');
+             // alert('suc');
                 console.log('success');
                             //console.log(JSON.stringify(data));
-                            document.getElementById("categorieContent").innerHTML=data;
+                           document.getElementById("categorieContent").innerHTML=data;
             }
         });
 };
