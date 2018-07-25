@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+/* Full-width input fields */
+input[type=text], input[type=password] , input[type=email]{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity:1;
+}
+
+#button {
+    width: 6em;
+   background: #2196f3;
+}
+
+a {
+    display: block;
+    width: 100%;
+    line-height: 2em;
+    text-align: center;
+}
+
+a:hover {
+    background: #1976d2;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+
+/* for Captcha editing*/
+.capbox {
+	background-color: #92D433;
+	border: #B3E272 0px solid;
+	border-width: 0px 12px 0px 0px;
+	display: inline-block;
+	*display: inline; zoom: 1; /* FOR IE7-8 */
+	padding: 8px 40px 8px 8px;
+	}
+
+.capbox-inner {
+	font: bold 11px arial, sans-serif;
+	color: #000000;
+	background-color: #DBF3BA;
+	margin: 5px auto 0px auto;
+	padding: 3px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	}
+
+#CaptchaDiv {
+	font: bold 17px verdana, arial, sans-serif;
+	font-style: italic;
+	color: #000000;
+	background-color: #FFFFFF;
+	padding: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	}
+
+#CaptchaInput { margin: 1px 0px 1px 0px; width: 135px; }
+
+
+
+</style>
+<body>
+
+
+<div id="id01" class="modal">
+  <a href="/"><span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span></a>
+  <form class="modal-content" action="/register" name="registration" method="POST" onsubmit="return checkform(this);" style="width:450px;">
+    <div class="container" style="width:450px;">
+     <h1>PiCarousel Sign Up</h1>
+      <p>Already have an account?
+
+		<div id="button"><a href="/login">Sign In</a></div> </p>
+
+            <p>OR Please fill in this form to create an account.</p>
+             
+             <% if (user_exists_error) { %>
+
+            <p style="color:red;"> * User with the email account already exists </p>
+
+            <% } %>
+
+            <!--  All the errors from the form validation -->
+
+            <div style="color:red; padding-top:20px;" id='first_errors'></div>
+            <div style="color:red; padding-top:20px;" id='last_errors'></div>
+            <div style="color:red; padding-top:20px;" id='email_errors'></div>
+            <div style="color:red; padding-top:20px;" id='pass_errors'></div>
+            <div style="color:red; padding-top:20px;" id='age_errors'></div>
+
+
+
+
+      <hr class="my-4" style=' border: 0;
+                                clear:both;
+                                display:block;
+                                 width: 96%;               
+                                 background-color:grey;
+                                 height: 1px;'>
+
+      <label for="first" id='first_label'><b>First Name <span id='symbol_first'></span></b></label>
+      <input type="text" placeholder="Enter Frist Name" name="first" id="first" required>
+
+      <label for="last" id='last_label'><b>Last Name <span id='symbol_last'></span></b></label>
+      <input type="text" placeholder="Enter Last Name" name="last" id="last" required>
+
+      <label for="email" id='email_label'><b>Email</b><span id='symbol_email'></span></label>
+      <input type="email" placeholder="Enter Email" name="email"  id="email" required>
+
+      <label for="psw" id='psw_label'><b>Password</b> <span id='symbol_pass'></span></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+      <label for="Accttype"><b>Account Type</b></label>
+      <select name='accountType'>
+ 	  <option value="Select">Select</option>
+  	  <option value="User">User</option>
+  	  <option value="Photographer">Photographer</option>
+      <option value="Both">Both</option>
+	  </select>
+  
+      <br></br>
+
+      <label for="age" id='age_label'><b>Age  <span id='symbol_age'></span></b></label>
+      <input type="number" placeholder="Enter Age" name="age" id="age" notrequired>
+      
+      <br></br>
+
+      <br><b>Gender</b>
+      <label for="gender" class="container">Male
+       <input type="radio" name="gender" value= 'male'>
+      <span class="checkmark"></span>
+      </label>
+
+      <label class="container">Female
+      <input type="radio" name="gender" value='female'>
+      <span class="checkmark"></span>
+      </label> </br>
+
+      <!-- START CAPTCHA -->
+      <br>
+		<b>Captcha</b> </br><br>
+
+		<div class="capbox" align="center">
+
+		<div id="CaptchaDiv" align="center"></div>
+
+		<div class="capbox-inner"  align="center">
+		Type the above number:
+
+		<input type="hidden" id="txtCaptcha">
+		<input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+
+		</div>
+		</div>
+		<br><br>
+		<!-- END CAPTCHA -->
+
+      
+      <br></br>
+      <label>
+        <input type="checkbox" name="remember" style="margin-bottom:15px"> By checking this box you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.
+      </label>
+
+
+
+      <div class="clearfix">
+        <a href="/"><button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button></a>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+
+
+  </form>
+</div>
+
+<script>
+// Get the modal
+
+
+// When the user clicks anywhere outside of the modal, close it
+
+
+function checkform(theform){
+var why = "";
+
+if(theform.CaptchaInput.value == ""){
+why += "- Please Enter CAPTCHA Code.\n";
+}
+if(theform.CaptchaInput.value != ""){
+if(ValidCaptcha(theform.CaptchaInput.value) == false){
+why += "- The CAPTCHA Code Does Not Match.\n";
+}
+}
+if(why != ""){
+alert(why);
+return false;
+}
+
+var first_errors = document.getElementById('first_errors')
+var last_errors = document.getElementById('last_errors')
+var age_errors = document.getElementById('age_errors')
+var pass_errors = document.getElementById('pass_errors')
+var email_errors = document.getElementById('email_errors')
+
+if(first_errors.childNodes.length >=1 || last_errors.childNodes.length >=1 || age_errors.childNodes.length >=1
+|| pass_errors.childNodes.length >=1 || email_errors.childNodes.length >=1 ) return false
+
+}
+
+var a = Math.ceil(Math.random() * 9)+ '';
+var b = Math.ceil(Math.random() * 9)+ '';
+var c = Math.ceil(Math.random() * 9)+ '';
+var d = Math.ceil(Math.random() * 9)+ '';
+var e = Math.ceil(Math.random() * 9)+ '';
+
+var code = a + b + c + d + e;
+document.getElementById("txtCaptcha").value = code;
+document.getElementById("CaptchaDiv").innerHTML = code;
+
+// Validate input against the generated number
+function ValidCaptcha(){
+var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
+if (str1 == str2){
+return true;
+}else{
+return false;
+}
+}
+
+// Remove the spaces from the entered and generated code
+function removeSpaces(string){
+return string.split(' ').join('');
+}
+
+// FIELDS VALIDATION //
+
+document.getElementById('first').onkeyup = ()=> {
+  
+
+  // get all the values of the form from the document object of the DOM
+
+        var errors = document.getElementById('first_errors') 
+        var firstname = document.forms['registration']['first'].value
+      
+
+        // check if the string contains characters other than a-z || A-Z
+
+        var pattern = /[^a-z][^A-Z]/i
+
+       
+
+       // firstname should be less than 2 chars and not more than 25 chars and 
+
+       console.log('sandesh'.match(pattern))
+
+
+       if(firstname.length <= 2 ||  firstname.length >= 25 || firstname.match(pattern) ){
+
+                    
+           // set empty string for the symbol everytime a key is pressed
+
+
+
+
+        document.getElementById('symbol_first').innerHTML = ''
+
+        document.getElementById('first_label').style.color = 'red'
+              
+              // create a paragraph element and and textNode as a child
+
+              // create list element and append text nodes as child to it 
+
+              // elements below are appended to the div id 'errors' in DOM to show errors
+
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- First name'))
+        var li_one = document.createElement('li')
+        var li_two = document.createElement('li')
+        li_one.appendChild(document.createTextNode('should be more than 2 chars'))
+        li_two.appendChild(document.createTextNode('should be A-Z or a-z'))
+
+        // check if the child node is already appended to avoid repitition of the error messages on the form
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+                errors.appendChild(li_two)
+
+      }
+        }
+
+        // if the user entered firstname is valid 
+
+
+        else {
+
+               // remove the errors displayed as <p> and <li> created above
+
+                // remove the elements until the parent element 'errors' <div> has no child
+
+                document.getElementById('first_label').style.color = 'black'
+
+            if(document.getElementById('first_errors').childNodes.length > 1) {
+                       
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+
+            // set the green check symbol in the case the validation is successful without any errors
+
+            document.getElementById('symbol_first').innerHTML = '&#9989;'
+        }     
+        
+}
+
+// same execution method as the firstname 
+
+document.getElementById('last').onkeyup = ()=> {
+        
+        var errors = document.getElementById('last_errors') 
+        var lastname = document.forms['registration']['last'].value
+
+        var pattern = /[^a-z][^A-Z]/i
+
+
+       if(lastname.length <= 2 || lastname.length >=25 || lastname.match(pattern) ){
+
+        document.getElementById('last_label').style.color = 'red'
+        document.getElementById('symbol_last').innerHTML = ''
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('Last Name'))
+        var li_one = document.createElement('li')
+        var li_two = document.createElement('li')
+        li_one.appendChild(document.createTextNode('should be more than 2 chars and less than 25 chars '))
+        li_two.appendChild(document.createTextNode('should be A-Z or a-z'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+                errors.appendChild(li_two)
+
+      }
+        }
+        else {
+
+
+            if(document.getElementById('last_errors').childNodes.length > 1) {
+                       
+                       document.getElementById('last_label').style.color = 'black'
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_last').innerHTML = '&#9989;'
+        }     
+
+}
+
+
+document.getElementById("age").onkeyup = ()=> {
+
+  // extract age from the form using document object and parse it to an integer
+     
+     var age = parseInt(document.forms['registration']['age'].value)
+     var errors = document.getElementById('age_errors')
+ 
+ // check if the user's age is a number and more than =13 and less than =99
+
+
+ // DOM traversal same as first 
+
+
+     if(isNaN(age) || age >= 99 || age <=13 ) {
+              
+        document.getElementById('symbol_age').innerHTML = ''
+        document.getElementById('age_label').style.color = 'red'
+
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- Age'))
+        var li_one = document.createElement('li')
+        var li_two = document.createElement('li')
+        li_one.appendChild(document.createTextNode('should be number'))
+        li_two.appendChild(document.createTextNode('should be 14 or above and 99 or less'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+                errors.appendChild(li_two)
+
+      }
+        }
+        else {
+
+
+            if(document.getElementById('age_errors').childNodes.length > 1) {
+                       
+                       document.getElementById('age_label').style.color = 'black'
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_age').innerHTML = '&#9989;'
+
+         }
+}
+
+document.getElementById("psw").onkeyup = ()=> {
+
+
+var pass = document.getElementById('psw').value
+var errors = document.getElementById('pass_errors')
+
+
+// check to see if password length is at least 8 characters long
+
+           if(pass.length < 8 ) {
+
+
+        document.getElementById('psw_label').style.color = 'red'   
+        document.getElementById('symbol_pass').innerHTML = ''
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- Password'))
+        var li_one = document.createElement('li')
+        li_one.appendChild(document.createTextNode('should be at least 8 characters long'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+
+      }
+        }
+        else {
+
+            document.getElementById('psw_label').style.color = 'black'   
+
+            if(document.getElementById('pass_errors').childNodes.length > 1) {
+                       
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_pass').innerHTML = '&#9989;'
+
+         }
+
+}
+
+
+document.getElementById('email').onkeyup = function () {
+
+     var email = document.getElementById('email').value
+     var errors = document.getElementById('email_errors')
+
+      if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+              
+         document.getElementById('email_label').style.color = 'red'   
+        document.getElementById('symbol_email').innerHTML = ''
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- Email'))
+        var li_one = document.createElement('li')
+
+        li_one.appendChild(document.createTextNode('should be valid'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+
+      }
+
+      }
+
+      else {
+              
+              document.getElementById('email_label').style.color = 'black'   
+
+            if(document.getElementById('email_errors').childNodes.length > 1) {
+                       
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_email').innerHTML = '&#9989;'
+
+
+      }
+
+}
+
+
+
+</script>
+
+</body>
+</html>

@@ -9,8 +9,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "clam": "^1.0.12",
+    "clamav.js": "^0.12.0",
+    "clamscan": "^0.8.4",
+    "crypto-js": "^3.1.9-1",
+    "ejs": "^2.6.1",
+    "encryptionhelper": "0.0.3",
+    "engine": "^0.1.12",
     "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "express-session": "^1.15.6",
     "hogan-express": "^0.5.2",
-    "socket.io": "^2.1.1"
+    "mysql": "^2.15.0",
+    "node-virustotal": "^2.4.2",
+    "simple-crypto-js": "^2.0.2",
+    "socket.io": "^2.1.1",
+    "virustotal": "0.0.1"
   }
 }

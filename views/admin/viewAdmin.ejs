@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/services.js"></script>
+  <style>
+
+  /*For the image design*/
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+
+/*For the dropdown styling*/
+.dropbtn {
+    background-color: #4169e1;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    font-weight:bold;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+        font-weight:bold;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    font-weight:bold;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #008000}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #4169e1;
+}
+
+/*For the page numbers*/
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>PiCarousel</h2>
+  <p>Admin Dashboard</p>
+
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" onclick="gotoMenu('images');" href="#Images">Images</a></li>
+    <li><a data-toggle="tab" onclick="gotoMenu('users');" href="#Users">Users</a></li>
+     <li><a data-toggle="tab" onclick="gotoMenu('categories');" href="#categories">Categories</a></li>
+     <li><a data-toggle="tab" onclick="gotoMenu('myaccount');" href="#users">my account</a></li>
+  </ul>
+
+
+  <div id="categorieContent" class="tab-content"></div>
+
+
+
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+
+  
+</script>
