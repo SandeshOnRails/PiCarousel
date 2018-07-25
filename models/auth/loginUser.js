@@ -21,6 +21,8 @@ con.connect(function(err) {
 
         else { 
 
+                if(result.length >= 1) {
+
                   var password = (result[0].password).toString()
 
                   
@@ -32,6 +34,11 @@ con.connect(function(err) {
               else callback(false, '') // if the user does not exist, callback function with false paramter, and empty string
 
         }
+     else {
+
+        callback(false, '')
+    }
+  }
 });
 
 
