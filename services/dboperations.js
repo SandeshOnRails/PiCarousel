@@ -80,7 +80,7 @@ module.exports = {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from categorie limit "+first+",2;", function (err, result , fields) {
+                this.resulta = con.query("Select * from categorie order by categorie_id desc limit "+first+",2 ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);

@@ -11,7 +11,7 @@ con.connect(function(err) {
   	console.log('connection successful')
   }
 // query the database
- con.query("SELECT password, firstname FROM user WHERE email = '" + user.email + "'", function(err, result, fields) {
+ con.query("SELECT user_id,password, firstname FROM user WHERE email = '" + user.email + "'", function(err, result, fields) {
               
 
       if(err) {
@@ -29,7 +29,7 @@ con.connect(function(err) {
                   var decrypted = crypto.decipher('secretKey', password)
 
 
-             if(result.length > 0 && decrypted === user.pass) callback(true, result[0].firstname) // if the user exists callback function with true parameter and username
+             if(result.length > 0 && decrypted === user.pass) callback(true, result[0].firstname,result[0].user_id) // if the user exists callback function with true parameter and username
 
               else callback(false, '') // if the user does not exist, callback function with false paramter, and empty string
 
