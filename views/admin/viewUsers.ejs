@@ -1,98 +1,77 @@
-<br>
-  <nav class="nav nav-pills nav-justified">
-    <table>
-      <tr>
-        <td><a class="nav-link active" href="#"> list all</a></td>
-        <td>|</td>
-        <td><a class="nav-link active" href="#"> active users</a></td>
-        <td>|</td>
-        <td><a class="nav-link active" href="#"> suspended users</a></td>
-      </tr>
-    </table>
-  </nav>
 
+<br>
     <div id="users" class="tab-pane fade in active">
-      <h3>IMAGES</h3>
-      <table id="imagesTable" class="table table-striped">
+      <h3>Users</h3>
+     
+       <div id="operation"></div>
+      <table id="usersTable" class="table table-striped">
           <thead>
             <tr>
-              <th>Images</th>
-              <th>Firstname</th>
-              <th>TextField</th>
-              <th>Email</th>
-              <th>RadioButtons</th>
-              <th>Checkboxes</th>
-              <th>Dropdown</th>
+              <th>user name</th>
+              <th>email</th>
+              <th>account type</th>
+              <th>last login</th>
+              <th>account status</th>
+             
+
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><a target="_blank" href="pics/1.jpg"><img src="pics/1.jpg" alt="Image" style="width:150px"></a></td>
-              <td>John</td>
-              <td><input type="text" name="lastname"></td>
-              <td>john@example.com</td>
-              <td><input type="radio" name="gender" value="male"> Male<br><input type="radio" name="gender" value="female"> Female<br></td>
-              <td><input type="checkbox" name="option1" value="option1"> Option 1<br> <input type="checkbox" name="option2" value="option2"> Option 2<br></td>
-              <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
+
+  
+
+
+ <% for (var i=0; i<result.length; i++) {%>
+ <%console.log(result[i].firstname);%>
+            <tr id = "categorie<%=result[i].categorie_id %>">
+              <td>
+                <a onclick="makeCategorieEditable(<%=result[i].categorie_id %>,'<%=result[i].categorie %>');"  href="#<%=result[i].firstname %>"><%= result[i].firstname +" "+ result[i].lastname %></a>
+              </td>
+              <td>
+                <%= result[i].email %>
+              </td>
+              <td>
+                <%= result[i].accounttype %>
+              </td>
+              <td>
+                <%= result[i].lastlogindate %>
+              </td>
+               <td>
+                <%if  (result[i].suspend ==false) {%>
+                    active
+                <%} else {%>
+                    suspended
+                    <%}%>
+              </td>
+              <td>
+                  <input name="categorieDeleteids[]" type="checkbox" class="form-check-input" value="<%=result[i].categorie_id %>">
+                
+              </td>
             </tr>
-            <tr>
-              <td><a target="_blank" href="pics/2.jpg"><img src="pics/2.jpg" alt="Image" style="width:150px"></a></td>
-              <td>Jenna</td>
-              <td><input type="text" name="lastname"></td>
-              <td>mary@example.com</td>
-              <td><input type="radio" name="gender" value="male"> Male<br><input type="radio" name="gender" value="female"> Female<br></td>
-              <td><input type="checkbox" name="option1" value="option1"> Option 1<br> <input type="checkbox" name="option2" value="option2"> Option 2<br></td>
-              <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
+
+ <%}%>
+            <tr><td></td><td></td><td></td><td></td><td></td>
+              <td>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="suspendUser();" class="btn btn-secondary btn-sm">suspend selected</button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="activateUser();" class="btn btn-secondary btn-sm">activate selected</button>
+              </td>
             </tr>
-            <tr>
-              <td><a target="_blank" href="pics/3.jpg"><img src="pics/3.jpg" alt="Image" style="width:150px"></a></td>
-              <td>Austin</td>
-              <td><input type="text" name="lastname"></td>
-              <td>july@example.com</td>
-              <td><input type="radio" name="gender" value="male"> Male<br><input type="radio" name="gender" value="female"> Female<br></td>
-              <td><input type="checkbox" name="option1" value="option1"> Option 1<br> <input type="checkbox" name="option2" value="option2"> Option 2<br></td>
-              <td><div class="dropdown"><button class="dropbtn">Change Status</button><div class="dropdown-content"><a href="changestatus" style="background-color:#008000">Approve</a><a href="changestatus" style="background-color:#b22222">Disapprove</a></div></div></td>
-            </tr>
+           
           </tbody>
       </table>
-            <a href="#" class="first">&laquo; First</a>
-            <a href="#" class="next round"> 5 </a>
-            <a href="#" class="next round"> 6 </a>
-            <a href="#" class="next round"> 7 </a>
-            <a href="#" class="last">Last &raquo;</a>
+      <% if ( typeof page != 'undefined' ) { %>
+
+
+            <a href="#" onclick="navigateToPage('usersChangePage','categorieContent','-');" class="first">&laquo; prev</a>
+            <%var k=0;%>
+            <% for ( k=1; k<=totalpage; k++) { %>
+            <%if (page !=k){%>
+              <a href="#" class="next round " onclick="navigateToPage('usersChangePage','categorieContent','<%= k%>')"> <%= k%> </a>
+            <%}else{%>
+              <a href="#" class="next round " style="background-color:#d65151;" onclick="navigateToPage('usersChangePage','categorieContent','<%= k%>')"> <%= k%> </a>
+            <%}%>
+            <%}%>
+            <a href="#" onclick="navigateToPage('usersChangePage','categorieContent','+');"class="last">next &raquo;</a>
+      <% } %>
 
     </div>
-                      <div id="users" class="tab-pane fade">
-                        <h3>USERS</h3>
-                        <table id="usersTable" class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th>Firstname</th>
-                              <th>Lastname</th>
-                              <th>Email</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>John</td>
-                              <td>Doe</td>
-                              <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                              <td>Mary</td>
-                              <td>Moe</td>
-                              <td>mary@example.com</td>
-                            </tr>
-                            <tr>
-                              <td>July</td>
-                              <td>Dooley</td>
-                              <td>july@example.com</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <a href="#" class="first">&laquo; First</a>
-                        <a href="#" class="next round"> 5 </a>
-                        <a href="#" class="next round"> 6 </a>
-                        <a href="#" class="next round"> 7 </a>
-                        <a href="#" class="last">Last &raquo;</a>
-                      </div>

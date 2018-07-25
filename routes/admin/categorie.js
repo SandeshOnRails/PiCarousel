@@ -82,7 +82,7 @@ module.exports = function (app,dbRequest,con) {
 		
 		dbRequest.deleteCategorie(con,req.body,function(result){
 
-			let listcategories = result;
+			_listcategories = result;
 			initializeListview(function(){
 	 			res.render('admin/viewCategories', {operation:'categorielist',result:_listcategories,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		});
