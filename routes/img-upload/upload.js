@@ -24,7 +24,7 @@ function isFileSizeValid (req, res, next) {
       res.render('img_upload/imgupload', {error:'sorry file too big', session_username: req.session.user || ''})
 }
 
-module.exports = function (app) {
+module.exports = function (app, upload, con) {
 
 
 app.get('/imgupload', function(req, res){
@@ -47,8 +47,8 @@ app.get('/imgupload', function(req, res){
 
 
       app.post('/upload', isFileFormatValid, isFileSizeValid, function(req, res) {
-        
         /*
+      
         if (!req.files)
           return res.status(400).send('No files were uploaded.');
        
@@ -68,10 +68,43 @@ app.get('/imgupload', function(req, res){
        
           res.send('File uploaded!');
         });
-        */
-
-        res.send(req.body)
         
+*/          var filename = req.files.sampleFile.name
+            var category = req.body.category
+            var accessType = req.body.accessType
+            var description = req.body.mytext
+            var concat_description = ''
+
+
+               if(typeof([]) === typeof(description)) {
+
+                       for(index in description) {
+                             
+                              concat_description = concat_description + description[index] + ','
+                       }
+               }    
+
+               if(concat_description)
+
+               concat_description = concat_description.slice(0,concat_description.length-1)
+
+             else 
+              concat_description = description
+
+
+
+            upload(con, {
+
+                filename: filename,
+                category: category,
+                description: concat_description,
+                privacy: accessType,
+                userID: req.session.user_id
+
+            })
+
+              
+               res.send(req.body)    
 
      });
 
