@@ -7,7 +7,7 @@ function isFileFormatValid(req, res, next) {
   
 
     if(type === 'image/jpeg' || type === 'image/png') return next()
-      res.render('img_upload/imgupload', {error:'Sorry only jpeg and png file format allowed', user: req.session.user || ''})
+      res.render('img_upload/imgupload', {error:'Sorry only jpeg and png file format allowed', session_username: req.session.user || ''})
 }
 
 // middleware to check if the upload file is infected with malware
@@ -21,7 +21,7 @@ function isFileSizeValid (req, res, next) {
 
 
     if(!isInvalid) return next()
-      res.render('img_upload/imgupload', {error:'sorry file too big', user: req.session.user || ''})
+      res.render('img_upload/imgupload', {error:'sorry file too big', session_username: req.session.user || ''})
 }
 
 module.exports = function (app) {
@@ -32,7 +32,7 @@ app.get('/imgupload', function(req, res){
 
      
 
-         res.render('img_upload/imgupload', {error:'', user: req.session.user || ''})
+         res.render('img_upload/imgupload', {error:'', session_username: req.session.user || ''})
       })
 
 
