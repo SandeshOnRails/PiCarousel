@@ -18,7 +18,7 @@ function saveCategorieEditable(id, categorie){
     data.id=id;
     data.categorie = document.getElementById(categorie).value;
     data.resultDiv = "categories";
-    editData(data);
+    postData(data);
    
     //alert("will save soon");
 }
@@ -40,7 +40,7 @@ function saveNewCategorie(tagid){
     data.operation = "categoriesSaveNew";
     data.categorie = document.getElementById(tagid).value;
     data.resultDiv = "categories";
-    insertData(data);
+    postData(data);
 }
 function deleteCategorie(tagid){
 
@@ -61,7 +61,7 @@ function deleteCategorie(tagid){
     data.operation = "categoriesDelete";
     data.id = vals;
     data.resultDiv = "categories";
-    deleteData(data);
+    postData(data);
 }
 //general functions
 function gotoMenu(menu){
@@ -86,6 +86,18 @@ function gotoMenu(menu){
         });
 };
 
+function navigateToPage(section,resultdiv,page){
+
+    var data={};
+    data.operation = section;
+    data.page = page;
+    data.resultDiv = resultdiv;
+    postData(data);
+
+};
+
+
+/*
 function editData(data){
      //alert('editing categorie');
      //alert(data.operation);
@@ -152,28 +164,6 @@ function deleteData(data){
         });
 };
 
-function postData(data){
-     //alert('editing categorie');
-     //alert(data.operation);
-     //#idForm is the id
-     //data: $("#idForm").serialize(),
-     var resultdiv= data.resultDiv;
-
-     $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/"+data.operation,
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-              //alert('suc');
-                console.log('success delete data');
-                            //console.log(JSON.stringify(data));
-                            //alert(resultdiv);
-                            document.getElementById(resultdiv).innerHTML=data;
-            }
-        });
-};
-
 function navigateToPage(section,resultdiv,page){
      //alert('editing categorie');
      //alert(data.operation);
@@ -199,3 +189,23 @@ function navigateToPage(section,resultdiv,page){
             }
         });
 };
+*/
+function postData(data){
+
+     var resultdiv= data.resultDiv;
+
+     $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/"+data.operation,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+              //alert('suc');
+                console.log('success delete data');
+                            //console.log(JSON.stringify(data));
+                            //alert(resultdiv);
+                            document.getElementById(resultdiv).innerHTML=data;
+            }
+        });
+};
+
