@@ -7,7 +7,7 @@ function isFileFormatValid(req, res, next) {
   
 
     if(type === 'image/jpeg' || type === 'image/png') return next()
-      res.render('img_upload/imgupload', {error:'Sorry only jpeg and png file format allowed'})
+      res.render('img_upload/imgupload', {error:'Sorry only jpeg and png file format allowed', user: req.session.user || ''})
 }
 
 // middleware to check if the upload file is infected with malware
@@ -21,7 +21,7 @@ function isFileSizeValid (req, res, next) {
 
 
     if(!isInvalid) return next()
-      res.render('img_upload/imgupload', {error:'sorry file too big'})
+      res.render('img_upload/imgupload', {error:'sorry file too big', user: req.session.user || ''})
 }
 
 module.exports = function (app) {
@@ -29,11 +29,10 @@ module.exports = function (app) {
 
 app.get('/imgupload', function(req, res){
 
-      let user = req.session.user || ''
 
-      console.log("User: " + user)
+     
 
-         res.render('img_upload/imgupload', {error:'', user: user})
+         res.render('img_upload/imgupload', {error:'', user: req.session.user || ''})
       })
 
 
@@ -48,6 +47,7 @@ app.get('/imgupload', function(req, res){
 
 
       app.post('/upload', isFileFormatValid, isFileSizeValid, function(req, res) {
+        
         /*
         if (!req.files)
           return res.status(400).send('No files were uploaded.');
@@ -71,6 +71,8 @@ app.get('/imgupload', function(req, res){
         */
 
         res.send(req.body)
+        
+
      });
 
 }

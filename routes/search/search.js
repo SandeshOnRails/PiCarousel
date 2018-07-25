@@ -23,13 +23,13 @@ module.exports = function (app, con, search, checkForKey, findMatchPercent) {
 
       // into an array and matching instance of it
 
-          checkForKey(req.body.searchKey, function(result){
+          checkForKey(req.body.searchKey.toLowerCase(), function(result){
 
               var searchTerm = result
 
               // if the search result does not match the search term
               
-              if(!searchTerm) searchTerm = req.body.searchKey
+              if(!searchTerm) searchTerm = req.body.searchKey.toLowerCase()
 
                 // %LIKE SQL search
      	  
@@ -40,11 +40,11 @@ module.exports = function (app, con, search, checkForKey, findMatchPercent) {
 
                         if(result.length > 0) {
 
-                          let matchPercent = findMatchPercent(req.body.searchKey, searchTerm).toFixed(0)
+                          let matchPercent = findMatchPercent(req.body.searchKey.toLowerCase(), searchTerm).toFixed(0)
 
                           matchPercent = matchPercent +"% match"
 
-                             res.render('search/search-results', {result: result, searchKey:req.body.searchKey, actualResult: searchTerm, matchPercent: matchPercent, session_username: req.session.user || ''})
+                             res.render('search/search-results', {result: result, searchKey:req.body.searchKey.toLowerCase(), actualResult: searchTerm, matchPercent: matchPercent, session_username: req.session.user || ''})
                         } 
 
                                  // if no match in the database then return empty result object to search-results page
