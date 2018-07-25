@@ -13,13 +13,26 @@ module.exports = {
                   callback('connected');
 
             },
-            getUsers: function(con, data, callback) {
+            getUsers: function(con,page,recPerPage, data, callback) {
+                let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from user", function (err, result , fields) {
+                this.resulta = con.query("Select * from user order by user_id desc limit "+first+",2 ;", function (err, result , fields) {
                    
                     if (err) throw err;
-                    console.log("in sendQuery Result: " + fields);
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            getUserCount: function(con, data, callback) {
+               //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+                var returnValue;
+                this.resulta = con.query("Select count(*)  as itemcount from user", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
                     callback(result);
                     //con.release();
 
@@ -61,15 +74,27 @@ module.exports = {
             },
 
 
-
-            
-            getImages: function(con, data, callback) {
-               
+           getImageCount: function(con, data, callback) {
+               //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
                 var returnValue;
-                this.resulta = con.query("Select * from image", function (err, result , fields) {
+                this.resulta = con.query("Select count(*)  as itemcount from image", function (err, result , fields) {
                    
                     if (err) throw err;
-                    console.log("in sendQuery Result: " + fields);
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            
+            getImages: function(con,page,recPerPage, data, callback) {
+                let first =(page-1)*recPerPage;
+               
+                var returnValue;
+                this.resulta = con.query("Select * from image order by photo_id desc limit "+first+",2 ;", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
                     callback(result);
                     //con.release();
 
@@ -80,7 +105,7 @@ module.exports = {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from categorie limit "+first+",2;", function (err, result , fields) {
+                this.resulta = con.query("Select * from categorie order by categorie_id desc limit "+first+",2 ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);

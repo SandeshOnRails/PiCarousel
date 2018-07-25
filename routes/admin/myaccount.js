@@ -27,13 +27,13 @@ module.exports = function (app,dbRequest,con) {
     	};
 	}
 
-	 app.post('/users', function(req, res){
+	 app.post('/myaccount', function(req, res){
 	 	console.log("userrs");
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 	 	initializeListview(function(){
-	 		res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 		res.render('admin/viewMyaccount', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	});
 	 
 
@@ -41,13 +41,13 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 
-    app.post('/usersEdit', function(req, res){
+    app.post('/myaccountEdit', function(req, res){
 		
 		dbRequest.updateCategorie(con,req.body,function(result){
 
 			_llist = result;
 			initializeListview(function(){
-	 		res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 		res.render('admin/viewMyaccount', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	});
                          
     	});
@@ -57,21 +57,21 @@ module.exports = function (app,dbRequest,con) {
 
     });
 
-    app.post('/usersSaveNew', function(req, res){
+    app.post('/myaccountSaveNew', function(req, res){
 		
 		dbRequest.insertCategorie(con,req.body,function(result){
 
 			_list = result;
 			_page=1;
 			initializeListview(function(){
-	 			res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 			res.render('admin/viewMyaccount', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		});
                          
     	});
 
     });
 
-    app.post('/usersDelete', function(req, res){
+    app.post('/myaccountDelete', function(req, res){
 		
 		
 		
@@ -79,14 +79,14 @@ module.exports = function (app,dbRequest,con) {
 
 			_list = result;
 			initializeListview(function(){
-	 			res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 			res.render('admin/viewMyaccount', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		});
                          
     	});
 
     });
 
-    app.post('/usersChangePage', function(req, res){
+    app.post('/myaccountChangePage', function(req, res){
 		
 		
 		
@@ -99,7 +99,7 @@ module.exports = function (app,dbRequest,con) {
 		}else
 		_page = Number.parseInt(req.body.page,10);
 		initializeListview(function(){
-	 			res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 			res.render('admin/viewMyaccount', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		});
     	
 
