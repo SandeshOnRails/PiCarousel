@@ -349,7 +349,7 @@ document.getElementById('first').onkeyup = ()=> {
 
         // check if the string contains characters other than a-z || A-Z
 
-        var pattern = /[^a-z][^A-Z]/i
+        var pattern = /[^a-z]/i
 
        
 
@@ -524,7 +524,17 @@ var errors = document.getElementById('pass_errors')
 
 // check to see if password length is at least 8 characters long
 
-           if(pass.length < 8 ) {
+         var isAlphaNumeric = false
+
+          for(var i=0; i < pass.length; i++) {
+
+               if(!isNaN(parseInt(pass[i]))) isAlphaNumeric = true
+          }
+
+        console.log("password: " + pass)
+        console.log("isAlpha : " + isAlphaNumeric)
+
+           if(pass.length < 8 || !isAlphaNumeric) {
 
 
         document.getElementById('psw_label').style.color = 'red'   
@@ -532,12 +542,15 @@ var errors = document.getElementById('pass_errors')
         var text = document.createElement('b')
         text.appendChild(document.createTextNode('- Password'))
         var li_one = document.createElement('li')
+        var li_two = document.createElement('li')
         li_one.appendChild(document.createTextNode('should be at least 8 characters long'))
+        li_two.appendChild(document.createTextNode('should contain at least one number'))
 
         if(errors.childNodes.length <=1 ){
         
                 errors.appendChild(text) 
                 errors.appendChild(li_one)
+                errors.appendChild(li_two)
 
       }
         }
