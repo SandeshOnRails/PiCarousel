@@ -1,3 +1,4 @@
+/*
 function makeCategorieEditable(id, categorie){
    
    
@@ -63,6 +64,11 @@ function deleteCategorie(tagid){
     data.resultDiv = "categories";
     postData(data);
 }
+*/
+
+
+
+
 //general functions
 function gotoMenu(menu){
      //alert('cav');

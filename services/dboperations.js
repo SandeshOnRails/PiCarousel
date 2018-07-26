@@ -39,6 +39,41 @@ module.exports = {
                   });
             },
 
+            suspendUser: function(con, data, callback) {
+
+                //this.resulta = con.query("update categorie set categorie = "+data.categorie+" where categorie_id = "+data.id, function (err, result , fields) {
+                  console.log(data.categorie);
+                  //console.log(data.id);
+
+                var returnValue;
+                //DELETE from tablename WHERE id IN (1,2,3,...,254);
+                this.resulta = con.query("UPDATE user SET suspend = 1 where user_id IN("+data.id+")", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            activateUser: function(con, data, callback) {
+
+                //this.resulta = con.query("update categorie set categorie = "+data.categorie+" where categorie_id = "+data.id, function (err, result , fields) {
+                  console.log(data.categorie);
+                  //console.log(data.id);
+
+                var returnValue;
+                //DELETE from tablename WHERE id IN (1,2,3,...,254);
+                this.resulta = con.query("UPDATE user SET suspend = 0 where user_id IN("+data.id+")", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+
             insertImage: function(con, data, callback) {
                 console.log("sql catching the form:"+data.imageDescription);
                 var returnValue;
