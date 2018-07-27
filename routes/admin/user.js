@@ -41,28 +41,14 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 
-    app.post('/usersEdit', function(req, res){
+
+    app.post('/usersSuspend', function(req, res){
 		
-		dbRequest.updateCategorie(con,req.body,function(result){
-
-			_llist = result;
-			initializeListview(function(){
-	 		res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 	});
-                         
-    	});
-    	
-
-         //res.render('viewCategorie/categoriemain');
-
-    });
-
-    app.post('/usersSaveNew', function(req, res){
 		
-		dbRequest.insertCategorie(con,req.body,function(result){
+		
+		dbRequest.suspendUser(con,req.body,function(result){
 
 			_list = result;
-			_page=1;
 			initializeListview(function(){
 	 			res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		});
@@ -71,11 +57,12 @@ module.exports = function (app,dbRequest,con) {
 
     });
 
-    app.post('/usersDelete', function(req, res){
+
+    app.post('/usersActivate', function(req, res){
 		
 		
 		
-		dbRequest.deleteCategorie(con,req.body,function(result){
+		dbRequest.activateUser(con,req.body,function(result){
 
 			_list = result;
 			initializeListview(function(){
