@@ -33,9 +33,13 @@
           <li>
             <a href="/about">Meet the Team</a>
           </li>
-          <li>
-        <a href="/register">Register</a>
-
+                    <li>
+           <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
           </li>
           
         </ul>
@@ -47,9 +51,14 @@
         <li>
           <a href="/about">Meet the team</a>
         </li>
-        <li>
-          <a href="/register">Register</a>
-        </li>
+                  <li>
+           <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
+          </li>
         
       </ul>
     </nav>

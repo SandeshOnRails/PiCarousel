@@ -33,6 +33,12 @@
 .btn:hover {
     background-color: RoyalBlue;
 }
+
+
+
+.show {
+    display: block;
+}
 </style>
   
 <body>
@@ -52,8 +58,12 @@
             <a href="/about">Meet the Team</a>
           </li>
           <li>
-        <a href="/register">Register</a>
-
+           <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
           </li>
           
         </ul>
@@ -73,8 +83,10 @@
     </nav>
     <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
     <div align="center">
-     <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' >
+      <form action="/" onsubmit="return validate()">
+     <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
      <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
+   </form>
 
     <span> <select style="display:block; width:100px;color:black;">
       <option style="color:black;">All</option>
@@ -89,6 +101,7 @@
      </select>
    </span>
    </div>
+   <p id="illegal" style="color:red;text-align: center;"></p>
   </header>
 
   
@@ -478,6 +491,37 @@
 
     });
   </script>
+
+  <script>
+  
+           function validate() {
+
+                let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+                //alert(document.getElementById('searchKey').value)
+                 if(special.test(document.getElementById('searchKey').value)){
+                     document.getElementById('illegal').innerHTML = '* Illegal character encountered'
+                     return false
+                 }
+           }
+  </script>
+
+  <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+  }
+}
+</script>
 </body>
 
 </html>

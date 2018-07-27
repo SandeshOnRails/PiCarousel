@@ -29,10 +29,17 @@ module.exports = function (app, upload, con) {
 
 app.get('/imgupload', function(req, res){
 
-
+           if(req.session.user){
      
 
          res.render('img_upload/imgupload', {error:'', session_username: req.session.user || ''})
+       }
+       else {
+          
+         res.render('sign_in/signIn', {no_account_found:false})
+
+       }
+
       })
 
 

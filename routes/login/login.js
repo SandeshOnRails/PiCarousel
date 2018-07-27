@@ -20,7 +20,7 @@ module.exports = function (app, login, con, crypto) {
                     req.session.user = username
 
                     console.log(req.session.user)
-	   	    	  	res.render('home/homepage', {session_username: req.session.user})
+	   	    	  	res.render('home/index', {session_username: req.session.user})
 
 	   	    	  }
 	   	    	  	else{ res.render('sign_in/signIn', {no_account_found: true}) }
