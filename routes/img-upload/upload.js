@@ -101,6 +101,13 @@ app.get('/imgupload', function(req, res){
                 privacy: accessType,
                 userID: req.session.user_id
 
+            }, isSuccess => {
+
+                 if(isSuccess){
+
+                      res.send('database done')
+                 }
+
             })
 
               
