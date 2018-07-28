@@ -57,19 +57,7 @@ module.exports = function (app,dbRequest,con) {
 
     });
 
-    app.post('/imagesSaveNew', function(req, res){
-		
-		dbRequest.insertCategorie(con,req.body,function(result){
 
-			_list = result;
-			_page=1;
-			initializeListview(function(){
-	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
-
-    });
 
     app.post('/imagesDelete', function(req, res){
 		
