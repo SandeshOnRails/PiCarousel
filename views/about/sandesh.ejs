@@ -1,61 +1,75 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
+  
+  
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/main.css" />
 
-    <!-- Insert your name below.-->
-    <title>Sandesh</title>
+
+  <!--Let browser know website is optimized for mobile-->
+
+  <!--Let browser know website is optimized for mobile-->
+  <title>PiCarousel</title>
+  <title>About</title>
+
+  
+</head>
+ <header class="main-header">
+    <nav class="transparent nav-wrapper z-depth-0">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
+          <i class="material-icons">menu</i>
+        </a>
+        <a href="/" class="brand-logo">PiCarousel</a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active">
+            <a href="/imgupload">Upload</a>
+          </li>
+          <li>
+            <a href="/about">Meet the Team</a>
+          </li>
+                   <li>
+           <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
+          </li>
+          
+        </ul>
+      </div>
+      <ul class="side-nav" id="mobile-nav">
+        <li>
+          <a href="/imgupload">Upload</a>
+        </li>
+        <li>
+          <a href="/about">Meet the team</a>
+        </li>
+                  <li>
+           <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
+          </li>
+        
+      </ul>
+    </nav>
+    <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
+
+  </header>
 </head>
 
-<body>
-     <header>
-      <!-- Start Navbar -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a href="/"><img src="/logo.jpg" id="logo" style="width:100px"/></a>
-           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about">Meet the Hackers</a>
-            </li>
-            <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
-            <li class="nav-item">
-              <% if (!session_username) { %>
-              <a class="nav-link" href="/login">Sign In</a>
-              <% } else { %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
-                 <div class="dropdown-menu" style="padding-right:50px;">
-                  <!-- <a class="dropdown-item" href="#">View Profile</a>
-                   <a class="dropdown-item" href="#">Posts</a> -->
-                    <a class="dropdown-item" href="/imgupload">Upload</a>
-                    <a class="dropdown-item" href="/logout">Logout</a>
-
-                     </li>
-              <% } %>
-              </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+<body style="background-color:white;">
+    
     <!-- End Navbar-->
-    </header>
-
-    <div align="center"style="margin-top:-40px;margin-bottom:60px;height:220px;width:100%;background-color:white">
-      <h4 style="color:black; font-size:30px">"SFSU Software Engineering Project CSC 648-848, Summer 2018.  For Demonstration Only” at the top of the WWW page. (Important so as to not confuse this with a real application)</h4>
-  </div>
 
 
     <!-- First Container -->
@@ -94,14 +108,49 @@
 </div>
 
 
-<!-- Loading Javascript -->
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-  crossorigin="anonymous"></script>
 
+<!-- Loading Javascript -->
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+  <script  src="../script/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Init Sidenav
+      $('.button-collapse').sideNav();
+
+      // Init Modal
+      $('.modal').modal();
+
+      // Scrollfire
+      const options = [
+        {
+          selector: '.row-1', offset: 50, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        },
+        {
+          selector: '.row-2', offset: 300, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        },
+        {
+          selector: '.row-3', offset: 400, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        }
+      ];
+
+      Materialize.scrollFire(options);
+
+    });
+  </script>
 
 </body>
 

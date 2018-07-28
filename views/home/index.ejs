@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/main.css" />
+ 
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PiCarousel</title>
+</head>
+
+  <!-- Header -->
+
+  <style>
+.btn {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    cursor: pointer;
+    font-size: 20px;
+    height:40px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+
+
+.show {
+    display: block;
+}
+</style>
+  
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <nav class="transparent nav-wrapper z-depth-0">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
+          <i class="material-icons">menu</i>
+        </a>
+        <a href="/" class="brand-logo">PiCarousel</a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active">
+            <a href="/imgupload">Upload</a>
+          </li>
+          <li>
+            <a href="/about">Meet the Team</a>
+          </li>
+          <li>
+           <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
+          </li>
+          
+        </ul>
+      </div>
+      <ul class="side-nav" id="mobile-nav">
+        <li>
+          <a href="/imgupload">Upload</a>
+        </li>
+        <li>
+          <a href="/about">Meet the team</a>
+        </li>
+        <li>
+          <a href="/register">Register</a>
+        </li>
+        
+      </ul>
+    </nav>
+    <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
+    <div align="center">
+      <form action="/" onsubmit="return validate()">
+     <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
+     <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
+   </form>
+
+    <span> <select style="display:block; width:100px;color:black;">
+      <option style="color:black;">All</option>
+      <option style="color:black;">Animals</option>
+      <option style="color:black;">Dogs</option>
+      <option style="color:black;">Cities</option>
+      <option style="color:black;">Birds</option>
+      <option style="color:black;">Houses</option>
+      <option style="color:black;">Nature</option>
+
+
+     </select>
+   </span>
+   </div>
+   <p id="illegal" style="color:red;text-align: center;"></p>
+  </header>
+
+  
+  <!-- Section: Main -->
+  <section class="section section-main">
+    <div class="container">
+      <h2 style="text-align:center;">All Categories</h2>
+      <hr>
+      <!-- Row 1 -->
+      <div class="row row-1">
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3>Aleressa</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
+            ea?
+          </div>
+        </div>
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/1.jpg" alt="">
+              <span class="card-title">Flower</span>
+              <a href="#abstract1" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+             <a href="/1.jpg" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="row row-2">
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/2.jpg" alt="">
+              <span class="card-title">Flower</span>
+              <a href="#abstract2" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <a href="/2.jpg" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3>Aleressa</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
+            ea?
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="row row-3">
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3>Recogged</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
+            ea?
+          </div>
+        </div>
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/3.jpg" alt="">
+              <span class="card-title">Recogged</span>
+              <a href="#abstract3" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+             <a href="/3.jpg" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <!-- Row 4-->
+
+       <div class="row row-4">
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/4.jpg" alt="">
+              <span class="card-title">Aleressa</span>
+              <a href="#abstract4" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+             <a href="/4.jpg" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3>Aleressa</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
+            ea?
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <section class="section section-main">
+    <div class="container">
+    
+      <!-- Row 5-->
+       <div class="row row-5">
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3>Recogged</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
+            ea?
+          </div>
+        </div>
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/5.jpg" alt="">
+              <span class="card-title">Recogged</span>
+              <a href="#abstract5" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <a href="/5.jpg" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 6 -->
+      <div class="row row-6">
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/6.jpg" alt="">
+              <span class="card-title">Aleressa</span>
+              <a href="#abstract6" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <a href="/6.jpg" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3>Aleressa</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
+            ea?
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 7 -->
+      <div class="row row-7">
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3>Recogged</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
+            ea?
+          </div>
+        </div>
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/7.jpg" alt="">
+              <span class="card-title">Recogged</span>
+              <a href="#abstract7" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+            <a href="/7.jpg" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <!-- Row 8-->
+
+       <div class="row row-4">
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/8.jpg" alt="">
+              <span class="card-title">Aleressa</span>
+              <a href="#abstract8" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <button class="btn"><i class="fa fa-download"></i> Download</button>
+            </div>
+          </div>
+        </div>
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3>Aleressa</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
+            ea?
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">PiCarousel</h5>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li>
+              <a class="grey-text text-lighten-3" href="/about">Meet the Team</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="/imgupload">Upload</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="/register">Register</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 PiCarousel
+        
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal 1 -->
+  <div id="abstract1" class="modal">
+    <div class="modal-content">
+      <h4>Flower</h4>
+      <img src="/1.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
+      saepe delectus maxime a reiciendis!
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div id="abstract2" class="modal">
+    <div class="modal-content">
+      <h4>Aleressa</h4>
+      <img src="/2.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
+      saepe delectus maxime a reiciendis!
+    </div>
+    <div class="modal-footer">
+      
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div id="abstract3" class="modal">
+    <div class="modal-content">
+      <h4>Recogged</h4>
+      <img src="/3.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
+      saepe delectus maxime a reiciendis!
+    </div>
+    <div class="modal-footer">   
+    </div>
+  </div>
+
+    <!-- Modal 4 -->
+
+   <div id="abstract4" class="modal">
+    <div class="modal-content">
+      <h4>Recogged</h4>
+      <img src="/4.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
+      saepe delectus maxime a reiciendis!
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+
+<div id="abstract5" class="modal">
+    <div class="modal-content">
+      <h4>Recogged</h4>
+      <img src="/5.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
+      saepe delectus maxime a reiciendis!
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+  <!-- Modal 6 -->
+
+  <div id="abstract6" class="modal">
+    <div class="modal-content">
+      <h4>Recogged</h4>
+      <img src="/6.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
+      saepe delectus maxime a reiciendis!
+    </div>
+    <div class="modal-footer">
+      
+    </div>
+  </div>
+
+  <!-- Modal 7 -->
+
+  <div id="abstract7" class="modal">
+    <div class="modal-content">
+      <h4>Recogged</h4>
+      <img src="/7.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
+      saepe delectus maxime a reiciendis!
+    </div>
+    <div class="modal-footer">
+    
+    </div>
+  </div>
+
+  <!-- Modal 8 -->
+
+  <div id="abstract8" class="modal">
+    <div class="modal-content">
+      <h4>Recogged</h4>
+      <img src="/8.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
+      saepe delectus maxime a reiciendis!
+    </div>
+    <div class="modal-footer">
+    
+    </div>
+  </div>
+
+
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="script/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Init Sidenav
+      $('.button-collapse').sideNav();
+
+      // Init Modal
+      $('.modal').modal();
+
+      // Scrollfire
+      const options = [
+        {
+          selector: '.row-1', offset: 50, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        },
+        {
+          selector: '.row-2', offset: 300, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        },
+        {
+          selector: '.row-3', offset: 400, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        }
+      ];
+
+      Materialize.scrollFire(options);
+
+    });
+  </script>
+
+  <script>
+  
+           function validate() {
+
+                let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+                //alert(document.getElementById('searchKey').value)
+                 if(special.test(document.getElementById('searchKey').value)){
+                     document.getElementById('illegal').innerHTML = '* Illegal character encountered'
+                     return false
+                 }
+           }
+  </script>
+
+  <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+  }
+}
+</script>
+</body>
+
+</html>

@@ -213,13 +213,6 @@ hr {
       <label for="psw" id='psw_label'><b>Password</b> <span id='symbol_pass'></span></label>
       <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-      <label for="Accttype"><b>Account Type</b></label>
-      <select name='accountType'>
- 	  <option value="Select">Select</option>
-  	  <option value="User">User</option>
-  	  <option value="Photographer">Photographer</option>
-      <option value="Both">Both</option>
-	  </select>
   
       <br></br>
 
@@ -355,7 +348,6 @@ document.getElementById('first').onkeyup = ()=> {
 
        // firstname should be less than 2 chars and not more than 25 chars and 
 
-       console.log('sandesh'.match(pattern))
 
 
        if(firstname.length <= 2 ||  firstname.length >= 25 || firstname.match(pattern) ){
