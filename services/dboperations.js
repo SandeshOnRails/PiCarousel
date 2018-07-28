@@ -17,7 +17,7 @@ module.exports = {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from user order by user_id desc limit "+first+",2 ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from user order by user_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -126,7 +126,7 @@ module.exports = {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from image order by photo_id desc limit "+first+",2 ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from image order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -135,12 +135,79 @@ module.exports = {
 
                   });
             },
+            getImagesBycondition: function(con,page,recPerPage,listcondition, data, callback) {
+                console.log("condition:"+listcondition);
+                let first =(page-1)*recPerPage;
+               
+                var returnValue;
+                this.resulta = con.query("Select * from image where adminverified='"+listcondition+"' order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
 
+                  });
+            },
+            verifiedImage: function(con, data, callback) {
+
+                //this.resulta = con.query("update categorie set categorie = "+data.categorie+" where categorie_id = "+data.id, function (err, result , fields) {
+                  console.log("photoid"+data.id);
+                  //console.log(data.id);
+
+                var returnValue;
+                //DELETE from tablename WHERE id IN (1,2,3,...,254);
+                
+                this.resulta = con.query("UPDATE image SET adminverified = 'verified' where photo_id IN("+data.id+")", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            waitingImage: function(con, data, callback) {
+
+                //this.resulta = con.query("update categorie set categorie = "+data.categorie+" where categorie_id = "+data.id, function (err, result , fields) {
+                  console.log("photoid"+data.id);
+                  //console.log(data.id);
+
+                var returnValue;
+                //DELETE from tablename WHERE id IN (1,2,3,...,254);
+                
+                this.resulta = con.query("UPDATE image SET adminverified = 'waiting' where photo_id IN("+data.id+")", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            rejectedImage: function(con, data, callback) {
+
+                //this.resulta = con.query("update categorie set categorie = "+data.categorie+" where categorie_id = "+data.id, function (err, result , fields) {
+                  console.log("photoid"+data.id);
+                  //console.log(data.id);
+
+                var returnValue;
+                //DELETE from tablename WHERE id IN (1,2,3,...,254);
+                
+                this.resulta = con.query("UPDATE image SET adminverified = 'rejected' where photo_id IN("+data.id+")", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
             getCategories: function(con,page,recPerPage, data, callback) {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from categorie order by categorie_id desc limit "+first+",2 ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from categorie order by categorie_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
