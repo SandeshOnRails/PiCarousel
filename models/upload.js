@@ -1,3 +1,6 @@
+
+            
+
 module.exports = (con, data, callback) => {
 
 
@@ -11,21 +14,21 @@ con.connect(function(err) {
   }
 // query the database
 
- con.query("INSERT INTO  image (filepath, photo_categorie, description, owner_user_id, adminverified, privacy, published, deleted) VALUES ('" + data.filepath + "','" + data.category + "','" + data.description + "','" + data.userID + "','" + "false" +"','" + data.privacy +"','"+ "false" + "','"+ "false" + "')", function(err, result, fields) {
+ con.query("INSERT INTO  image (filepath, photo_categorie, title, description, owner_user_id, adminverified, published) VALUES ('" + data.filepath + "','" + data.category + "','" + data.title + "','" + data.description + "','" + data.userID + "','" + "false" +"','"+ "false')", function(err, result, fields) {
               
 
       if(err) {
 
         console.log(err)
 
-        callback(false)
+      callback(false)
       }
 
         else { 
              
                console.log(result)
               
-               callback(true)
+              callback(true)
 
         }
 });

@@ -1,5 +1,5 @@
 
-var check = function (key, con, callback) {
+var search = function (key, con, callback) {
 
 
 con.connect(function(err) {
@@ -11,7 +11,9 @@ con.connect(function(err) {
   	console.log('connection successful')
   }
 
- con.query("SELECT * FROM photos WHERE description LIKE '%" + key + "%'", function(err, result, fields) {
+  if(!key.toLowerCase() === 'all'){
+
+ con.query("SELECT * FROM image WHERE photo_categorie LIKE '%" + key + "%'", function(err, result, fields) {
               
 
       if (err) {
@@ -25,6 +27,26 @@ con.connect(function(err) {
         }
 });
 
+}
+
+else {
+
+    con.query("SELECT * FROM image", function(err, result, fields) {
+              
+
+      if (err) {
+        console.log(err)
+      }
+        else { 
+             
+             callback(result)
+
+
+        }
+});
+
+}
+
 
 });
   
@@ -35,5 +57,5 @@ con.connect(function(err) {
 
 
 
-module.exports = check
+module.exports = search
 

@@ -1,175 +1,343 @@
 
+<!DOCTYPE html>
+<html>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-      crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/main.css" />
+ 
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a href="/"><img src="/logo.jpg" id="logo" style="width:100px"/></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PiCarousel</title>
+</head>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home</a>
+  <!-- Header -->
+
+  <style>
+.btn {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    cursor: pointer;
+    font-size: 20px;
+    height:40px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+
+
+.show {
+    display: block;
+}
+
+.radio-inline {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.radio-inline input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-inline:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.radio-inline input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.radio-inline input:checked ~ .checkmark:after {
+    display: inline-block;
+}
+
+/* Style the checkmark/indicator */
+.radio-inline .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+</style>
+  
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <nav class="transparent nav-wrapper z-depth-0">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
+          <i class="material-icons">menu</i>
+        </a>
+        <a href="/" class="brand-logo">PiCarousel</a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active">
+            <a href="/imgupload">Upload</a>
+          </li>
+          <li>
+            <a href="/about">Meet the Team</a>
+          </li>
+          <li>
+           <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
+          </li>
+          
+        </ul>
+      </div>
+      <ul class="side-nav" id="mobile-nav">
+        <li>
+          <a href="/imgupload">Upload</a>
+        </li>
+        <li>
+          <a href="/about">Meet the team</a>
+        </li>
+        <li>
+          <a href="/register">Register</a>
+        </li>
+        
+      </ul>
+    </nav>
+    <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
+    <div align="center">
+      <form action="/search" onsubmit="return validate()" method='post'>
+     <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
+     <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
+ 
+
+      <span> <select style="display:block; width:100px;color:black;" name="category">
+      <option style="color:black;">All</option>
+      <option style="color:black;">Animals</option>
+      <option style="color:black;">Dogs</option>
+      <option style="color:black;">Cities</option>
+      <option style="color:black;">Birds</option>
+      <option style="color:black;">Houses</option>
+      <option style="color:black;">Nature</option>
+
+
+     </select>
+   </span>
+   </div>
+   <p id="illegal" style="color:red;text-align: center;"></p>
+     </form>
+  </header>
+
+  
+  <!-- Section: Main -->
+
+  <section class="section section-main">
+    <div class="container">
+      <h2 style="text-align:center;">Showing results for <i><%=searchkey%></i></h2>
+      <hr>
+      <!-- Row 1 -->
+       <% for (var i =0; i < results.length; i++) { %>
+               
+               <% if (!(i%2 === 0)) { %>
+      <div class="row row-<%=i%>">
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3><%=results[i].title%></h3>
+             <%=results[i].description%>
+          </div>
+        </div>
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/<%=results[i].filepath%>" alt="">
+              <span class="card-title"> <%=results[i].title%> </span>
+              <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+             <a href="/<%=results[i].filepath%>" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% } else { %>
+
+      <!-- Row 2 -->
+      <div class="row row-<%=i%>">
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="/<%=results[i].filepath%>" alt="">
+              <span class="card-title"> <%=results[i].title%></span>
+              <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <a href="/<%=results[i].filepath%>" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col m6 hide-on-small-only">
+          <div class="img-content">
+            <h3><%=results[i].title%></h3>
+           <%=results[i].description%>
+          </div>
+        </div>
+      </div>
+
+      <% } }%>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">PiCarousel</h5>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li>
+              <a class="grey-text text-lighten-3" href="/about">Meet the Team</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about">Meet the Hackers</a>
+            <li>
+              <a class="grey-text text-lighten-3" href="/imgupload">Upload</a>
             </li>
-            <!-- Sign in using modal forms. WIP, import Ekta's modal sign-in -->
-            <li class="nav-item">
-              <% if (!session_username) { %>
-              <a class="nav-link" href="/register">Sign In</a>
-              <% } else { %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session_username%></a>
-                 <div class="dropdown-menu" style="padding-right:50px;">
-                  <!-- <a class="dropdown-item" href="#">View Profile</a>
-                   <a class="dropdown-item" href="#">Posts</a> -->
-                    <a class="dropdown-item" href="/imgupload">Upload</a>
-                    <a class="dropdown-item" href="/logout">Logout</a>
-
-                     </li>
-              <% } %>
-              </li>
+             <% if(!session_username) { %>
+            <li>
+              <a class="grey-text text-lighten-3" href="/register">Register</a>
+            </li>
+            <% } %>
 
           </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 PiCarousel
+        
+      </div>
+    </div>
+  </footer>
 
-    <div align="center"style="margin-top:-40px;margin-bottom:180px;height:40px;width:100%;background-color:white">
-      <h4 style="color:black; font-size:30px">"SFSU Software Engineering Project CSC 648-848, Summer 2018.  For Demonstration Only” at the top of the WWW page. (Important so as to not confuse this with a real application)</h4>
+  <!-- Modal 1 -->
+
+  <% for (var i=0; i < results.length; i++) { %>
+  <div id="abstract<%=i%>" class="modal">
+    <div class="modal-content">
+      <h4><%=results[i].title%></h4>
+      <img src="/<%=results[i].filepath%>" alt="" class="responsive-img"> 
+    </div>
+    <%=results[i].description%>
+    <div class="modal-footer">
+    </div>
   </div>
 
-
-       <div class="container searchContainer">
-    <div class="search card card-body">
-      <h2>Search Picarousel</h2>
-      <p class="lead"> Search Terms: bi, bird, birdie, dog, doggie, cute, parr, parrots, parrot, husk, huskey, king</p>
-      
-    <form name='search-form' class="example" method='POST' action="/search/results" style="margin:auto;max-width:300px" onsubmit='return validate()'>
-  <input type="text" placeholder="Search.." name="searchKey">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
-</div>
-</div>
-
-<p class= 'lead' id='noSearchKey'> </p>
-
-<% if (result.length < 1) { %>
-
-
-<script>
-
-	(function(){
-       
-       document.getElementById('noSearchKey').innerHTML = 'Sorry our database is small and we could not look up your search. Please check our categories.'
-
-       
-
-	})()
-
-</script>
-
-<% } else { %>
-
-<p><%=matchPercent%></p>
-
-		<% if ( searchKey != actualResult) { %>
-
-
-<script>
-
-	(function(){
-
-       
-       document.getElementById('noSearchKey').innerHTML = 'Did you mean ' + '<b><i><%=actualResult%></i></b> ? '+ 'Showing results for ' + '<b><i><%=actualResult%></b></i>' + ' instead'
-
-       
-
-	})()
-
-</script>
-
-	<% } %>
-
-  <% for(var i=0; i < result.length; i ++){ %>
-
-<div class="card" style="width: 18rem;display:inline-block;margin-left:50px;margin-top:20px;">
-  <img src="<%=result[i].filepath%>" alt="Card image cap" style='height:250px;width:100%'>
-  <div class="card-body">
-    <h5 class="card-title">Related Tags</h5>
-  </div>
-
-     <ul class="list-group list-group-flush">
-
-  <% var allDescription = result[i].description %>
-  <% allDescription = allDescription.split(',') %>
-  <% for (var j =0; j < allDescription.length; j++) { %> 
-    <li class="list-group-item"><%=allDescription[j]%></li>
-   
-   <% } %>
-  </ul>
-</div>
-
+  <% } %>
 
   
 
 
 
-<% }  } %>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="script/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Init Sidenav
+      $('.button-collapse').sideNav();
 
-<script>
+      // Init Modal
+      $('.modal').modal();
 
-function validate() {
-
-   if(!document.forms['search-form']['searchKey'].value) {
-
-          document.getElementById('noSearchKey').innerHTML = 'Please provide a search key ... '
-
-          return false
-
-       }
-
-       if(document.forms['search-form']['searchKey'].value.length > 10) {
-
-          document.getElementById('noSearchKey').innerHTML = 'Search query too big. Try again with characters of length <= 10'
-
-          return false
-       }
-
-       let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
-
-        if(special.test(document.forms['search-form']['searchKey'].value)) {
-
-          document.getElementById('noSearchKey').innerHTML = 'Invalid characters encountered. Try again'
-
-          return false
-
+      // Scrollfire
+      const options = [
+        {
+          selector: '.row-1', offset: 50, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        },
+        {
+          selector: '.row-2', offset: 300, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        },
+        {
+          selector: '.row-3', offset: 400, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
         }
+      ];
 
-}
+      Materialize.scrollFire(options);
 
+    });
+  </script>
 
-</script>
+  <script>
+  
+           function validate() {
 
-<!-- Loading Javascript -->
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-  crossorigin="anonymous"></script>
+                let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+                //alert(document.getElementById('searchKey').value)
+                 if(special.test(document.getElementById('searchKey').value)){
+                     document.getElementById('illegal').innerHTML = '* Illegal character encountered'
+                     return false
+                 }
+           }
+  </script>
 
+  
+</body>
 
-
-
+</html>

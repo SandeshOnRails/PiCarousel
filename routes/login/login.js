@@ -19,7 +19,7 @@ module.exports = function (app, login, con, crypto) {
                     req.session.user_id = userid;
                     req.session.user = username
 
-                    console.log(req.session.user)
+                    console.log("User id: " + req.session.user_id)
 	   	    	  	res.render('home/index', {session_username: req.session.user})
 
 	   	    	  }

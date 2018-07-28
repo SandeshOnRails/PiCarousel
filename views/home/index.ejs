@@ -39,6 +39,70 @@
 .show {
     display: block;
 }
+
+.radio-inline {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.radio-inline input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-inline:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.radio-inline input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.radio-inline input:checked ~ .checkmark:after {
+    display: inline-block;
+}
+
+/* Style the checkmark/indicator */
+.radio-inline .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
 </style>
   
 <body>
@@ -83,12 +147,11 @@
     </nav>
     <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
     <div align="center">
-      <form action="/" onsubmit="return validate()">
+      <form action="/search" onsubmit="return validate()" method='post'>
      <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
      <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
-   </form>
 
-    <span> <select style="display:block; width:100px;color:black;">
+      <span> <select style="display:block; width:100px;color:black;" name="category">
       <option style="color:black;">All</option>
       <option style="color:black;">Animals</option>
       <option style="color:black;">Dogs</option>
@@ -101,6 +164,8 @@
      </select>
    </span>
    </div>
+      </form>
+
    <p id="illegal" style="color:red;text-align: center;"></p>
   </header>
 
@@ -122,14 +187,14 @@
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/1.jpg" alt="">
+              <img src="/animal1.jpg" alt="">
               <span class="card-title">Flower</span>
               <a href="#abstract1" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-             <a href="/1.jpg" download> <button class="btn">
+             <a href="/animal1.jpg" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
@@ -141,14 +206,14 @@
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/2.jpg" alt="">
+              <img src="/animal2.jpg" alt="">
               <span class="card-title">Flower</span>
               <a href="#abstract2" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-              <a href="/2.jpg" download> <button class="btn">
+              <a href="/animal2.jpg" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
@@ -174,14 +239,14 @@
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/3.jpg" alt="">
+              <img src="/animal3.jpg" alt="">
               <span class="card-title">Recogged</span>
               <a href="#abstract3" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-             <a href="/3.jpg" download> <button class="btn">
+             <a href="/animal3.jpg" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
@@ -194,14 +259,14 @@
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/4.jpg" alt="">
+              <img src="/animal4.jpg" alt="">
               <span class="card-title">Aleressa</span>
               <a href="#abstract4" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-             <a href="/4.jpg" download> <button class="btn">
+             <a href="/animal4.jpg" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
@@ -231,14 +296,14 @@
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/5.jpg" alt="">
+              <img src="/bird1.jpg" alt="">
               <span class="card-title">Recogged</span>
               <a href="#abstract5" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-              <a href="/5.jpg" download> <button class="btn">
+              <a href="/bird1.jpg" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
@@ -250,14 +315,14 @@
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/6.jpg" alt="">
+              <img src="/bird2.jpg" alt="">
               <span class="card-title">Aleressa</span>
               <a href="#abstract6" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-              <a href="/6.jpg" download> <button class="btn">
+              <a href="/bird2.jpg" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
@@ -283,14 +348,14 @@
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/7.jpg" alt="">
+              <img src="/bird3.jpg" alt="">
               <span class="card-title">Recogged</span>
               <a href="#abstract7" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-            <a href="/7.jpg" download> <button class="btn">
+            <a href="/bird3.jpg" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
 
             </div>
@@ -304,14 +369,15 @@
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/8.jpg" alt="">
+              <img src="/bird4.jpg" alt="">
               <span class="card-title">Aleressa</span>
               <a href="#abstract8" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-              <button class="btn"><i class="fa fa-download"></i> Download</button>
+              <a href="/bird4.jpg" download> <button class="btn">
+             <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
         </div>
@@ -505,23 +571,7 @@
            }
   </script>
 
-  <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(e) {
-  if (!e.target.matches('.dropbtn')) {
-    var myDropdown = document.getElementById("myDropdown");
-      if (myDropdown.classList.contains('show')) {
-        myDropdown.classList.remove('show');
-      }
-  }
-}
-</script>
+  
 </body>
 
 </html>
