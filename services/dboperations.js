@@ -121,6 +121,29 @@ module.exports = {
 
                   });
             },
+            getImageCountBycondition: function(con,listcondition, data, callback) {
+               //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+                var returnValue;
+                if (listcondition == "all"){
+                  this.resulta = con.query("Select count(*)  as itemcount from image ", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+                }else{
+                  this.resulta = con.query("Select count(*)  as itemcount from image where adminverified='"+listcondition+"'", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+              }
+            },
             
             getImages: function(con,page,recPerPage, data, callback) {
                 let first =(page-1)*recPerPage;
@@ -140,6 +163,17 @@ module.exports = {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
+                if (listcondition == "all"){
+                    this.resulta = con.query("Select * from image order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+                }else{
+
                 this.resulta = con.query("Select * from image where adminverified='"+listcondition+"' order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
@@ -148,6 +182,7 @@ module.exports = {
                     //con.release();
 
                   });
+              }
             },
             verifiedImage: function(con, data, callback) {
 

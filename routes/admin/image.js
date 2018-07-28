@@ -28,21 +28,21 @@ module.exports = function (app,dbRequest,con) {
     	};
 	}
 
-	function ListviewBycondition(callback ,listconditon){
-		
-		console.log("a cond :"+listconditon);
-		_listcondition = listconditon;
+	function ListviewBycondition(callback ,listcondition){
 
-		dbRequest.getImageCount(con,"",function(itemcount){
+		console.log("a cond :"+listcondition);
+		_listcondition = listcondition;
+
+		dbRequest.getImageCountBycondition(con,_listcondition,"",function(itemcount){
 
 				_totalpage= Math.ceil(Number.parseInt(itemcount[0].itemcount,10) / Number.parseInt(_recPerPage,10));
 				next(_totalpage,_page,_listcondition);				
                          
     		});
 
-	 	function next(totalpage,page,_listconditon){
-    		console.log("db cond: "+_listconditon);
-    		 dbRequest.getImagesBycondition(con,page,_recPerPage,_listconditon,"",function(result){
+	 	function next(totalpage,page,_listcondition){
+    		console.log("db cond: "+_listcondition);
+    		 dbRequest.getImagesBycondition(con,page,_recPerPage,_listcondition,"",function(result){
 
 				_list = result;
 				_page=page;
@@ -54,6 +54,7 @@ module.exports = function (app,dbRequest,con) {
 	}
 
 	 app.post('/images', function(req, res){
+	 	_listcondition = "all";
 	 	console.log("images");
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
@@ -162,9 +163,10 @@ module.exports = function (app,dbRequest,con) {
 			_page--;
 		}else
 		_page = Number.parseInt(req.body.page,10);
-		initializeListview(function(){
+		ListviewBycondition(function(){
+			console.log("page next / prev"+_listcondition);
 	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
+	 		},_listcondition);
     	
 
 
