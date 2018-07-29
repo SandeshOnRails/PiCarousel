@@ -11,7 +11,9 @@ con.connect(function(err) {
   	console.log('connection successful')
   }
 
-  if(!key.toLowerCase() === 'all'){
+  console.log(key.toLowerCase())
+
+  if(!(key.toLowerCase() === 'all')){
 
  con.query("SELECT * FROM image WHERE photo_categorie LIKE '%" + key + "%'", function(err, result, fields) {
               

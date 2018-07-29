@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -140,7 +141,12 @@
           <a href="/about">Meet the team</a>
         </li>
         <li>
-          <a href="/register">Register</a>
+          <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
         </li>
         
       </ul>
@@ -150,6 +156,7 @@
       <form action="/search" onsubmit="return validate()" method='post'>
      <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
      <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
+ 
 
       <span> <select style="display:block; width:100px;color:black;" name="category">
       <option style="color:black;">All</option>
@@ -163,232 +170,75 @@
 
      </select>
    </span>
-   </div>
-      </form>
+      <p id="illegal" style="color:red;text-align: center;"></p>
 
-   <p id="illegal" style="color:red;text-align: center;"></p>
+   </div>
+     </form>
   </header>
 
   
   <!-- Section: Main -->
+
   <section class="section section-main">
     <div class="container">
-      <h2 style="text-align:center;">All Categories</h2>
+      <h2 style="text-align:center;">All Categories</i></h2>
       <hr>
       <!-- Row 1 -->
-      <div class="row row-1">
+       <% for (var i =0; i < results.length; i++) { %>
+               
+               <% if (!(i%2 === 0)) { %>
+      <div class="row row-<%=i%>">
         <div class="col m6 hide-on-small-only">
           <div class="img-content">
-            <h3>Aleressa</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
-            ea?
+            <h3><%=results[i].title%></h3>
+             <%=results[i].description%>
           </div>
         </div>
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/animal1.jpg" alt="">
-              <span class="card-title">Flower</span>
-              <a href="#abstract1" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+              <img src="/<%=results[i].filepath%>" alt="">
+              <span class="card-title"> <%=results[i].title%> </span>
+              <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-             <a href="/animal1.jpg" download> <button class="btn">
+             <a href="/<%=results[i].filepath%>" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
         </div>
       </div>
+
+      <% } else { %>
 
       <!-- Row 2 -->
-      <div class="row row-2">
+      <div class="row row-<%=i%>">
         <div class="col m6">
           <div class="card">
             <div class="card-image">
-              <img src="/animal2.jpg" alt="">
-              <span class="card-title">Flower</span>
-              <a href="#abstract2" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+              <img src="/<%=results[i].filepath%>" alt="">
+              <span class="card-title"> <%=results[i].title%></span>
+              <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="card-content">
-              <a href="/animal2.jpg" download> <button class="btn">
+              <a href="/<%=results[i].filepath%>" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
             </div>
           </div>
         </div>
         <div class="col m6 hide-on-small-only">
           <div class="img-content">
-            <h3>Aleressa</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
-            ea?
+            <h3><%=results[i].title%></h3>
+           <%=results[i].description%>
           </div>
         </div>
       </div>
 
-      <!-- Row 3 -->
-      <div class="row row-3">
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3>Recogged</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
-            ea?
-          </div>
-        </div>
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/animal3.jpg" alt="">
-              <span class="card-title">Recogged</span>
-              <a href="#abstract3" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
-            <div class="card-content">
-             <a href="/animal3.jpg" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-            <!-- Row 4-->
-
-       <div class="row row-4">
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/animal4.jpg" alt="">
-              <span class="card-title">Aleressa</span>
-              <a href="#abstract4" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
-            <div class="card-content">
-             <a href="/animal4.jpg" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-            </div>
-          </div>
-        </div>
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3>Aleressa</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
-            ea?
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
- <section class="section section-main">
-    <div class="container">
-    
-      <!-- Row 5-->
-       <div class="row row-5">
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3>Recogged</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
-            ea?
-          </div>
-        </div>
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/bird1.jpg" alt="">
-              <span class="card-title">Recogged</span>
-              <a href="#abstract5" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
-            <div class="card-content">
-              <a href="/bird1.jpg" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 6 -->
-      <div class="row row-6">
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/bird2.jpg" alt="">
-              <span class="card-title">Aleressa</span>
-              <a href="#abstract6" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
-            <div class="card-content">
-              <a href="/bird2.jpg" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-            </div>
-          </div>
-        </div>
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3>Aleressa</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
-            ea?
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 7 -->
-      <div class="row row-7">
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3>Recogged</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
-            ea?
-          </div>
-        </div>
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/bird3.jpg" alt="">
-              <span class="card-title">Recogged</span>
-              <a href="#abstract7" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
-            <div class="card-content">
-            <a href="/bird3.jpg" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-            <!-- Row 8-->
-
-       <div class="row row-4">
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/bird4.jpg" alt="">
-              <span class="card-title">Aleressa</span>
-              <a href="#abstract8" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
-            <div class="card-content">
-              <a href="/bird4.jpg" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-            </div>
-          </div>
-        </div>
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3>Aleressa</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut est similique aut officia unde ratione a impedit sunt numquam
-            ea?
-          </div>
-        </div>
-      </div>
+      <% } }%>
     </div>
   </section>
 
@@ -408,9 +258,11 @@
             <li>
               <a class="grey-text text-lighten-3" href="/imgupload">Upload</a>
             </li>
+             <% if(!session_username) { %>
             <li>
               <a class="grey-text text-lighten-3" href="/register">Register</a>
             </li>
+            <% } %>
 
           </ul>
         </div>
@@ -425,101 +277,21 @@
   </footer>
 
   <!-- Modal 1 -->
-  <div id="abstract1" class="modal">
+
+  <% for (var i=0; i < results.length; i++) { %>
+  <div id="abstract<%=i%>" class="modal">
     <div class="modal-content">
-      <h4>Flower</h4>
-      <img src="/1.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
-      saepe delectus maxime a reiciendis!
+      <h4><%=results[i].title%></h4>
+      <img src="/<%=results[i].filepath%>" alt="" class="responsive-img"> 
     </div>
+    <%=results[i].description%>
     <div class="modal-footer">
     </div>
   </div>
 
-  <!-- Modal 2 -->
-  <div id="abstract2" class="modal">
-    <div class="modal-content">
-      <h4>Aleressa</h4>
-      <img src="/2.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
-      saepe delectus maxime a reiciendis!
-    </div>
-    <div class="modal-footer">
-      
-    </div>
-  </div>
+  <% } %>
 
-  <!-- Modal 3 -->
-  <div id="abstract3" class="modal">
-    <div class="modal-content">
-      <h4>Recogged</h4>
-      <img src="/3.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
-      saepe delectus maxime a reiciendis!
-    </div>
-    <div class="modal-footer">   
-    </div>
-  </div>
-
-    <!-- Modal 4 -->
-
-   <div id="abstract4" class="modal">
-    <div class="modal-content">
-      <h4>Recogged</h4>
-      <img src="/4.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
-      saepe delectus maxime a reiciendis!
-    </div>
-    <div class="modal-footer">
-    </div>
-  </div>
-
-  <!-- Modal 5 -->
-
-<div id="abstract5" class="modal">
-    <div class="modal-content">
-      <h4>Recogged</h4>
-      <img src="/5.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
-      saepe delectus maxime a reiciendis!
-    </div>
-    <div class="modal-footer">
-    </div>
-  </div>
-
-  <!-- Modal 6 -->
-
-  <div id="abstract6" class="modal">
-    <div class="modal-content">
-      <h4>Recogged</h4>
-      <img src="/6.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
-      saepe delectus maxime a reiciendis!
-    </div>
-    <div class="modal-footer">
-      
-    </div>
-  </div>
-
-  <!-- Modal 7 -->
-
-  <div id="abstract7" class="modal">
-    <div class="modal-content">
-      <h4>Recogged</h4>
-      <img src="/7.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
-      saepe delectus maxime a reiciendis!
-    </div>
-    <div class="modal-footer">
-    
-    </div>
-  </div>
-
-  <!-- Modal 8 -->
-
-  <div id="abstract8" class="modal">
-    <div class="modal-content">
-      <h4>Recogged</h4>
-      <img src="/8.jpg" alt="" class="responsive-img"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti animi laboriosam, quisquam minus recusandae
-      saepe delectus maxime a reiciendis!
-    </div>
-    <div class="modal-footer">
-    
-    </div>
-  </div>
+  
 
 
 
@@ -568,7 +340,16 @@
                      document.getElementById('illegal').innerHTML = '* Illegal character encountered'
                      return false
                  }
+
+                 if(document.getElementById('searchKey').value.length < 1) {
+
+                   document.getElementById('illegal').innerHTML = '* Please provide a search key'
+
+                   return false
+
+                 }
            }
+
   </script>
 
   
