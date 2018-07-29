@@ -5,6 +5,9 @@ module.exports = function (app,dbRequest,con) {
 	var _totalpage=0;
 	var _list;
 	var _listcondition;
+	var _licence="all";
+	var _privacy="all";;
+	var _verification="all";
 
 	function initializeListview(callback){
 
@@ -17,7 +20,7 @@ module.exports = function (app,dbRequest,con) {
 
 	 	function next(totalpage,page){
     		console.log("after list : ");
-    		 dbRequest.getImages(con,page,_recPerPage,"",function(result){
+    		 dbRequest.getUserImages(con,page,_recPerPage,"",function(result){
 
 				_list = result;
 				_page=page;
@@ -55,101 +58,105 @@ module.exports = function (app,dbRequest,con) {
 
 	 app.post('/myaccount', function(req, res){
 	 	_listcondition = "all";
-	 	console.log("images");
+	 	console.log("my account");
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 	 	initializeListview(function(){
-	 		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 		res.render('admin/viewMyaccount', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	});
 	 
 
 
 	 })
 
-	 app.post('/myaccountimagesListWaiting', function(req, res){
-	 	console.log("images");
+	app.post('/myaccountProfile', function(req, res){
+	 	_listcondition = "all";
+	 	console.log("my account profile");
+	 	console.log("admin page session id: " + req.session.user_id)
+	 	
+	 		
+	 		dbRequest.getOneUser(con,req.body,function(data){
+
+				
+				res.render('admin/viewMyaccountProfile', {operation:'list',result:data});//from views categories.ejs					
+                         
+    		});	 
+
+
+	 })
+
+	app.post('/myaccountProfileSave', function(req, res){
+
+		console.log("my acount profile save ");
+	 	
+	 	dbRequest.editUserProfile(con,req.body,function(result){
+
+		callnext();
+                         
+    	});
+
+    	function callnext(){
+
+
+    		dbRequest.getOneUser(con,req.body,function(data){
+
+				
+				res.render('admin/viewMyaccountProfile', {operation:'list',result:data});//from views categories.ejs
+                         
+    		});	 
+
+
+    			
+			
+    	}
+
+
+	 })
+
+	app.post('/myaccountImages', function(req, res){
+	 	_listcondition = "all";
+	 	console.log("my account images");
+	 	console.log("admin page session id: " + req.session.user_id)
+	 	if (req.query.page)
+	 		_page = req.query.page;
+	 	initializeListview(function(){
+	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 	});
+
+	 })
+
+	app.post('/myaccountImagesUpload', function(req, res){
+	 	_listcondition = "all";
+	 	console.log("my account images");
+	 	console.log("admin page session id: " + req.session.user_id)
+	 	if (req.query.page)
+	 		_page = req.query.page;
+	 	dbRequest.getCategoriesAll(con,"",function(data){
+
+				
+				res.render('admin/photoUploadForm', {operation:'list',result:data});//from views categories.ejs		
+                         
+    		});	 
+	 	
+
+	 })
+
+	 app.post('/myaccountImagesByCondition', function(req, res){
+	 	console.log("my account images condition");
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 
 	 	ListviewBycondition(function(){
-	 		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	},'waiting');
 	 
 
 
 	 })
 
-	 app.post('/myaccountimagesListRejected', function(req, res){
-	 	console.log("images");
-	 	console.log("admin page session id: " + req.session.user_id)
-	 	if (req.query.page)
-	 		_page = req.query.page;
-	 	ListviewBycondition(function(){
-	 		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 	},'rejected');
-	 
-
-
-	 })
-
-	 app.post('/myaccountimagesListVerified', function(req, res){
-	 	console.log("images");
-	 	console.log("admin page session id: " + req.session.user_id)
-	 	if (req.query.page)
-	 		_page = req.query.page;
-	 	ListviewBycondition(function(){
-	 		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 	},'verified');
-	 
-
-
-	 })
-
-    app.post('/myaccountwaitingImage', function(req, res){
-		
-		
-		
-		dbRequest.waitingImage(con,req.body,function(result){
-
-			_list = result;
-			initializeListview(function(){
-	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
-
-    });
-
-    app.post('/myaccountverifiedImage', function(req, res){
-		
-		
-		
-		dbRequest.verifiedImage(con,req.body,function(result){
-
-			_list = result;
-			initializeListview(function(){
-	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
-
-    });
-    app.post('/myaccountrejectedImage', function(req, res){
-		
-		
-		
-		dbRequest.rejectedImage(con,req.body,function(result){
-
-			_list = result;
-			initializeListview(function(){
-	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
-
-    });
+	
 
     app.post('/myaccountimagesChangePage', function(req, res){
 		
@@ -165,7 +172,7 @@ module.exports = function (app,dbRequest,con) {
 		_page = Number.parseInt(req.body.page,10);
 		ListviewBycondition(function(){
 			console.log("page next / prev"+_listcondition);
-	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 			res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		},_listcondition);
     	
 

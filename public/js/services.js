@@ -34,6 +34,7 @@ function postData(data){
 
      var resultdiv= data.resultDiv;
 
+
      $.ajax({
             type: "POST",
             url: "http://localhost:3000/"+data.operation,
@@ -41,7 +42,7 @@ function postData(data){
             contentType: "application/json; charset=utf-8",
             success: function (data) {
               //alert('suc');
-                console.log('success delete data');
+                console.log('success post data');
                             //console.log(JSON.stringify(data));
                             //alert(resultdiv);
                             document.getElementById(resultdiv).innerHTML=data;

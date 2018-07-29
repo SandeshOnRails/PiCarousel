@@ -26,6 +26,19 @@ module.exports = {
 
                   });
             },
+            getOneUser: function(con,data, callback) {
+                
+               
+                var returnValue;
+                this.resulta = con.query("Select * from user where user_id=1 ;", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
             getUserCount: function(con, data, callback) {
                //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
                 var returnValue;
@@ -73,7 +86,33 @@ module.exports = {
 
                   });
             },
+            editUserProfile: function(con, data, callback) {
 
+                //this.resulta = con.query("update categorie set categorie = "+data.categorie+" where categorie_id = "+data.id, function (err, result , fields) {
+                  console.log("edit user profile called");
+                  console.log("id="+data.id);
+                  console.log(data.firstname);
+                  console.log(data.lastname);
+                  console.log(data.email);
+                  console.log(data.age);
+                  console.log("gender"+data.gender);
+            
+                var returnValue;
+                this.resulta = con.query("update user set "+
+                  "firstname = '"+data.firstname+"' ,"+
+                  "lastname = '"+data.lastname+"' ,"+
+                  "email = '"+data.email+"' ,"+
+                  "age = "+data.age+" ,"+
+                  "gender = "+data.gender+" "+
+                  "where user_id = "+data.id, function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
             insertImage: function(con, data, callback) {
                 console.log("sql catching the form:"+data.imageDescription);
                 var returnValue;
@@ -150,6 +189,19 @@ module.exports = {
                
                 var returnValue;
                 this.resulta = con.query("Select * from image order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            getUserImages: function(con,page,recPerPage, data, callback) {
+                let first =(page-1)*recPerPage;
+               
+                var returnValue;
+                this.resulta = con.query("Select * from image where owner_user_id = 3  order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -243,6 +295,19 @@ module.exports = {
                
                 var returnValue;
                 this.resulta = con.query("Select * from categorie order by categorie_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            getCategoriesAll: function(con, data, callback) {
+               
+               
+                var returnValue;
+                this.resulta = con.query("Select * from categorie ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);

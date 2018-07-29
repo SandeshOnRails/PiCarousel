@@ -1,0 +1,81 @@
+<br>  
+  <nav class="nav nav-pills nav-justified">
+    <table>
+      <tr>
+       <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountProfile','categorieContent');"> my profile</a></td>
+        <td>|</td>
+        <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountImages','categorieContent');"> my photos</a></td>
+
+      </tr>
+    </table>
+  </nav>
+
+
+    <div id="profile" class="tab-pane fade in active">
+      <h3>My profile</h3>
+      <table id="profileTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th>User</th>
+            
+            </tr>
+          </thead>
+          <tbody id="profileTable">
+
+            <tr id = "profile<%=result[0].user_id %>">
+             <td width="50">firstname</td>
+              <td id="firstname">
+                :&nbsp;<%= result[0].firstname %>
+              </td>
+            </tr>
+            <tr>
+            <td>lastname</td>
+              <td id="lastname">
+                :&nbsp;<%= result[0].lastname %>
+              </td>
+            </tr>
+            <tr>
+            <td>email</td>
+              <td id="email">
+                  :&nbsp;<%= result[0].email %>
+              </td>
+            </tr>
+            <tr>
+            <td>age</td>
+              <td id="age">
+                  :&nbsp;<%= result[0].age %>
+              </td>
+              </tr>
+              <tr>
+              <td>gender</td>
+              <td id="gender">
+                  <%if ( result[0].gender ==0){%>
+                  :&nbsp;not specified
+                  <%}else if ( result[0].gender ==1){%>
+                   :&nbsp;male
+                  <%}else {%>
+                  :&nbsp;female
+                  <%}%>
+              </td>
+              </tr>
+              <tr>
+                <td>account</td>
+                <td>
+                  :&nbsp;<%= result[0].accounttype %>
+                </td>
+              </tr>
+            <tr>
+            <td colspan="2" id="buttons">
+
+                <button style="color:white;background-color:#d65151;" type="button" onclick="makeMyAccountProfileEditable(<%=result[0].user_id %>,'<%= result[0].firstname %>','<%= result[0].lastname %>','<%= result[0].email %>','<%= result[0].age %>','<%= result[0].gender %>');" class="btn btn-secondary btn-sm">edit account </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('myaccountDelete');" class="btn btn-secondary btn-sm">delete account</button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('myaccountChanegePass');" class="btn btn-secondary btn-sm">change password </button>
+                
+              </td>
+            </tr>
+           
+          </tbody>
+      </table>
+
+      <div id="operation"></div>
+    </div>

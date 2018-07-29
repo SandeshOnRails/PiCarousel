@@ -2,21 +2,16 @@
   <nav class="nav nav-pills nav-justified">
     <table>
       <tr>
-        <td><a class="nav-link active" href="#" onclick="postStatusImage('myaccountImages');"> my photos</a></td>
+       <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountProfile','categorieContent');"> my profile</a></td>
         <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusImage('myaccountImagesPrivate');"> private images</a></td>
-        <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusImage('myaccountImagesPublic');"> public images</a></td>
-        <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusImage('myaccountImagesCommercial');"> commercial images</a></td>
-        <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusImage('myaccountImagesFree');"> free images</a></td>
+        <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountImages','categorieContent');"> my photos</a></td>
+
       </tr>
     </table>
   </nav>
 
-    <div id="images" class="tab-pane fade in active">
-      <h3>IMAGES</h3>
+    <div id="myaccount" class="tab-pane fade in active">
+      <h3>my photos</h3>
       <table id="imagesTable" class="table table-striped">
           <thead>
             <tr>

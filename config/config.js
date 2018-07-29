@@ -1,6 +1,7 @@
 
 var mysql = require('mysql');
 
+
 var con  = mysql.createConnection({
 
   host     : 'picarousel.ctftzezisj7n.us-east-2.rds.amazonaws.com',

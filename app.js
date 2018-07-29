@@ -50,12 +50,14 @@ app.set('view engine', 'ejs');
 require('./routes/about/about.js')(express,app);
 require('./routes/search/search.js')(app,con,search,checkForKey,searchMatchPercent)
 require('./routes/home/home.js')(app)
-require('./routes/admin/admin.js')(app)
 require('./routes/img-upload/upload.js')(app,uploadImage,con)
+//admin pages
+require('./routes/admin/admin.js')(app)
 require('./routes/admin/categorie.js')(app,dbRequest,con)
 require('./routes/admin/user.js')(app,dbRequest,con)
 require('./routes/admin/image.js')(app,dbRequest,con)
 require('./routes/admin/myaccount.js')(app,dbRequest,con)
+
 require('./routes/register/register.js')(app, authenticate, register, con, crypto)
 require('./routes/login/login.js')(app, loginUser, con, crypto)
 require('./routes/logout/logout.js')(app)
