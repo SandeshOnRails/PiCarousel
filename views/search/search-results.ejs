@@ -141,7 +141,12 @@
           <a href="/about">Meet the team</a>
         </li>
         <li>
-          <a href="/register">Register</a>
+          <% if(session_username) { %>
+            <a href="/profile"><%=session_username%></a>
+           <% } else { %>
+           <a href="/register">Register</a>
+           
+           <% } %>
         </li>
         
       </ul>
@@ -165,8 +170,9 @@
 
      </select>
    </span>
+      <p id="illegal" style="color:red;text-align: center;"></p>
+
    </div>
-   <p id="illegal" style="color:red;text-align: center;"></p>
      </form>
   </header>
 
@@ -333,6 +339,14 @@
                  if(special.test(document.getElementById('searchKey').value)){
                      document.getElementById('illegal').innerHTML = '* Illegal character encountered'
                      return false
+                 }
+
+                 if(document.getElementById('searchKey').value.length < 1) {
+
+                   document.getElementById('illegal').innerHTML = '* Please provide a search key'
+
+                   return false
+
                  }
            }
   </script>
