@@ -210,11 +210,23 @@ module.exports = {
 
                   });
             },
-            getUserImagesByFilter: function(con,page,recPerPage, data, callback) {
+            getUserImagesByFilter: function(con,page,recPerPage, listcondition, callback) {
                 let first =(page-1)*recPerPage;
-               
+                var sql="";
+                
+                if (listcondition.licence != "all" ){
+                  sql = sql + " and licencetype = '"+listcondition.licence+"' ";
+                }
+                if (listcondition.privacy != "all" ){
+                  sql = sql + " and privacy = '"+listcondition.privacy+"' ";
+                }
+                if (listcondition.status != "all" ){
+                  sql = sql + " and adminverified = '"+listcondition.status+"' ";
+                }
+
+                console.log("sql : "+sql);
                 var returnValue;
-                this.resulta = con.query("Select * from image where owner_user_id = 3  order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from image where owner_user_id = 3 "+ sql +" order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -241,7 +253,7 @@ module.exports = {
                 console.log("db"+listcondition.licence);
                 console.log("db"+listcondition.privacy);
                 console.log("db"+listcondition.status);
-                var count =0;
+               
                 var sql="";
                 
                 if (listcondition.licence != "all" ){
@@ -256,8 +268,8 @@ module.exports = {
 
                 console.log("sql : "+sql);
 
-                if (listcondition == "all"){
-                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id =3", function (err, result , fields) {
+               
+                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id =3 "+sql, function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -265,16 +277,7 @@ module.exports = {
                     //con.release();
 
                   });
-                }else{
-                  this.resulta = con.query("Select count(*)  as itemcount from image where adminverified='"+listcondition+"'", function (err, result , fields) {
-                   
-                    if (err) throw err;
-                    console.log("in sendQuery Result: " + result);
-                    callback(result);
-                    //con.release();
-
-                  });
-              }
+                
             },
             //only for admin verified condition
             getImagesBycondition: function(con,page,recPerPage,listcondition, data, callback) {

@@ -26,7 +26,7 @@
         <tr>
           <td>
               <div style="float:left;" class="btn-group">
-                  <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusMyAccount('myaccountImagesUpload','operations');" class="btn btn-secondary btn-sm">upload photo </button>
+                  <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusMyAccount('myaccountImagesUpload','operation');" class="btn btn-secondary btn-sm">upload photo </button>
                    &nbsp; &nbsp;
               </div>
           </td>
@@ -56,7 +56,7 @@
               </select>
 
           </td>
-          <td><button style="color:white;background-color:#d65151;" type="button" onclick="filterMyPhoto('myaccountImagesByConditionFilter','');" class="btn btn-secondary btn-sm">filter </button></td>
+          <td><button style="color:white;background-color:#d65151;" type="button" onclick="filterMyPhoto('myaccountImagesByConditionFilter','categorieContent');" class="btn btn-secondary btn-sm">filter </button></td>
         </tr>
       </table><br>
 
@@ -65,6 +65,7 @@
       <table id="imagesTable" class="table table-striped">
           <thead>
             <tr>
+             <th>id</th>
               <th>Image</th>
               <th>Categorie</th>
               <th>Description</th>
@@ -84,6 +85,9 @@
  <% for (var i=0; i<result.length; i++) {%>
  <%console.log(result[i].filepath);%>
             <tr id = "photo<%=result[i].photo_id %>">
+             <td>
+                <%= result[i].photo_id %>
+              </td>
               <td>
                 <a target="_blank" onclick="makeCategorieEditable(<%=result[i].photo_id %>,'<%=result[i].photo_id %>');"  href="<%=result[i].filepath %>">
                 <img src="<%=result[i].filepath %>" alt="Image" style="width:150px">
@@ -96,7 +100,7 @@
                 <%= result[i].description %>
               </td>
               <td>
-               owner
+                <%= result[i].owner_user_id %>
               </td>
                <td>
                   <%= result[i].adminverified %>

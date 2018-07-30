@@ -108,9 +108,13 @@ module.exports = function (app,dbRequest,con) {
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
-	 	initializeListview(function(){
-	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 	},'waiting'); 
+
+	 	 dbRequest.getCategoriesAll(con,"",function(result){
+
+				res.render('admin/photoUploadForm', {operation:'list',result:result});//from views categories.ejs
+    		});
+
+	 	
 	 	
 
 	 })
@@ -135,6 +139,7 @@ module.exports = function (app,dbRequest,con) {
 		//console.log(data.sampleTime);
 		//console.log(req.body.privacy);
 		//console.log(req.body.status);
+		_page=1;
 		G_listcondition.licence = req.body.licence;
 		G_listcondition.privacy = req.body.privacy;
 		G_listcondition.status = req.body.status;
