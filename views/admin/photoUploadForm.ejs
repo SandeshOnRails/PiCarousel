@@ -1,15 +1,15 @@
 
     <form ref='uploadForm' name='imageUploadForm' id='imageUploadForm'  action='/upload' method='post' encType="multipart/form-data">
     	categorie:<br>
-		    <select name="imageCategorieId" id ="imageCategorieId">
+		    <select name="category" id ="category">
 				  	<option value="0">Select</option>
 				  	<% for (i=0; i<result.length; i++) {%>
 				  	
-				  	<option name="<%=result[i].categorie_id%>" value="<%=result[i].categorie_id%>"><%=result[i].categorie%></option>
+				  	<option name="<%=result[i].categorie%>" value="<%=result[i].categorie%>"><%=result[i].categorie%></option>
 				  	<%}%>
 			</select> <br>
     	description:<br>
-  			 <textarea name="imageDescription" id="imageDescription" rows="4" cols="50"></textarea><br><br>
+  			 <textarea name="subject" id="subject" rows="4" cols="50"></textarea><br><br>
 
 			<input type="radio" value="1" id="free" name="licenceType" checked />
             <label for="free">free</label>
@@ -24,7 +24,7 @@
 			<input type="radio" value="3" id="privateshared" name="privacy"  />
             <label for="privateshared">private & shared</label><br><br>
 
-            <input type="checkbox" value="1" id="publish" name="publish" value="1" />
+            <input type="checkbox" value="true" id="published" name="published" value="true" />
         	<label for="publish">Publish</label><br><br>
 
         	<input type="file" name="sampleFile" /><br>

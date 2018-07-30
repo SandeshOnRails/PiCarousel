@@ -183,7 +183,7 @@ module.exports = {
                   });
               }
             },
-            
+
             getImages: function(con,page,recPerPage, data, callback) {
                 let first =(page-1)*recPerPage;
                
@@ -210,6 +210,73 @@ module.exports = {
 
                   });
             },
+            getUserImagesByFilter: function(con,page,recPerPage, data, callback) {
+                let first =(page-1)*recPerPage;
+               
+                var returnValue;
+                this.resulta = con.query("Select * from image where owner_user_id = 3  order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            getUserImageCount: function(con, data, callback) {
+               //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+                var returnValue;
+                this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id = 3", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            //filter by licence,privacy and status
+            getUserImageCountByFiler: function(con,listcondition, data, callback) {
+               //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+                console.log("db"+listcondition.licence);
+                console.log("db"+listcondition.privacy);
+                console.log("db"+listcondition.status);
+                var count =0;
+                var sql="";
+                
+                if (listcondition.licence != "all" ){
+                  sql = sql + " and licencetype = '"+listcondition.licence+"' ";
+                }
+                if (listcondition.privacy != "all" ){
+                  sql = sql + " and privacy = '"+listcondition.privacy+"' ";
+                }
+                if (listcondition.status != "all" ){
+                  sql = sql + " and adminverified = '"+listcondition.status+"' ";
+                }
+
+                console.log("sql : "+sql);
+
+                if (listcondition == "all"){
+                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id =3", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+                }else{
+                  this.resulta = con.query("Select count(*)  as itemcount from image where adminverified='"+listcondition+"'", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+              }
+            },
+            //only for admin verified condition
             getImagesBycondition: function(con,page,recPerPage,listcondition, data, callback) {
                 console.log("condition:"+listcondition);
                 let first =(page-1)*recPerPage;

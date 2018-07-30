@@ -9,10 +9,15 @@ function postStatusMyAccount(postTo, resDiv){
 var filter ={};
 
 function filterMyPhoto(postTo,resDiv){
+      
 
       var data={};
+      data.licence = document.getElementById("licence").value;
+      data.privacy = document.getElementById("privacy").value;
+      data.status = document.getElementById("status").value;
       data.operation = postTo;
       data.resultDiv = resDiv;
+      
       postData(data);
 }
 

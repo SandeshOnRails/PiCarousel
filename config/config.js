@@ -11,8 +11,8 @@ var con  = mysql.createConnection({
   database : 'picarousel'
 
 });
-
 /*
+
 var con  = mysql.createConnection({
 
   host     : 'localhost',
@@ -21,8 +21,8 @@ var con  = mysql.createConnection({
   database : 'picarousel'
 
 });
-*/
 
+*/
 
 
 module.exports = con;

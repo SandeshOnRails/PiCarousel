@@ -59,6 +59,8 @@ module.exports = function (app,dbRequest,con) {
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
+	 	else
+	 		_page = 1;
 	 	initializeListview(function(){
 	 		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	});
@@ -72,7 +74,8 @@ module.exports = function (app,dbRequest,con) {
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
-
+	 	else
+	 		_page=1;
 	 	ListviewBycondition(function(){
 	 		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	},'waiting');
@@ -86,6 +89,8 @@ module.exports = function (app,dbRequest,con) {
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
+	 	else
+	 		_page = 1;
 	 	ListviewBycondition(function(){
 	 		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	},'rejected');
@@ -99,6 +104,8 @@ module.exports = function (app,dbRequest,con) {
 	 	console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
+	 	else
+	 		_page = 1;
 	 	ListviewBycondition(function(){
 	 		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	},'verified');
