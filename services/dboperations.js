@@ -103,7 +103,7 @@ module.exports = {
                   "lastname = '"+data.lastname+"' ,"+
                   "email = '"+data.email+"' ,"+
                   "age = "+data.age+" ,"+
-                  "gender = "+data.gender+" "+
+                  "gender = '"+data.gender+"' "+
                   "where user_id = "+data.id, function (err, result , fields) {
                    
                     if (err) throw err;

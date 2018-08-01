@@ -23,6 +23,12 @@
           <tbody id="profileTable">
 
             <tr id = "profile<%=result[0].user_id %>">
+             <td width="50">id</td>
+              <td id="user_id">
+                :&nbsp;<%= result[0].user_id %>
+              </td>
+            </tr>
+            <tr id = "profile<%=result[0].user_id %>">
              <td width="50">firstname</td>
               <td id="firstname">
                 :&nbsp;<%= result[0].firstname %>
@@ -49,20 +55,8 @@
               <tr>
               <td>gender</td>
               <td id="gender">
-                  <%if ( result[0].gender ==0){%>
-                  :&nbsp;not specified
-                  <%}else if ( result[0].gender ==1){%>
-                   :&nbsp;male
-                  <%}else {%>
-                  :&nbsp;female
-                  <%}%>
+                  :&nbsp;<%= result[0].gender %>
               </td>
-              </tr>
-              <tr>
-                <td>account</td>
-                <td>
-                  :&nbsp;<%= result[0].accounttype %>
-                </td>
               </tr>
             <tr>
             <td colspan="2" id="buttons">

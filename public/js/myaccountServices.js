@@ -48,7 +48,28 @@ function makeMyAccountProfileEditable(id, firstname,lastname,email,age,gender,ac
     document.getElementById("lastname").innerHTML = "<input type=\"text\" id=\"lastnameedit\" name=\"lastname\" value=\""+lastname+"\">";
     document.getElementById("email").innerHTML = "<input type=\"text\" id=\"emailedit\" name=\"email\" value=\""+email+"\">";
     document.getElementById("age").innerHTML = "<input type=\"text\" id=\"ageedit\" name=\"age\" value=\""+age+"\">";
-    document.getElementById("gender").innerHTML = "<input type=\"text\" id=\"genderedit\" name=\"gender\" value=\""+gender+"\">";
+    //document.getElementById("gender").innerHTML = "<input type=\"text\" id=\"genderedit\" name=\"gender\" value=\""+gender+"\">";
+    
+     formselect  = "<select id=\"genderedit\" class=\"selectpicker\">";
+
+                if (gender == "not specified" && gender != "male" && gender != "female"){
+                  formselect = formselect + "<option selected=\"true\">not specified</option>";
+                  formselect = formselect + "<option>male</option>";
+                  formselect = formselect + "<option>female</option></select>";
+                  
+                }
+                else if ( gender == "male" ){
+                  formselect = formselect + "<option >not specified</option>";
+                  formselect = formselect + "<option selected=\"true\">male</option>";
+                  formselect = formselect + "<option>female</option></select>";
+                }else{
+                  formselect = formselect + "<option >not specified</option>";
+                  formselect = formselect + "<option >male</option>";
+                  formselect = formselect + "<option selected=\"true\">female</option></select>";
+                }
+
+     document.getElementById("gender").innerHTML = formselect;
+
     document.getElementById("buttons").innerHTML = "<button style=\"color:white;background-color:#d65151;\" "+
      "type=\"button\" onclick=\"saveMyAccountProfile("+id+");\""+
       "class=\"btn btn-secondary btn-sm\">save </button>"+
