@@ -201,7 +201,7 @@ module.exports = {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from image where owner_user_id = 3  order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from image where owner_user_id = 3 and deleted= 0 order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -238,7 +238,7 @@ module.exports = {
             getUserImageCount: function(con, data, callback) {
                //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
                 var returnValue;
-                this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id = 3", function (err, result , fields) {
+                this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id = 3 and deleted =0", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -269,7 +269,7 @@ module.exports = {
                 console.log("sql : "+sql);
 
                
-                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id =3 "+sql, function (err, result , fields) {
+                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id =3 and deleted =0"+sql, function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);

@@ -26,7 +26,7 @@
               <th>verification status</th>
               <th>licence type</th>
               <th>privacy</th>
-              <th>user published</th>
+              <th>user deleted</th>
               <th></th>
             </tr>
           </thead>
@@ -66,7 +66,11 @@
                   <%= result[i].privacy %>
               </td>
               <td>
-                  <%= result[i].published %>
+              <% if (result[i].deleted == 0){%>
+                  live
+              <% }else{%>
+                  deleted
+              <%}%>
               </td>
               <td>
                   <input name="imageCheckboxids[]" type="checkbox" class="form-check-input" value="<%=result[i].photo_id %>">
