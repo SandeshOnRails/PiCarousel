@@ -2,12 +2,22 @@
 //general functions
 function gotoMenu(menu){
 
-     var data = {};
-          data.title = "title";
-          data.message = "message";
+      if (menu =="home"){
+          postMet = "get";
+          dest = "";
+      }else{
+          postMet = "post";
+          dest = menu;
+      }
+      
+      var data={};
+      if (dest == ""){
+        window.location.href = "/";
+        return false;
+      }
      $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/"+menu,
+            type: postMet,
+            url: "/"+menu,
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             success: function (data) {
@@ -37,7 +47,7 @@ function postData(data){
 
      $.ajax({
             type: "POST",
-            url: "http://localhost:3000/"+data.operation,
+            url: "/"+data.operation,
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             success: function (data) {

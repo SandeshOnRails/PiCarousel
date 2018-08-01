@@ -12,14 +12,19 @@ function postStatusImage(postTo){
                   vals += checkboxes[i].value+",";
               }
           }
-          
+          //if ( postTo !="waitingImage"  &&   postTo !="verifiedImage" && postTo !="rejectedImage"){
           vals = vals.substring(0, vals.length - 1); 
           //alert(vals);
           var data={};
           data.operation = postTo;
           data.id = vals;
           data.resultDiv = "categorieContent";
-          postData(data);
+          
+            //alert('posting');
+            postData(data);
+          //}else{
+           //  alert('not');
+         // }
       
       
       

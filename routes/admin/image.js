@@ -126,6 +126,8 @@ module.exports = function (app,dbRequest,con) {
 		 		});
 	                         
 	    	});
+		}else{
+			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 		}
 
 
@@ -145,6 +147,8 @@ module.exports = function (app,dbRequest,con) {
 		 		});
 	                         
 	    	});
+	    }else{
+	    	res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	    }
 
     });
@@ -160,6 +164,8 @@ module.exports = function (app,dbRequest,con) {
 		 		});
 	                         
 	    	});
+    	}else{
+    		res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
     	}
 
     });
