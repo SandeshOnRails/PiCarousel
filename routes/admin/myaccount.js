@@ -102,6 +102,43 @@ module.exports = function (app,dbRequest,con) {
 
 	 })
 
+	app.post('/myaccountImagesChangePhotoProperties', function(req, res){
+		_filter = "no";	 	
+	 	console.log("my account images change image properties section");
+	 	console.log("admin page session id: " + req.session.user_id)
+	 	
+	 	if (req.query.page)
+	 		_page = req.query.page;
+
+	 	switch(req.body.useraction) {
+    		case "delete":
+        		console.log("delete")
+        	break;
+    		case "public":
+        		console.log("public");
+        	break;
+    		case "private":
+        		console.log("private");
+        	break;        	
+    		case "commercial":
+        		console.log("commercial");
+        	break;        	
+    		case "free":
+        		console.log("free");
+        	break;        	        	        	
+    		default:
+        		console.log("error to receive image set properties for admin section");
+} 
+
+	 	/*
+	 	initializeListview(function(){
+	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 	});
+		*/
+
+
+	 })
+
 	app.post('/myaccountImagesUpload', function(req, res){
 		_filter = "no";
 	 	console.log("my account images");
@@ -113,9 +150,6 @@ module.exports = function (app,dbRequest,con) {
 
 				res.render('admin/photoUploadForm', {operation:'list',result:result});//from views categories.ejs
     		});
-
-	 	
-	 	
 
 	 })
 /*

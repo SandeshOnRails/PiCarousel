@@ -45,15 +45,16 @@ module.exports = function (app,dbRequest,con) {
     app.post('/usersSuspend', function(req, res){
 		
 		
-		
-		dbRequest.suspendUser(con,req.body,function(result){
+		if (req.body.id!=""){	
+			dbRequest.suspendUser(con,req.body,function(result){
 
-			_list = result;
-			initializeListview(function(){
-	 			res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
+				_list = result;
+				initializeListview(function(){
+		 			res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+		 		});
+	                         
+	    	});
+		}
 
     });
 
@@ -61,15 +62,16 @@ module.exports = function (app,dbRequest,con) {
     app.post('/usersActivate', function(req, res){
 		
 		
-		
-		dbRequest.activateUser(con,req.body,function(result){
+		if (req.body.id!=""){	
+			dbRequest.activateUser(con,req.body,function(result){
 
-			_list = result;
-			initializeListview(function(){
-	 			res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
+				_list = result;
+				initializeListview(function(){
+		 			res.render('admin/viewUsers', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+		 		});
+	                         
+	    	});
+		}
 
     });
 

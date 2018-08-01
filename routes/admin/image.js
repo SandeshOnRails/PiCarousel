@@ -116,45 +116,51 @@ module.exports = function (app,dbRequest,con) {
 
     app.post('/waitingImage', function(req, res){
 		
-		
-		
-		dbRequest.waitingImage(con,req.body,function(result){
+		console.log("images waiting ids"+req.body.id);
+		if (req.body.id!=""){		
+			dbRequest.waitingImage(con,req.body,function(result){
 
-			_list = result;
-			initializeListview(function(){
-	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
+				_list = result;
+				initializeListview(function(){
+		 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+		 		});
+	                         
+	    	});
+		}
+
+
+
 
     });
 
     app.post('/verifiedImage', function(req, res){
+			
+		if (req.body.id!=""){	
 		
-		
-		
-		dbRequest.verifiedImage(con,req.body,function(result){
+			dbRequest.verifiedImage(con,req.body,function(result){
 
-			_list = result;
-			initializeListview(function(){
-	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
+				_list = result;
+				initializeListview(function(){
+		 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+		 		});
+	                         
+	    	});
+	    }
 
     });
     app.post('/rejectedImage', function(req, res){
 		
+		if (req.body.id!=""){
 		
-		
-		dbRequest.rejectedImage(con,req.body,function(result){
+			dbRequest.rejectedImage(con,req.body,function(result){
 
-			_list = result;
-			initializeListview(function(){
-	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
+				_list = result;
+				initializeListview(function(){
+		 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+		 		});
+	                         
+	    	});
+    	}
 
     });
 

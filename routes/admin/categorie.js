@@ -79,15 +79,16 @@ module.exports = function (app,dbRequest,con) {
     app.post('/categoriesDelete', function(req, res){
 		
 		
-		
-		dbRequest.deleteCategorie(con,req.body,function(result){
+		if (req.body.id!=""){	
+			dbRequest.deleteCategorie(con,req.body,function(result){
 
-			_listcategories = result;
-			initializeListview(function(){
-	 			res.render('admin/viewCategories', {operation:'categorielist',result:_listcategories,totalpage:_totalpage,page:_page});//from views categories.ejs		
-	 		});
-                         
-    	});
+				_listcategories = result;
+				initializeListview(function(){
+		 			res.render('admin/viewCategories', {operation:'categorielist',result:_listcategories,totalpage:_totalpage,page:_page});//from views categories.ejs		
+		 		});
+	                         
+	    	});
+	    }
 
     });
 

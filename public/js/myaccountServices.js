@@ -20,6 +20,16 @@ function filterMyPhoto(postTo,resDiv){
       
       postData(data);
 }
+function myaccountImagesChangePhotoProperties(  postTo, userAction,resDiv){
+      
+      //set image(s) delete, public, private etc 
+      var data={};
+      data.useraction = userAction;
+      data.operation = postTo;
+      data.resultDiv = resDiv;
+      
+      postData(data);
+}
 
 function saveMyAccountProfile(id){
   //alert(categorie);
