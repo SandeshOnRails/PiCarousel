@@ -1,7 +1,7 @@
 
 var mysql = require('mysql');
 
-/*
+
 var con  = mysql.createConnection({
 
   host     : 'picarousel.ctftzezisj7n.us-east-2.rds.amazonaws.com',
@@ -11,8 +11,8 @@ var con  = mysql.createConnection({
   database : 'picarousel'
 
 });
-*/
 
+/*
 var con  = mysql.createConnection({
 
   host     : 'localhost',
@@ -21,7 +21,7 @@ var con  = mysql.createConnection({
   database : 'picarousel'
 
 });
-
+*/
 
 
 module.exports = con;

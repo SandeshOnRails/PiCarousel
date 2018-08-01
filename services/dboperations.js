@@ -226,7 +226,7 @@ module.exports = {
 
                 console.log("sql : "+sql);
                 var returnValue;
-                this.resulta = con.query("Select * from image where owner_user_id = 3 "+ sql +" order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from image where owner_user_id = 3 and deleted = 0 "+ sql +" order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -278,6 +278,43 @@ module.exports = {
 
                   });
                 
+            },
+            editPropertiesUserImages: function(con, data, callback) {
+
+                //this.resulta = con.query("update categorie set categorie = "+data.categorie+" where categorie_id = "+data.id, function (err, result , fields) {
+                  //console.log(data.categorie);
+                  //console.log(data.id);
+                      switch(data.useraction) {
+                            case "delete":
+                                sql = "update image set deleted = 1 where photo_id IN("+data.id+")"
+                                console.log("delete")
+                              break;
+                            case "public":
+                                sql = "update image set privacy = 'public' where photo_id IN("+data.id+")"
+                              break;
+                            case "private":
+                                sql = "update image set privacy = 'private' where photo_id IN("+data.id+")"
+                              break;          
+                            case "commercial":
+                                sql = "update image set licencetype = 'commercial' where photo_id IN("+data.id+")"
+                              break;          
+                            case "free":
+                                sql = "update image set licencetype = 'free' where photo_id IN("+data.id+")"
+                              break;                              
+                            default:
+                                console.log("error to receive image set properties for admin section");
+                      } 
+
+                var returnValue;
+                //DELETE from tablename WHERE id IN (1,2,3,...,254);
+                this.resulta = con.query(sql, function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
             },
             //only for admin verified condition
             getImagesBycondition: function(con,page,recPerPage,listcondition, data, callback) {

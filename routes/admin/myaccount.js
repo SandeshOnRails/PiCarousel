@@ -110,25 +110,17 @@ module.exports = function (app,dbRequest,con) {
 	 	if (req.query.page)
 	 		_page = req.query.page;
 
-	 	switch(req.body.useraction) {
-    		case "delete":
-        		console.log("delete")
-        	break;
-    		case "public":
-        		console.log("public");
-        	break;
-    		case "private":
-        		console.log("private");
-        	break;        	
-    		case "commercial":
-        		console.log("commercial");
-        	break;        	
-    		case "free":
-        		console.log("free");
-        	break;        	        	        	
-    		default:
-        		console.log("error to receive image set properties for admin section");
-} 
+	 
+    	
+    			dbRequest.editPropertiesUserImages(con,req.body,function(result){
+
+					imageListviewByFilter(function(){
+						console.log("page next / prev"+G_listcondition);
+	 					res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 				},G_listcondition);
+    			});
+        		console.log("editPropertiesUserImages");
+
 
 	 	/*
 	 	initializeListview(function(){

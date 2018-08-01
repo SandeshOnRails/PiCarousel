@@ -23,11 +23,26 @@ function filterMyPhoto(postTo,resDiv){
 function myaccountImagesChangePhotoProperties(  postTo, userAction,resDiv){
       
       //set image(s) delete, public, private etc 
+     var checkboxes = document.getElementsByName('imageCheckboxids[]');
+      var vals = "";
+    
+          for (var i=0, n=checkboxes.length;i<n;i++) 
+          {
+              if (checkboxes[i].checked) 
+              {
+                  vals += checkboxes[i].value+",";
+              }
+          }
+          
+          vals = vals.substring(0, vals.length - 1); 
+          //alert(vals);
+
       var data={};
+      data.id= vals;
       data.useraction = userAction;
       data.operation = postTo;
       data.resultDiv = resDiv;
-      
+      //    alert(vals);
       postData(data);
 }
 
