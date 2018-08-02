@@ -26,11 +26,11 @@ module.exports = {
 
                   });
             },
-            getOneUser: function(con,data, callback) {
+            getOneUser: function(con,user, callback) {
                 
                
                 var returnValue;
-                this.resulta = con.query("Select * from user where user_id=1 ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from user where user_id="+user.id+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -197,11 +197,11 @@ module.exports = {
 
                   });
             },
-            getUserImages: function(con,page,recPerPage, data, callback) {
+            getUserImages: function(con,page,recPerPage, user, callback) {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from image where owner_user_id = 3 and deleted= 0 order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from image where owner_user_id = "+user.id+" and deleted= 0 order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -210,7 +210,7 @@ module.exports = {
 
                   });
             },
-            getUserImagesByFilter: function(con,page,recPerPage, listcondition, callback) {
+            getUserImagesByFilter: function(con,page,recPerPage, listcondition,user, callback) {
                 let first =(page-1)*recPerPage;
                 var sql="";
                 
@@ -226,7 +226,7 @@ module.exports = {
 
                 console.log("sql : "+sql);
                 var returnValue;
-                this.resulta = con.query("Select * from image where owner_user_id = 3 and deleted = 0 "+ sql +" order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from image where owner_user_id = "+user.id+" and deleted = 0 "+ sql +" order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -235,10 +235,10 @@ module.exports = {
 
                   });
             },
-            getUserImageCount: function(con, data, callback) {
+            getUserImageCount: function(con, user, callback) {
                //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
                 var returnValue;
-                this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id = 3 and deleted =0", function (err, result , fields) {
+                this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id = "+user.id+" and deleted =0", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -248,7 +248,7 @@ module.exports = {
                   });
             },
             //filter by licence,privacy and status
-            getUserImageCountByFiler: function(con,listcondition, data, callback) {
+            getUserImageCountByFiler: function(con,listcondition, user, callback) {
                //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
                 console.log("db"+listcondition.licence);
                 console.log("db"+listcondition.privacy);
@@ -269,7 +269,7 @@ module.exports = {
                 console.log("sql : "+sql);
 
                
-                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id =3 and deleted =0"+sql, function (err, result , fields) {
+                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id ="+user.id+" and deleted =0"+sql, function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);

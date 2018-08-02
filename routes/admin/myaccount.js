@@ -1,20 +1,29 @@
 module.exports = function (app,dbRequest,con) {
 	
-	var _recPerPage = 10;
+	var _recPerPage = 2;
 	var _page =1;
 	var _totalpage=0;
 	var _list;
 	var _filter ="no";
+	var G_user ={
+		id : '',
+		name : '',
+		accounttype : ''
+	}
 	var G_listcondition = {
     	licence: 'all',
     	privacy: 'all',
-    	status : 'all'
+    	status : 'all',
+    	user : G_user
 	};
+	
+	
+
 
 
 	function initializeListview(callback){
 
-		dbRequest.getUserImageCount(con,"",function(itemcount){
+		dbRequest.getUserImageCount(con,G_user,function(itemcount){
 
 				_totalpage= Math.ceil(Number.parseInt(itemcount[0].itemcount,10) / Number.parseInt(_recPerPage,10));
 				next(_totalpage,_page);				
@@ -23,7 +32,7 @@ module.exports = function (app,dbRequest,con) {
 
 	 	function next(totalpage,page){
     		console.log("after list : ");
-    		 dbRequest.getUserImages(con,page,_recPerPage,"",function(result){
+    		 dbRequest.getUserImages(con,page,_recPerPage,G_user,function(result){
 
 				_list = result;
 				_page=page;
@@ -42,7 +51,7 @@ module.exports = function (app,dbRequest,con) {
 		console.log("a cond :"+G_listcondition);
 		G_listcondition = G_listcondition;
 
-		dbRequest.getUserImageCountByFiler(con,G_listcondition,"",function(itemcount){
+		dbRequest.getUserImageCountByFiler(con,G_listcondition,G_user,function(itemcount){
 
 				_totalpage= Math.ceil(Number.parseInt(itemcount[0].itemcount,10) / Number.parseInt(_recPerPage,10));
 				next(_totalpage,_page,G_listcondition);				
@@ -51,7 +60,7 @@ module.exports = function (app,dbRequest,con) {
 
 	 	function next(totalpage,page,G_listcondition){
     		console.log("db cond: "+G_listcondition);
-    		 dbRequest.getUserImagesByFilter(con,page,_recPerPage,G_listcondition,function(result){
+    		 dbRequest.getUserImagesByFilter(con,page,_recPerPage,G_listcondition,G_user,function(result){
 
 				_list = result;
 				_page=page;
@@ -63,11 +72,12 @@ module.exports = function (app,dbRequest,con) {
 	}
 
 	app.post('/myaccountProfile', function(req, res){
+		G_user.id  = req.session.user_id;
 	 	_filter = "no";
 	 	console.log("my account profile");
 	 	console.log("admin page session id: " + req.session.user_id)
 	 		
-	 		dbRequest.getOneUser(con,req.body,function(data){
+	 		dbRequest.getOneUser(con,G_user,function(data){
 				res.render('admin/viewMyaccountProfile', {operation:'list',result:data});//from views categories.ejs					
     		});	 
 
@@ -75,6 +85,7 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 	app.post('/myaccountProfileSave', function(req, res){
+		G_user.id  = req.session.user_id;
 		_filter = "no";
 		console.log("my acount profile save ");
 	 	dbRequest.editUserProfile(con,req.body,function(result){
@@ -89,6 +100,7 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 	app.post('/myaccountImages', function(req, res){
+		G_user.id  = req.session.user_id;
 		_filter = "no";	 	
 	 	console.log("my account images");
 	 	console.log("admin page session id: " + req.session.user_id)
@@ -103,6 +115,7 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 	app.post('/myaccountImagesChangePhotoProperties', function(req, res){
+		G_user.id  = req.session.user_id;
 		_filter = "no";	 	
 	 	console.log("my account images change image properties section");
 	 	console.log("admin page session id: " + req.session.user_id)
@@ -132,6 +145,7 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 	app.post('/myaccountImagesUpload', function(req, res){
+		G_user.id  = req.session.user_id;
 		_filter = "no";
 	 	console.log("my account images");
 	 	console.log("admin page session id: " + req.session.user_id)
@@ -160,6 +174,7 @@ module.exports = function (app,dbRequest,con) {
 	 })
 */
 	app.post('/myaccountImagesByConditionFilter', function(req, res){
+		G_user.id  = req.session.user_id;
 		_filter = "yes";
 		console.log("filter"+_filter);
 		//console.log(data.sampleTime);
@@ -188,7 +203,7 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
     app.post('/myaccountimagesChangePage', function(req, res){
-		
+		G_user.id  = req.session.user_id;
 		
 		
 		if (req.body.page == '+'){
