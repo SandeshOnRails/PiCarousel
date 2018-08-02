@@ -53,7 +53,7 @@ require('./routes/home/home.js')(app, con, search)
 require('./routes/img-upload/upload.js')(app,uploadImage,con)
 
 //admin pages
-require('./routes/admin/admin.js')(app)
+require('./routes/admin/admin.js')(app,crypto)
 require('./routes/admin/categorie.js')(app,dbRequest,con)
 require('./routes/admin/user.js')(app,dbRequest,con)
 require('./routes/admin/image.js')(app,dbRequest,con)

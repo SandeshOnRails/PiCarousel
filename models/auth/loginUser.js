@@ -27,7 +27,7 @@ con.connect(function(err) {
 
                   
                   var decrypted = crypto.decipher('secretKey', password)
-
+                  console.log("decripted: "+decrypted);
                                                                                                 //result[0].user_id
              if(result.length > 0 && decrypted === user.pass) callback(true, result[0].firstname,result[0].user_id, result[0].accounttype) // if the user exists callback function with true parameter and username
 
