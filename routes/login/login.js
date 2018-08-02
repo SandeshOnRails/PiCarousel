@@ -11,11 +11,12 @@ module.exports = function (app, login, con, crypto) {
 
 	   app.post('/login', (req, res) => {
 
-	   	    login({email:req.body.email,pass:req.body.psw}, con, crypto, function(isAuthenticated, username, userid){
+	   	    login({email:req.body.email,pass:req.body.psw}, con, crypto, function(isAuthenticated, username, userid, accounttype){
 
 	   	    	  if(isAuthenticated) {
                              
                              // set session for the user
+                    req.session.user_accounttype = accounttype;
                     req.session.user_id = userid;
                     req.session.user = username
 
