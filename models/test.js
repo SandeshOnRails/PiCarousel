@@ -22,7 +22,7 @@ con.connect(function(err) {
         console.log(err)
       }
         else { 
-             
+             console.log("Result: " + result)
              callback(result)
 
 
@@ -41,6 +41,8 @@ else {
       }
         else { 
              
+
+             console.log("result: " + result)
              callback(result)
 
 
