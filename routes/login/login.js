@@ -23,19 +23,7 @@ module.exports = function (app, login, con, crypto) {
                     console.log("User id: " + req.session.user_id)
                     
                     //after login before redirecting home page it needs to get all images from db and render the index page which requires images .
-                    con.query("SELECT * FROM image", function(err, result, fields) {
-              
-
-						      if (err) {
-						        console.log(err)
-						      }
-						        else { 
-						             
-						             res.render('home/index', {session_username: req.session.user, results:result})
-
-
-						        }
-					});
+                    res.redirect('/')
 
 	   	    	  	
 

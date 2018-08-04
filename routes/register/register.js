@@ -38,7 +38,7 @@ module.exports = function(app, authenticate, register, con, crypto) {
 
               	 })
               	 
-                 res.render('home/index', {user_exists_error: false, session_username: req.session.user || ''})
+                 res.redirect('/');//, {user_exists_error: false, session_username: req.session.user || ''})
 
               	}
 
