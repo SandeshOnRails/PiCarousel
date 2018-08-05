@@ -235,6 +235,18 @@ module.exports = {
 
                   });
             },
+            getUserLastImageId: function(con, id, callback) {
+               //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+                var returnValue;
+                this.resulta = con.query("Select photo_id  from image where owner_user_id = "+id+" order by photo_id desc limit 1", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
             getUserImageCount: function(con, user, callback) {
                //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
                 var returnValue;
