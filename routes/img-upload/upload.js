@@ -54,32 +54,33 @@ app.get('/imgupload', function(req, res){
 
 
       app.post('/upload', isFileFormatValid, isFileSizeValid, function(req, res) {
-        /*
+        
       
         if (!req.files)
           return res.status(400).send('No files were uploaded.');
        
         // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-        let sampleFile = req.files.sampleFile
+        let myFile = req.files.sampleFile
 
 
 
 
        
-        // Use the mv() method to place the file somewhere on your server
+         //Use the mv() method to place the file somewhere on your server
         sampleFile.mv('assets/'+req.files.sampleFile.name, function(err) {
           if (err)
             return res.status(500).send(err);
 
+           
 
-       
-          res.send('File uploaded!');
         });
         
-*/          var filename = req.files.sampleFile.name
+           var filename = myFile.name
             var category = req.body.category
             var description = req.body.subject
             var title = req.body.title
+            var licencetype = req.body.licenceType
+            var privacy = req.body.privacy
 
            
 
@@ -89,6 +90,8 @@ app.get('/imgupload', function(req, res){
                 filename: filename,
                 category: category,
                 description: description,
+                licencetype: licencetype,
+                privacy: privacy,
                 title: title,
                 userID: req.session.user_id,
 
@@ -96,7 +99,7 @@ app.get('/imgupload', function(req, res){
 
                  if(isSuccess){
 
-                      res.send('database done')
+                      res.redirect('/');
                  }
 
                  else {
