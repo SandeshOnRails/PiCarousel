@@ -24,7 +24,7 @@ function isFileSizeValid (req, res, next) {
       res.render('img_upload/imgupload', {error:'sorry file too big', session_username: req.session.user || ''})
 }
 
-module.exports = function (app, upload, con) {
+module.exports = function (app, upload, con, categories) {
 
 
 app.get('/imgupload', function(req, res){
@@ -32,7 +32,8 @@ app.get('/imgupload', function(req, res){
           
         
             if(req.session.user){
-         res.render('img_upload/imgupload', {error:'', session_username: req.session.user || ''})
+
+         res.render('img_upload/imgupload', {error:'', session_username: req.session.user || '', categories: categories})
       } 
       else {
           
@@ -80,10 +81,11 @@ app.get('/imgupload', function(req, res){
             var category = req.body.category
             var description = req.body.subject
             var title = req.body.title
-
+                
+                console.log(filename)
            
 
-
+           
             upload(con, {
 
                 filename: filename,
