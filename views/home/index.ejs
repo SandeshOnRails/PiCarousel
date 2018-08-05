@@ -233,9 +233,12 @@
             <div class="card-image">
               <img src="/<%=results[i].filepath%>" alt="">
               <span class="card-title"> <%=results[i].title%> </span>
+              <% if (session_username) { %>
               <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
+
+              <% } %>
             </div>
             <div class="card-content">
               <% if (session_username) {  %>
@@ -264,9 +267,12 @@
             <div class="card-image">
               <img src="/<%=results[i].filepath%>" alt="">
               <span class="card-title"> <%=results[i].title%></span>
+
+              <% if(session_username) { %>
               <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
                 <i class="material-icons">add</i>
               </a>
+              <% } %>
             </div>
             <div class="card-content">
                <% if (session_username) {  %>
