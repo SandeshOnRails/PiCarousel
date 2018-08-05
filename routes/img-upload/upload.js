@@ -122,13 +122,12 @@ var Jimp = require('jimp');
             }, isSuccess => {
 
                  if(isSuccess){
-                    Jimp.read('original/'+res.locals.originalName)
-                        .then(myimg => {
-                            return myimg
-                                .resize(144, 144) // resize
-                                .quality(60) // set JPEG quality
-                                .greyscale() // set greyscale
-                                .write("assets/th_"+res.locals.originalName); // save
+                    Jimp.read('original/'+res.locals.originalName).then(function(myimg) {
+                           
+                                myimg.scaleToFit( 400, 300 );
+                                myimg.quality(60) // set JPEG quality
+                                myimg.greyscale() // set greyscale
+                                myimg.write("assets/th_"+res.locals.originalName); // save
                         })
                         .catch(err => {
                             console.error(err);
