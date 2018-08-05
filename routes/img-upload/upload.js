@@ -68,7 +68,7 @@ app.get('/imgupload', function(req, res){
 
        
          //Use the mv() method to place the file somewhere on your server
-        sampleFile.mv('assets/'+req.files.sampleFile.name, function(err) {
+        myFile.mv('assets/'+req.files.sampleFile.name, function(err) {
           if (err)
             return res.status(500).send(err);
 
