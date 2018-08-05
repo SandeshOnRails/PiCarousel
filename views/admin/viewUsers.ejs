@@ -7,11 +7,11 @@
       <table id="usersTable" class="table table-striped">
           <thead>
             <tr>
-              <th>user name</th>
-              <th>email</th>
-              <th>account type</th>
-              <th>last login</th>
-              <th>account status</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Account Type</th>
+              <th>Last Login</th>
+              <th>Account Status</th>
              
 
             </tr>
@@ -52,8 +52,8 @@
  <%}%>
             <tr><td></td><td></td><td></td><td></td><td></td>
               <td>
-                <button style="color:white;background-color:#d65151;" type="button" onclick="suspendUsers();" class="btn btn-secondary btn-sm">suspend selected</button>
-                <button style="color:white;background-color:#d65151;" type="button" onclick="activateUsers();" class="btn btn-secondary btn-sm">activate selected</button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="suspendUsers();" class="btn btn-secondary btn-sm">Suspend Selected</button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="activateUsers();" class="btn btn-secondary btn-sm">Activate Selected</button>
               </td>
             </tr>
            
@@ -62,7 +62,7 @@
       <% if ( typeof page != 'undefined' ) { %>
 
 
-            <a href="#" onclick="navigateToPage('usersChangePage','categorieContent','-');" class="first">&laquo; prev</a>
+            <a href="#" onclick="navigateToPage('usersChangePage','categorieContent','-');" class="first">&laquo; Prev</a>
             <%var k=0;%>
             <% for ( k=1; k<=totalpage; k++) { %>
             <%if (page !=k){%>
@@ -71,7 +71,7 @@
               <a href="#" class="next round " style="background-color:#d65151;" onclick="navigateToPage('usersChangePage','categorieContent','<%= k%>')"> <%= k%> </a>
             <%}%>
             <%}%>
-            <a href="#" onclick="navigateToPage('usersChangePage','categorieContent','+');"class="last">next &raquo;</a>
+            <a href="#" onclick="navigateToPage('usersChangePage','categorieContent','+');"class="last">Next &raquo;</a>
       <% } %>
 
     </div>

@@ -2,13 +2,13 @@
   <nav class="nav nav-pills nav-justified">
     <table>
       <tr>
-        <td><a class="nav-link active" href="#"  onclick="postStatusImage('images');" > list all</a></td>
+        <td><a class="nav-link active" href="#"  onclick="postStatusImage('images');" > List All</a></td>
         <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusImage('imagesListWaiting');"> waiting images</a></td>
+        <td><a class="nav-link active" href="#" onclick="postStatusImage('imagesListWaiting');"> Waiting Images</a></td>
         <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusImage('imagesListRejected');"> rejected images</a></td>
+        <td><a class="nav-link active" href="#" onclick="postStatusImage('imagesListRejected');"> Rejected Images</a></td>
         <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusImage('imagesListVerified');"> verified images</a></td>
+        <td><a class="nav-link active" href="#" onclick="postStatusImage('imagesListVerified');"> Verified Images</a></td>
       </tr>
     </table>
   </nav>
@@ -18,15 +18,15 @@
       <table id="imagesTable" class="table table-striped">
           <thead>
             <tr>
-              <th>id</th>
+              <th>ID</th>
               <th>Image</th>
-              <th>Categorie</th>
+              <th>Category</th>
               <th>Description</th>
-              <th>owner</th>
-              <th>verification status</th>
-              <th>licence type</th>
-              <th>privacy</th>
-              <th>user deleted</th>
+              <th>Owner</th>
+              <th>Verification Status</th>
+              <th>License Type</th>
+              <th>Privacy</th>
+              <th>User Deleted</th>
               <th></th>
             </tr>
           </thead>
@@ -79,11 +79,11 @@
             </tr>
 
  <%}%>
-            <tr><td></td><td></td><td></td><td></td><td></td><td colspan="4">set verification status:
+            <tr><td></td><td></td><td></td><td></td><td></td><td colspan="4">Set Verification Status:
               
-                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('waitingImage');" class="btn btn-secondary btn-sm">waiting </button>
-                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('verifiedImage');" class="btn btn-secondary btn-sm">verified</button>
-                 <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('rejectedImage');" class="btn btn-secondary btn-sm">rejected </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('waitingImage');" class="btn btn-secondary btn-sm">Waiting </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('verifiedImage');" class="btn btn-secondary btn-sm">Verified</button>
+                 <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('rejectedImage');" class="btn btn-secondary btn-sm">Rejected </button>
               </td>
             </tr>
            
@@ -92,7 +92,7 @@
       <% if ( typeof page != 'undefined' ) { %>
 
 
-            <a href="#" onclick="navigateToPage('imagesChangePage','categorieContent','-');" class="first">&laquo; prev</a>
+            <a href="#" onclick="navigateToPage('imagesChangePage','categorieContent','-');" class="first">&laquo; Prev</a>
             <%var k=0;%>
             <% for ( k=1; k<=totalpage; k++) { %>
             <%if (page !=k){%>
@@ -101,7 +101,7 @@
               <a href="#" class="next round " style="background-color:#d65151;" onclick="navigateToPage('imagesChangePage','categorieContent','<%= k%>')"> <%= k%> </a>
             <%}%>
             <%}%>
-            <a href="#" onclick="navigateToPage('imagesChangePage','categorieContent','+');"class="last">next &raquo;</a>
+            <a href="#" onclick="navigateToPage('imagesChangePage','categorieContent','+');"class="last">Next &raquo;</a>
       <% } %>
 
     </div>

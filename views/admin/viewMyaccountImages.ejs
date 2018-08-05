@@ -3,60 +3,60 @@
   <nav class="nav nav-pills nav-justified">
     <table>
       <tr>
-       <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountProfile','categorieContent');"> my profile</a></td>
+       <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountProfile','categorieContent');"> My Profile</a></td>
         <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountImages','categorieContent');"> my photos</a></td>
+        <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountImages','categorieContent');"> My Photos</a></td>
 
       </tr>
     </table>
   </nav>
 
     <div id="myaccountsubDiv" class="tab-pane fade in active">
-      <h3>my photos</h3>
+      <h3>My Photos</h3>
       <div id="operations"></div>
       <table width = "100%">
         <tr>
           <td width="60%"></td>
-          <td width="70">filter by:</td>
-          <td width="130">licence type</td>
-          <td width="100">privacy</td>
-          <td>verificaion</td>
+          <td width="70">Filter by:</td>
+          <td width="130">License type</td>
+          <td width="100">Privacy</td>
+          <td>Verification</td>
           <td></td>
         </tr>
         <tr>
           <td>
               <div style="float:left;" class="btn-group">
-                  <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusMyAccount('myaccountImagesUpload','operation');" class="btn btn-secondary btn-sm">upload photo </button>
+                  <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusMyAccount('myaccountImagesUpload','operation');" class="btn btn-secondary btn-sm">Upload photo </button>
                    &nbsp; &nbsp;
               </div>
           </td>
           <td > </td>
           <td>
              <select id="licence" class="selectpicker">
-                <option>all</option>
-                <option>free</option>
-                <option>commercial</option>
+                <option>All</option>
+                <option>Free</option>
+                <option>Commercial</option>
               </select>
 
           </td>
           <td>
               <select id="privacy" class="selectpicker">
-                <option>all</option>
-                <option>private</option>
-                <option>public</option>
+                <option>All</option>
+                <option>Private</option>
+                <option>Public</option>
               </select>
 
           </td>
           <td>
               <select id="status" class="selectpicker">
-                <option>all</option>
-                <option>waiting</option>
-                <option>rejected</option>
-                <option>verified</option>
+                <option>All</option>
+                <option>Waiting</option>
+                <option>Rejected</option>
+                <option>Verified</option>
               </select>
 
           </td>
-          <td><button style="color:white;background-color:#d65151;" type="button" onclick="filterMyPhoto('myaccountImagesByConditionFilter','categorieContent');" class="btn btn-secondary btn-sm">filter </button></td>
+          <td><button style="color:white;background-color:#d65151;" type="button" onclick="filterMyPhoto('myaccountImagesByConditionFilter','categorieContent');" class="btn btn-secondary btn-sm">Filter </button></td>
         </tr>
       </table><br>
 
@@ -65,15 +65,15 @@
       <table id="imagesTable" class="table table-striped">
           <thead>
             <tr>
-             <th>id</th>
+             <th>ID</th>
               <th>Image</th>
-              <th>Categorie</th>
+              <th>Category</th>
               <th>Description</th>
-              <th>owner</th>
-              <th>verification status</th>
-              <th>licence type</th>
-              <th>privacy</th>
-              <th>user published</th>
+              <th>Owner</th>
+              <th>Verification Status</th>
+              <th>License Type</th>
+              <th>Privacy</th>
+              <th>User Published</th>
               <th></th>
             </tr>
           </thead>
@@ -122,12 +122,12 @@
 
  <%}%>
             <tr>
-              <td></td><td></td><td></td><td></td><td colspan="5">set selected image(s) to:
-              <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','delete','categorieContent');" class="btn btn-secondary btn-sm">delete </button>
-                <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','public','categorieContent');" class="btn btn-secondary btn-sm">public </button>
-                <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','private','categorieContent');" class="btn btn-secondary btn-sm">private</button>
-                 <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','commercial','categorieContent');" class="btn btn-secondary btn-sm">commercial </button>
-                 <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','free','categorieContent');" class="btn btn-secondary btn-sm">free </button>
+              <td></td><td></td><td></td><td></td><td colspan="5">Set selected image(s) to:
+              <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','delete','categorieContent');" class="btn btn-secondary btn-sm">Delete </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','public','categorieContent');" class="btn btn-secondary btn-sm">Public </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','private','categorieContent');" class="btn btn-secondary btn-sm">Private</button>
+                 <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','commercial','categorieContent');" class="btn btn-secondary btn-sm">Commercial </button>
+                 <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','free','categorieContent');" class="btn btn-secondary btn-sm">Free </button>
               </td>
             </tr>
            
@@ -136,7 +136,7 @@
       <% if ( typeof page != 'undefined' ) { %>
 
 
-            <a href="#" onclick="navigateToPage('myaccountimagesChangePage','categorieContent','-');" class="first">&laquo; prev</a>
+            <a href="#" onclick="navigateToPage('myaccountimagesChangePage','categorieContent','-');" class="first">&laquo; Prev</a>
             <%var k=0;%>
             <% for ( k=1; k<=totalpage; k++) { %>
             <%if (page !=k){%>
@@ -145,7 +145,7 @@
               <a href="#" class="next round " style="background-color:#d65151;" onclick="navigateToPage('myaccountimagesChangePage','categorieContent','<%= k%>')"> <%= k%> </a>
             <%}%>
             <%}%>
-            <a href="#" onclick="navigateToPage('myaccountimagesChangePage','categorieContent','+');"class="last">next &raquo;</a>
+            <a href="#" onclick="navigateToPage('myaccountimagesChangePage','categorieContent','+');"class="last">Next &raquo;</a>
       <% } %>
 
     </div>

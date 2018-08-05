@@ -20,7 +20,9 @@ INSERT INTO  image
 */
 
 //con.query("INSERT INTO  image (filepath, photo_categorie, description, owner_user_id, adminverified,licencetype,privacy,published,deleted,title)   VALUES ('" + data.filepath + "','" + data.category + "','" + data.description + "'," + data.userID + ",0,0,0,0,0,'')", function(err, result, fields) {
- con.query("INSERT INTO  image (filepath, photo_categorie, title, description, owner_user_id, licencetype,privacy) VALUES ('" + data.filepath + "','" + data.category + "','" + data.title + "','" + data.description + "'," + data.userID + ",'" + data.licencetype +"','"+data.privacy +"')", function(err, result, fields) {
+<
+ con.query("INSERT INTO  image (filepath, photo_categorie, title, description, owner_user_id, licencetype,privacy) VALUES ('" + data.filename + "','" + data.category + "','" + data.title + "','" + data.description + "'," + data.userID + ",'" + data.licencetype +"','"+data.privacy +"')", function(err, result, fields) {
+=
               
 
       if(err) {
