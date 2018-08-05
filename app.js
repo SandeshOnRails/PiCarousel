@@ -65,7 +65,13 @@ require('./routes/logout/logout.js')(app)
 
 
 
+// test homepage.ejs route
 
+
+app.get('/homepage', (req, res) => {
+
+	   res.render('home/homepage')
+})
 
 
 
