@@ -120,7 +120,7 @@
         <ul class="right hide-on-med-and-down">
            <% if(session_username) { %>
             <li>
-                <a href="/profile">welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|</a>
+                Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
             </li>
             <%}%>
           <li class="active">
@@ -155,7 +155,7 @@
       <ul class="side-nav" id="mobile-nav">
          <% if(session_username) { %>
           <li>
-            <a href="/profile">welcome : <%=session_username%></a>
+            Welcome : <%=session_username%>
              </li>
           <%}%>
         <li>
@@ -217,7 +217,7 @@
   <section class="section section-main">
     <div class="container">
       <h2 style="text-align:center;">All Categories</i></h2>
-      <hr> -->
+      <hr>
       <!-- Row 1 -->
        <% for (var i =0; i < results.length; i++) { %>
                

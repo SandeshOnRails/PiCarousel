@@ -7,8 +7,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="../css/main.css" />
- 
+  <link type="text/css" rel="stylesheet" href="../css/main.css"/>
+  
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -16,33 +16,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PiCarousel</title>
 </head>
-
-  <!-- Header -->
-
-  <style>
-.btn {
-    background-color: grey;
-    border: none;
-    color: white;
-    padding: 5px 30px;
-    cursor: pointer;
-    font-size: 20px;
-    height:40px;
-}
-
-/* Darker background on mouse-over */
-.btn:hover {
-    background-color: RoyalBlue;
-}
-</style>
+<!-- Header -->
   
 <body>
-  <!-- Header -->
   <header class="main-header" style="height:200px;">
     <nav class="transparent nav-wrapper z-depth-0">
       <div class="nav-wrapper">
         <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
-          <i class="material-icons">Menu</i>
+          <i class="material-icons">menu</i>
         </a>
         <a href="/" class="brand-logo">PiCarousel</a>
         <ul class="right hide-on-med-and-down">
@@ -92,19 +73,19 @@
       encType="multipart/form-data">
       <div class="sections">
     
-      <div align='center'>
-     <h3>Title</h3> <input type="text" placeholder="Title of the Post"  name='title' style="width: 250px;" required/>
+      <div class="inputfield" align='center'>
+        <h3>Title</h3> <input type="text" placeholder="Title of the Post"  name='title' style="width: 250px;" required/>
       </div>
 
       
       
       
-       <div align="center" style="margin-top:20px;">
+       <div class="inputfield"align="center" style="margin-top:20px;">
         <h3>Description</h3><textarea id="subject" name="subject" placeholder="Image decription ...." style="height:150px;width:250px;" required></textarea>
 
       </div>
 
-      <div>
+      <div class="radiobuttons">
         <input type="radio" value="1" id="free" name="licenceType" checked />
             <label for="free">Free</label>
         <input type="radio" value="2" id="commercial" name="licenceType"  />
@@ -117,11 +98,6 @@
             <label for="public">Public</label>
 
       </div>
-      
-
-      
-   
-  
   
   <div align='center' style="margin-top:20px;">
         <input type="file" name="sampleFile" required/>
