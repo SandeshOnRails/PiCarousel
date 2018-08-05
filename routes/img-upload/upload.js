@@ -25,6 +25,11 @@ function isFileSizeValid (req, res, next) {
 }
 
 module.exports = function (app, upload, con, categories) {
+var imagename="";
+var Jimp = require('jimp');
+
+
+
 
 
 app.get('/imgupload', function(req, res){
@@ -52,10 +57,15 @@ app.get('/imgupload', function(req, res){
      
 
       // post upload file. middleware function to check if the file is either png or jpeg format
+      function imageresize (image){
+        console.log("+++++++++++"+image);
 
+           
+
+      }
 
       app.post('/upload', isFileFormatValid, isFileSizeValid, function(req, res) {
-        
+       
       
         if (!req.files)
           return res.status(400).send('No files were uploaded.');
@@ -68,24 +78,40 @@ app.get('/imgupload', function(req, res){
 
        
          //Use the mv() method to place the file somewhere on your server
-        myFile.mv('assets/'+req.files.sampleFile.name, function(err) {
+        myFile.mv('original/'+req.files.sampleFile.name, function(err) {
+           imagename = req.files.sampleFile.name
           if (err)
             return res.status(500).send(err);
+
+  
 
            
 
         });
         
-           var filename = myFile.name
+            var filename = myFile.name
             var category = req.body.category
             var description = req.body.subject
             var title = req.body.title
             var licencetype = req.body.licenceType
             var privacy = req.body.privacy
-
+            var user_id = req.session.user_id;
            
 
-           
+            function createThumb(result){
+                  Jimp.read('original/'+filename)
+                        .then(myimg => {
+                            return myimg
+                                .resize(144, 144) // resize
+                                .quality(60) // set JPEG quality
+                                .greyscale() // set greyscale
+                                .write("assets/"+"th_"+user_id+"_"+result[0].photo_id+"_"+filename); // save
+                        })
+                        .catch(err => {
+                            console.error(err);
+                        });
+                        res.redirect('/');
+            }
             upload(con, {
 
                 filename: filename,
@@ -99,8 +125,16 @@ app.get('/imgupload', function(req, res){
             }, isSuccess => {
 
                  if(isSuccess){
+                     
+                      con.query("Select photo_id from image order by photo_id desc limit 1 ;", function (err, result , fields) {
+                   
+                          if (err) throw err;
+                          console.log("in sendQuery Result: " + result);
+                          createThumb(result);
+                          //con.release();
 
-                      res.redirect('/');
+                        });
+                      
                  }
 
                  else {
@@ -110,8 +144,9 @@ app.get('/imgupload', function(req, res){
 
             })
 
-               
+  
 
      });
+
 
 }
