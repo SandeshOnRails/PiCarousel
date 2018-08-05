@@ -70,7 +70,7 @@ require('./routes/logout/logout.js')(app)
 
 app.get('/homepage', (req, res) => {
 
-	   res.render('home/homepage')
+	   res.render('home/homepage', {session_username: req.session.username})
 })
 
 
