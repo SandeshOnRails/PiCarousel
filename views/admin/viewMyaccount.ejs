@@ -2,26 +2,26 @@
   <nav class="nav nav-pills nav-justified">
     <table>
       <tr>
-       <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountProfile','categorieContent');"> my profile</a></td>
+       <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountProfile','categorieContent');"> My Profile</a></td>
         <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountImages','categorieContent');"> my photos</a></td>
+        <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountImages','categorieContent');"> My Photos</a></td>
 
       </tr>
     </table>
   </nav>
 
     <div id="myaccount" class="tab-pane fade in active">
-      <h3>my photos</h3>
+      <h3>My Photos</h3>
       <table id="imagesTable" class="table table-striped">
           <thead>
             <tr>
               <th>Image</th>
-              <th>Categorie</th>
+              <th>Category</th>
               <th>Description</th>
              
-              <th>licence type</th>
-              <th>privacy</th>
-              <th>user published</th>
+              <th>License Type</th>
+              <th>Privacy</th>
+              <th>User Published</th>
               <th></th>
             </tr>
           </thead>
@@ -61,11 +61,11 @@
             </tr>
 
  <%}%>
-            <tr><td></td><td></td><td></td><td colspan="4">set verification status:
+            <tr><td></td><td></td><td></td><td colspan="4">Set Verification Status:
               
-                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('waitingImage');" class="btn btn-secondary btn-sm">waiting </button>
-                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('verifiedImage');" class="btn btn-secondary btn-sm">verified</button>
-                 <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('rejectedImage');" class="btn btn-secondary btn-sm">rejected </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('waitingImage');" class="btn btn-secondary btn-sm">Waiting </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('verifiedImage');" class="btn btn-secondary btn-sm">Verified</button>
+                 <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('rejectedImage');" class="btn btn-secondary btn-sm">Rejected </button>
               </td>
             </tr>
            
@@ -74,7 +74,7 @@
       <% if ( typeof page != 'undefined' ) { %>
 
 
-            <a href="#" onclick="navigateToPage('imagesChangePage','categorieContent','-');" class="first">&laquo; prev</a>
+            <a href="#" onclick="navigateToPage('imagesChangePage','categorieContent','-');" class="first">&laquo; Prev</a>
             <%var k=0;%>
             <% for ( k=1; k<=totalpage; k++) { %>
             <%if (page !=k){%>
@@ -83,7 +83,7 @@
               <a href="#" class="next round " style="background-color:#d65151;" onclick="navigateToPage('imagesChangePage','categorieContent','<%= k%>')"> <%= k%> </a>
             <%}%>
             <%}%>
-            <a href="#" onclick="navigateToPage('imagesChangePage','categorieContent','+');"class="last">next &raquo;</a>
+            <a href="#" onclick="navigateToPage('imagesChangePage','categorieContent','+');"class="last">Next &raquo;</a>
       <% } %>
 
     </div>

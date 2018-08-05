@@ -2,7 +2,7 @@
 <br>
     <div id="categories" class="tab-pane fade in active">
       <h3>Categories</h3>
-      <p><button style="color:white;background-color:#d65151;" type="button" onclick="adNewCategorie();" class="btn btn-secondary btn-sm">add categorie</button></p>
+      <p><button style="color:white;background-color:#d65151;" type="button" onclick="adNewCategorie();" class="btn btn-secondary btn-sm">Add Category</button></p>
        <div id="operation"></div>
       <table id="imagesTable" class="table table-striped">
           <thead>
@@ -30,14 +30,14 @@
             </tr>
 
  <%}%>
-            <tr><td></td><td><button style="color:white;background-color:#d65151;" type="button" onclick="deleteCategorie();" class="btn btn-secondary btn-sm">delete selected</button></td></tr>
+            <tr><td></td><td><button style="color:white;background-color:#d65151;" type="button" onclick="deleteCategorie();" class="btn btn-secondary btn-sm">Delete Selected</button></td></tr>
            
           </tbody>
       </table>
       <% if ( typeof page != 'undefined' ) { %>
 
 
-            <a href="#" onclick="navigateToPage('categorieChangePage','categorieContent','-');" class="first">&laquo; prev</a>
+            <a href="#" onclick="navigateToPage('categorieChangePage','categorieContent','-');" class="first">&laquo; Prev</a>
             <%var k=0;%>
             <% for ( k=1; k<=totalpage; k++) { %>
             <%if (page !=k){%>
@@ -46,7 +46,7 @@
               <a href="#" class="next round " style="background-color:#d65151;" onclick="navigateToPage('categorieChangePage','categorieContent','<%= k%>')"> <%= k%> </a>
             <%}%>
             <%}%>
-            <a href="#" onclick="navigateToPage('categorieChangePage','categorieContent','+');"class="last">next &raquo;</a>
+            <a href="#" onclick="navigateToPage('categorieChangePage','categorieContent','+');"class="last">Next &raquo;</a>
       <% } %>
 
     </div>

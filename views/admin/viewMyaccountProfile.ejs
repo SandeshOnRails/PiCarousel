@@ -2,9 +2,9 @@
   <nav class="nav nav-pills nav-justified">
     <table>
       <tr>
-       <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountProfile','categorieContent');"> my profile</a></td>
+       <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountProfile','categorieContent');"> My Profile</a></td>
         <td>|</td>
-        <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountImages','categorieContent');"> my photos</a></td>
+        <td><a class="nav-link active" href="#" onclick="postStatusMyAccount('myaccountImages','categorieContent');"> My Photos</a></td>
 
       </tr>
     </table>
@@ -12,7 +12,7 @@
 
 
     <div id="profile" class="tab-pane fade in active">
-      <h3>My profile</h3>
+      <h3>My Profile</h3>
       <table id="profileTable" class="table table-striped">
           <thead>
             <tr>
@@ -23,37 +23,37 @@
           <tbody id="profileTable">
 
             <tr id = "profile<%=result[0].user_id %>">
-             <td width="50">id</td>
+             <td width="50">ID</td>
               <td id="user_id">
                 :&nbsp;<%= result[0].user_id %>
               </td>
             </tr>
             <tr id = "profile<%=result[0].user_id %>">
-             <td width="50">firstname</td>
+             <td width="50">FirstName</td>
               <td id="firstname">
                 :&nbsp;<%= result[0].firstname %>
               </td>
             </tr>
             <tr>
-            <td>lastname</td>
+            <td>LastName</td>
               <td id="lastname">
                 :&nbsp;<%= result[0].lastname %>
               </td>
             </tr>
             <tr>
-            <td>email</td>
+            <td>Email</td>
               <td id="email">
                   :&nbsp;<%= result[0].email %>
               </td>
             </tr>
             <tr>
-            <td>age</td>
+            <td>Age</td>
               <td id="age">
                   :&nbsp;<%= result[0].age %>
               </td>
               </tr>
               <tr>
-              <td>gender</td>
+              <td>Gender</td>
               <td id="gender">
                   :&nbsp;<%= result[0].gender %>
               </td>
@@ -61,9 +61,9 @@
             <tr>
             <td colspan="2" id="buttons">
 
-                <button style="color:white;background-color:#d65151;" type="button" onclick="makeMyAccountProfileEditable(<%=result[0].user_id %>,'<%= result[0].firstname %>','<%= result[0].lastname %>','<%= result[0].email %>','<%= result[0].age %>','<%= result[0].gender %>');" class="btn btn-secondary btn-sm">edit account </button>
-                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('myaccountDelete');" class="btn btn-secondary btn-sm">delete account</button>
-                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('myaccountChanegePass');" class="btn btn-secondary btn-sm">change password </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="makeMyAccountProfileEditable(<%=result[0].user_id %>,'<%= result[0].firstname %>','<%= result[0].lastname %>','<%= result[0].email %>','<%= result[0].age %>','<%= result[0].gender %>');" class="btn btn-secondary btn-sm">Edit Account </button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('myaccountDelete');" class="btn btn-secondary btn-sm">Delete Account</button>
+                <button style="color:white;background-color:#d65151;" type="button" onclick="postStatusImage('myaccountChanegePass');" class="btn btn-secondary btn-sm">Change Password </button>
                 
               </td>
             </tr>
