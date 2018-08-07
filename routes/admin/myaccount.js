@@ -1,6 +1,6 @@
 module.exports = function (app,dbRequest,con) {
 	
-	var _recPerPage = 2;
+	var _recPerPage = 10;
 	var _page =1;
 	var _totalpage=0;
 	var _list;
