@@ -69,11 +69,9 @@
               <th>Image</th>
               <th>Category</th>
               <th>Description</th>
-              <th>Owner</th>
               <th>Verification Status</th>
               <th>License Type</th>
               <th>Privacy</th>
-              <th>User Published</th>
               <th></th>
             </tr>
           </thead>
@@ -101,9 +99,6 @@
               <td>
                 <%= result[i].description %>
               </td>
-              <td>
-                <%= result[i].owner_user_id %>
-              </td>
                <td>
                   <%= result[i].adminverified %>
               </td>
@@ -114,9 +109,6 @@
                   <%= result[i].privacy %>
               </td>
               <td>
-                  <%= result[i].published %>
-              </td>
-              <td>
                   <input name="imageCheckboxids[]" type="checkbox" class="form-check-input" value="<%=result[i].photo_id %>">
                 
               </td>
@@ -124,7 +116,7 @@
 
  <%}%>
             <tr>
-              <td></td><td></td><td></td><td></td><td colspan="5">Set selected image(s) to:
+              <td></td><td></td><td colspan="5">Set selected image(s) to:
               <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','delete','categorieContent');" class="btn btn-secondary btn-sm">Delete </button>
                 <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','public','categorieContent');" class="btn btn-secondary btn-sm">Public </button>
                 <button style="color:white;background-color:#d65151;" type="button" onclick="myaccountImagesChangePhotoProperties('myaccountImagesChangePhotoProperties','private','categorieContent');" class="btn btn-secondary btn-sm">Private</button>

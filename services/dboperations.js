@@ -188,7 +188,7 @@ module.exports = {
                 let first =(page-1)*recPerPage;
                
                 var returnValue;
-                this.resulta = con.query("Select * from image order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from image inner join user on image.owner_user_id = user.user_id order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -349,7 +349,7 @@ module.exports = {
                
                 var returnValue;
                 if (listcondition == "all"){
-                    this.resulta = con.query("Select * from image order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                    this.resulta = con.query("Select * from image inner join user on image.owner_user_id = user.user_id order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
@@ -359,7 +359,7 @@ module.exports = {
                   });
                 }else{
 
-                this.resulta = con.query("Select * from image where adminverified='"+listcondition+"' order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
+                this.resulta = con.query("Select * from image inner join user on image.owner_user_id = user.user_id where adminverified='"+listcondition+"' order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
