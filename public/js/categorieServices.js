@@ -54,12 +54,14 @@ function deleteCategorie(tagid){
               vals += checkboxes[i].value+",";
           }
       }
-      
+    
+     if (vals.length>0){  
       vals = vals.substring(0, vals.length - 1); 
       //alert(vals);
-  var data={};
+    var data={};
     data.operation = "categoriesDelete";
     data.id = vals;
     data.resultDiv = "categories";
     postData(data);
+  }
 }

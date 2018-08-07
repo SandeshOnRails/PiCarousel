@@ -33,7 +33,7 @@ function myaccountImagesChangePhotoProperties(  postTo, userAction,resDiv){
                   vals += checkboxes[i].value+",";
               }
           }
-          
+           if (vals.length>0){
           vals = vals.substring(0, vals.length - 1); 
           //alert(vals);
 
@@ -44,6 +44,7 @@ function myaccountImagesChangePhotoProperties(  postTo, userAction,resDiv){
       data.resultDiv = resDiv;
       //    alert(vals);
       postData(data);
+    }
 }
 
 function saveMyAccountProfile(id){

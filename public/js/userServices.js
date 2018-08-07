@@ -11,7 +11,7 @@ function activateUsers(){
               vals += checkboxes[i].value+",";
           }
       }
-      
+      if (vals.length>0){
       vals = vals.substring(0, vals.length - 1); 
       //alert(vals);
       var data={};
@@ -19,6 +19,7 @@ function activateUsers(){
       data.id = vals;
       data.resultDiv = "categorieContent";
       postData(data);
+    }
 }
 
 function suspendUsers(){
@@ -33,7 +34,7 @@ function suspendUsers(){
               vals += checkboxes[i].value+",";
           }
       }
-      
+        if (vals.length>0){
       vals = vals.substring(0, vals.length - 1); 
       alert(vals);
       var data={};
@@ -41,4 +42,5 @@ function suspendUsers(){
       data.id = vals;
       data.resultDiv = "categorieContent";
       postData(data);
+    }
 }
