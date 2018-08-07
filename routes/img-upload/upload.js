@@ -57,6 +57,19 @@ var Jimp = require('jimp');
      
 
       // post upload file. middleware function to check if the file is either png or jpeg format
+      function instertBlankImageRecord (req,res,next){
+               
+
+               dbrequest.insertImageRecordForUpload(con,req.session.user_id,function(result){
+
+                  
+                return next();
+                });
+
+           
+
+      }
+
       function imageresize (req,res,next){
                
 
@@ -71,7 +84,7 @@ var Jimp = require('jimp');
 
       }
 
-      app.post('/upload', isFileFormatValid, isFileSizeValid, imageresize,function(req, res,next) {
+      app.post('/upload',instertBlankImageRecord,imageresize, isFileFormatValid, isFileSizeValid ,function(req, res,next) {
 
     
       next()
@@ -107,7 +120,8 @@ var Jimp = require('jimp');
             var title = req.body.title
             var licencetype = req.body.licenceType
             var privacy = req.body.privacy
-            var user_id = req.session.user_id;
+            var user_id = req.session.user_id
+            var photoid = res.locals.photoid
 
             upload(con, {
 
@@ -118,6 +132,7 @@ var Jimp = require('jimp');
                 privacy: privacy,
                 title: title,
                 userID: req.session.user_id,
+                photo_id:photoid
 
             }, isSuccess => {
 

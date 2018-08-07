@@ -83,6 +83,8 @@
 
 
  <% for (var i=0; i<result.length; i++) {%>
+  <% let extension=result[i].filepath.split('.') %>
+        <% let ext=extension[1] %>
  <%console.log(result[i].filepath);%>
             <tr id = "photo<%=result[i].photo_id %>">
              <td>
@@ -90,7 +92,7 @@
               </td>
               <td>
                 <a target="_blank" onclick="makeCategorieEditable(<%=result[i].photo_id %>,'<%=result[i].photo_id %>');"  href="<%=result[i].filepath %>">
-                <img src="<%=result[i].filepath %>" alt="Image" style="width:150px">
+                <img src="<%= 'th_'+result[i].owner_user_id+'_'+result[i].photo_id+'.'+ext%>" alt="Image" style="width:150px">
                 </a>
               </td>
               <td>

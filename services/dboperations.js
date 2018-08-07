@@ -235,6 +235,20 @@ module.exports = {
 
                   });
             },
+            insertImageRecordForUpload: function(con, userid, callback) {
+                //console.log("sql catching the form:"+data.imageDescription);
+                var returnValue;
+                
+                this.resulta = con.query("insert into image (filepath,photo_categorie,description,owner_user_id) values ('',0,'',"+userid+")", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+                  
+            },
             getUserLastImageId: function(con, id, callback) {
                //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
                 var returnValue;

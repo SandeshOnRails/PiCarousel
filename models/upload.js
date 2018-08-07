@@ -21,7 +21,9 @@ INSERT INTO  image
 
 //con.query("INSERT INTO  image (filepath, photo_categorie, description, owner_user_id, adminverified,licencetype,privacy,published,deleted,title)   VALUES ('" + data.filepath + "','" + data.category + "','" + data.description + "'," + data.userID + ",0,0,0,0,0,'')", function(err, result, fields) {
 
- con.query("INSERT INTO  image (filepath, photo_categorie, title, description, owner_user_id, licencetype,privacy) VALUES ('" + data.filename + "','" + data.category + "','" + data.title + "','" + data.description + "'," + data.userID + ",'" + data.licencetype +"','"+data.privacy +"')", function(err, result, fields) {
+ con.query("update image set filepath = '" + data.filename + "', photo_categorie ='" + data.category + "',title ='" + data.title + "', description ='" + data.description + "',  licencetype='" + data.licencetype +"',  privacy ='"+data.privacy +"'   where photo_id ="+data.photo_id , function(err, result, fields) {
+  //con.query("INSERT INTO  image (filepath, photo_categorie, title, description, owner_user_id, licencetype,privacy) VALUES ('
+// " + data.filename + "','" + data.category + "','" + data.title + "','" + data.description + "'," + data.userID + ",,'"+data.privacy +"')", function(err, result, fields) {
 
               
 
