@@ -214,184 +214,35 @@
   
   <!-- Section: Main -->
 
-  <section class="section section-main">
-    <div class="container">
-      <h2 style="text-align:center;">All Categories</i></h2>
-      <hr>
-      <!-- Row 1 -->
-       <% for (var i =0; i < results.length; i++) { %>
-               
-               <% if (!(i%2 === 0)) { %>
-      <div class="row row-<%=i%>">
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3><%=results[i].title%></h3>
-             <%=results[i].description%>
-          </div>
+<!-- Begin Gallery Container-->
+<div class="container">
+    <h1 class="my-4 text-center text-lg-left">Gallery</h1>
+    <div class="row text-center text-lg-left">
+      <% for (var i =0; i < results.length; i++) { %>
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          <a href="#" class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src="<%=results[i].filepath%>" alt="">
+          </a>
+          <!-- Download Button -->
+          <div class="card-content">
+          <% if (session_username) {  %>
+            <a href="/<%=results[i].filepath%>" download> <button class="btn">
+            <i class="fa fa-download"></i> Download</button></a>
+          <% } else { %>
+            <a href="/login"> <button class="btn">
+            <i class="fa fa-download"></i> Download</button></a>
+          <% } %>
+        <!-- End Download Button -->
         </div>
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/<%=results[i].filepath%>" alt="">
-              <span class="card-title"> <%=results[i].title%> </span>
-              <% if (session_username) { %>
-              <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
 
-              <% } %>
-            </div>
-            <div class="card-content">
-              <% if (session_username) {  %>
-
-              
-             <a href="/<%=results[i].filepath%>" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-             <% } else { %>
-               
-              <a href="/login"> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-
-             <% } %>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <% } else { %>
-
-      <!-- Row 2 -->
-     <div class="row row-<%=i%>">
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/<%=results[i].filepath%>" alt="">
-              <span class="card-title"> <%=results[i].title%></span>
-
-              <% if(session_username) { %>
-              <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-              <% } %>
-            </div>
-            <div class="card-content">
-               <% if (session_username) {  %>
-
-             <a href="/<%=results[i].filepath%>" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-             <% } else { %>
-              
-
-              <a href="/login"> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-
-             <% } %>
-            </div>
-          </div>
-        </div>
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3><%=results[i].title%></h3>
-           <%=results[i].description%>
-          </div>
-        </div>
-      </div>
-
-      <% } }%>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">PiCarousel</h5>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Links</h5>
-          <ul>
-            <li>
-              <a class="grey-text text-lighten-3" href="/about">Meet the Team</a>
-            </li>
-            <li>
-              <a class="grey-text text-lighten-3" href="/imgupload">Upload</a>
-            </li>
-             <% if(!session_username) { %>
-            <li>
-              <a class="grey-text text-lighten-3" href="/register">Register</a>
-            </li>
-            <% } %>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-        © 2018 PiCarousel
-        
-      </div>
-    </div>
-  </footer>
-
-  <!-- Modal 1 -->
-
-  <% for (var i=0; i < results.length; i++) { %>
-  <div id="abstract<%=i%>" class="modal">
-    <div class="modal-content">
-      <h4><%=results[i].title%></h4>
-      <img src="/<%=results[i].filepath%>" alt="" class="responsive-img"> 
-    </div>
-    <%=results[i].description%>
-    <div class="modal-footer">
-    </div>
-  </div>
-
-  <% } %>
-
+      <% } %>
   
-
-
-
-  <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="script/materialize.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      // Init Sidenav
-      $('.button-collapse').sideNav();
-
-      // Init Modal
-      $('.modal').modal();
-
-      // Scrollfire
-      const options = [
-        {
-          selector: '.row-1', offset: 50, callback: function (el) {
-            Materialize.fadeInImage($(el));
-          }
-        },
-        {
-          selector: '.row-2', offset: 300, callback: function (el) {
-            Materialize.fadeInImage($(el));
-          }
-        },
-        {
-          selector: '.row-3', offset: 400, callback: function (el) {
-            Materialize.fadeInImage($(el));
-          }
-        }
-      ];
-
-      Materialize.scrollFire(options);
-
-    });
-  </script>
+  <!-- End Gallery -->
+</div>
+</div>
 
   <script>
-  
+
            function validate() {
 
                 let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);

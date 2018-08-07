@@ -21,6 +21,7 @@
     "express-fileupload": "^0.4.0",
     "express-session": "^1.15.6",
     "hogan-express": "^0.5.2",
+    "jimp": "^0.3.2",
     "mysql": "^2.15.0",
     "node-virustotal": "^2.4.2",
     "simple-crypto-js": "^2.0.2",
