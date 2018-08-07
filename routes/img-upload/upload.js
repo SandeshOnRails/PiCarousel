@@ -98,7 +98,7 @@ var Jimp = require('jimp');
        
           
           let myFile = req.files.sampleFile;
-          str = myFile.mimetype.split('/');
+          str = myFile.name.split('.');
           let originalName = req.session.user_id+"_"+res.locals.photoid+"."+str[1];
           myFile.mv('original/'+originalName, function(err) {
          
