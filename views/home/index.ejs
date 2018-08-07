@@ -214,17 +214,16 @@
   
   <!-- Section: Main -->
 
-<!-- Begin Gallery Container-->
-<div class="container">
+  <!-- Begin Gallery Container-->
+  <div class="container">
     <h1 class="my-4 text-center text-lg-left">Gallery</h1>
     <div class="row text-center text-lg-left">
       <% for (var i =0; i < results.length; i++) { %>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="<%=results[i].filepath%>" alt="">
-          </a>
-          <!-- Download Button -->
+      <div class="col-lg-3 col-md-4 col-xs-6">
+        <div class="card">
+          <img class="card-img-top img-fluid img-thumbnail" src="<%=results[i].filepath%>" alt="Card image cap">
           <div class="card-content">
+            <!-- Download Button -->
           <% if (session_username) {  %>
             <a href="/<%=results[i].filepath%>" download> <button class="btn">
             <i class="fa fa-download"></i> Download</button></a>
@@ -232,14 +231,14 @@
             <a href="/login"> <button class="btn">
             <i class="fa fa-download"></i> Download</button></a>
           <% } %>
-        <!-- End Download Button -->
+            <!-- End Download Button -->
+          </div>
         </div>
-
+      </div>
       <% } %>
-  
+    </div>
+  </div>
   <!-- End Gallery -->
-</div>
-</div>
 
   <script>
 
