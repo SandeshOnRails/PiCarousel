@@ -16,52 +16,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PiCarousel</title>
 </head>
-<!-- Header -->
-  
+
 <body>
-  <header class="main-header" style="height:200px;">
-    <nav class="transparent nav-wrapper z-depth-0">
-      <div class="nav-wrapper">
-        <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
-          <i class="material-icons">menu</i>
-        </a>
-        <a href="/" class="brand-logo">PiCarousel</a>
-        <ul class="right hide-on-med-and-down">
-          <li class="active">
-            <a href="/imgupload">Upload</a>
-          </li>
+<!-- Header -->
+<header class="main-header">
+  <nav class="transparent nav-wrapper z-depth-0">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
+        <i class="material-icons">menu</i>
+      </a>
+      <a href="/" class="brand-logo">PiCarousel</a>
+      <ul class="right hide-on-med-and-down">
+          <% if(session_username) { %>
           <li>
-            <a href="/about">Meet the Team</a>
+            Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
           </li>
-                    <li>
-           <% if(session_username) { %>
-            <a href="/profile"><%=session_username%></a>
-           <% } else { %>
-           <a href="/register">Register</a>
-           
-           <% } %>
-          </li>
-          
-        </ul>
-      </div>
-      <ul class="side-nav" id="mobile-nav">
-        <li>
+          <%}%>
+        <li class="active">
           <a href="/imgupload">Upload</a>
         </li>
         <li>
-          <a href="/about">Meet The Team</a>
+          <a href="/about">Meet the Team</a>
         </li>
-        <li>
-          <a href="/register">Register</a>
-        </li>
-        
+          <% if(session_username) { %>
+          <li>
+              <a href="/admin">Manage my pics</a>
+          </li>
+          <li>
+              <a href="/logout">Logout</a>
+          </li>
+          <% } else { %>
+          <li>
+              <a href="/imgupload">Login</a>
+          </li>
+          <li>
+              <a href="/register">Register</a>
+          </li>
+          <% } %>
       </ul>
-    </nav>
-    <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
-    <h1 class="center" style="margin-top:20px;">Upload</h1>
+    </div>
+    <ul class="side-nav" id="mobile-nav">
+      <% if(session_username) { %>
+      <li>
+        Welcome : <%=session_username%>
+      </li>
+        <%}%>
+      <li>
+        <a href="/imgupload">Upload</a>
+      </li>
+      <li>
+        <a href="/about">Meet the team</a>
+      </li>
+        <% if(session_username) { %>
+      <li>
+          <a href="/admin">Manage my pics</a>
+      </li>
+      <li>
+        <a href="/logout">Logout</a>
+      </li>
+      <% } else { %>
+      <li>
+        <a href="/imgupload">Login</a>
+      </li>
+      <li>
+        <a href="/register">Register</a>
+      </li>
+          <% } %>
+    </ul>
+  </nav>
+  <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
+  <div align="center">
+    <h1>Image Upload</h1>
+  </div>
+    </form>
+</header>
+<!-- End Header -->
     
-
-   
 <body>
 
   <div class="center" style="margin-top:80px;">

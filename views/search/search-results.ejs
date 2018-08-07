@@ -3,108 +3,108 @@
 <html>
 
 <head>
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="../css/main.css" />
- 
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PiCarousel</title>
-</head>
-
-  <!-- Header -->
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/main.css" />
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PiCarousel</title>
+  </head>
 
   <style>
-.btn {
-    background-color: grey;
-    border: none;
-    color: white;
-    padding: 5px 30px;
-    cursor: pointer;
-    font-size: 20px;
-    height:40px;
-}
-
-/* Darker background on mouse-over */
-.btn:hover {
-    background-color: RoyalBlue;
-}
-
-
-
-.show {
-    display: block;
-}
-
-.radio-inline {
-    display: inline-block;
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-.radio-inline input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-    position: absolute;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.radio-inline:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.radio-inline input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-/* Show the checkmark when checked */
-.radio-inline input:checked ~ .checkmark:after {
-    display: inline-block;
-}
-
-/* Style the checkmark/indicator */
-.radio-inline .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-
-</style>
+      .btn {
+          background-color: grey;
+          border: none;
+          color: white;
+          padding: 5px 30px;
+          cursor: pointer;
+          font-size: 20px;
+          height:40px;
+      }
+      
+      /* Darker background on mouse-over */
+      .btn:hover {
+          background-color: RoyalBlue;
+      }
+      
+      
+      
+      .show {
+          display: block;
+      }
+      
+      .radio-inline {
+          display: inline-block;
+          position: relative;
+          padding-left: 35px;
+          cursor: pointer;
+          font-size: 22px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+      }
+      
+      /* Hide the browser's default checkbox */
+      .radio-inline input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+      }
+      
+      /* Create a custom checkbox */
+      .checkmark {
+          position: absolute;
+          height: 25px;
+          width: 25px;
+          background-color: #eee;
+      }
+      
+      /* On mouse-over, add a grey background color */
+      .radio-inline:hover input ~ .checkmark {
+          background-color: #ccc;
+      }
+      
+      /* When the checkbox is checked, add a blue background */
+      .radio-inline input:checked ~ .checkmark {
+          background-color: #2196F3;
+      }
+      
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+      }
+      
+      /* Show the checkmark when checked */
+      .radio-inline input:checked ~ .checkmark:after {
+          display: inline-block;
+      }
+      
+      /* Style the checkmark/indicator */
+      .radio-inline .checkmark:after {
+          left: 9px;
+          top: 5px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+      }
+      
+      
+      </style>
   
 <body>
    <!-- Header -->
@@ -118,7 +118,7 @@
           <ul class="right hide-on-med-and-down">
              <% if(session_username) { %>
               <li>
-                  Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
+                Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
               </li>
               <%}%>
             <li class="active">
@@ -196,88 +196,32 @@
     </header>
     <!-- End Header -->
 
-  
   <!-- Section: Main -->
-
-  <section class="section section-main">
-    <div class="container">
-      <h2 style="text-align:center;">Showing results for <i><%=searchkey%></i></h2>
-      <hr>
-      <!-- Row 1 -->
-       <% for (var i =0; i < results.length; i++) { %>
-      <% if (!(i%2 === 0)) { %>
-      <div class="row row-<%=i%>">
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3><%=results[i].title%></h3>
-             <%=results[i].description%>
-          </div>
-        </div>
-        <div class="col m6">
+<h2 style="text-align:center;">Showing results for <i><%=searchkey%></i></h2>
+  <!-- Begin Gallery Container-->
+  <div class="container">
+      <div class="row text-center text-lg-left">
+        <% for (var i =0; i < results.length; i++) { %>
+        <div class="col-lg-3 col-md-4 col-xs-6">
           <div class="card">
-            <div class="card-image">
-              <img src="/<%=results[i].filepath%>" alt="">
-              <span class="card-title"> <%=results[i].title%> </span>
-              <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
+            <img class="card-img-top img-fluid img-thumbnail" src="<%=results[i].filepath%>" alt="Card image cap">
             <div class="card-content">
-             <% if (session_username) {  %>
-             <a href="/<%=results[i].filepath%>" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-             <% } else { %>
-               
+              <!-- Download Button -->
+            <% if (session_username) {  %>
+              <a href="/<%=results[i].filepath%>" download> <button class="btn">
+              <i class="fas fa-download"></i> Download</button></a>
+            <% } else { %>
               <a href="/login"> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-
-             <% } %>
-
+                <i class="fas fa-sign-in-alt"></i> Log-in </button></a>
+            <% } %>
+              <!-- End Download Button -->
             </div>
           </div>
         </div>
+        <% } %>
       </div>
-
-      <% } else { %>
-
-      <!-- Row 2 -->
-      <div class="row row-<%=i%>">
-        <div class="col m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="/<%=results[i].filepath%>" alt="">
-              <span class="card-title"> <%=results[i].title%></span>
-              <a href="#abstract<%=i%>" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
-            <div class="card-content">
-              <% if (session_username) {  %>
-
-              
-             <a href="/<%=results[i].filepath%>" download> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-             <% } else { %>
-               
-              <a href="/login"> <button class="btn">
-             <i class="fa fa-download"></i> Download</button></a>
-
-             <% } %>
-
-            </div>
-          </div>
-        </div>
-        <div class="col m6 hide-on-small-only">
-          <div class="img-content">
-            <h3><%=results[i].title%></h3>
-           <%=results[i].description%>
-          </div>
-        </div>
-      </div>
-
-      <% } }%>
     </div>
-  </section>
+    <!-- End Gallery -->
 
   <!-- Footer -->
   <footer class="page-footer">

@@ -10,7 +10,7 @@
   <link type="text/css" rel="stylesheet" href="../css/main.css" />
  
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
 
@@ -120,7 +120,7 @@
         <ul class="right hide-on-med-and-down">
            <% if(session_username) { %>
             <li>
-                Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
+              Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
             </li>
             <%}%>
           <li class="active">
@@ -129,9 +129,7 @@
           <li>
             <a href="/about">Meet the Team</a>
           </li>
-         
            <% if(session_username) { %>
-
             <li>
                 <a href="/admin">Manage my pics</a>
             </li>
@@ -145,18 +143,14 @@
             <li>
                 <a href="/register">Register</a>
             </li>
-
            <% } %>
-         
-         
-          
         </ul>
       </div>
       <ul class="side-nav" id="mobile-nav">
-         <% if(session_username) { %>
-          <li>
-            Welcome : <%=session_username%>
-             </li>
+        <% if(session_username) { %>
+        <li>
+          Welcome : <%=session_username%>
+        </li>
           <%}%>
         <li>
           <a href="/imgupload">Upload</a>
@@ -164,73 +158,65 @@
         <li>
           <a href="/about">Meet the team</a>
         </li>
-        
           <% if(session_username) { %>
-
-                          <li>
-             <a href="/admin">Manage my pics</a>
-              </li>
-                          <li>
-           <a href="/logout">Logout</a>
-            </li>
-           <% } else { %>
-           <li>
-           <a href="/imgupload">Login</a>
-            </li>
-           <li>
-           <a href="/register">Register</a>
-            </li>
-
-            
+        <li>
+            <a href="/admin">Manage my pics</a>
+        </li>
+        <li>
+          <a href="/logout">Logout</a>
+        </li>
+        <% } else { %>
+        <li>
+          <a href="/imgupload">Login</a>
+        </li>
+        <li>
+          <a href="/register">Register</a>
+        </li>
            <% } %>
-       
-        
       </ul>
     </nav>
     <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
     <div align="center">
       <form action="/search" onsubmit="return validate()" method='post'>
-     <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
-     <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
- 
-
-      <span> <select style="display:block; width:100px;color:black;" name="category">
-      <option style="color:black;">All</option>
-      <option style="color:black;">Animals</option>
-      <option style="color:black;">Dogs</option>
-      <option style="color:black;">Cities</option>
-      <option style="color:black;">Birds</option>
-      <option style="color:black;">Houses</option>
-      <option style="color:black;">Nature</option>
-
-
-     </select>
-   </span>
+      <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
+      <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
+        <span>
+          <select style="display:block; width:100px;color:black;" name="category">
+          <option style="color:black;">All</option>
+          <option style="color:black;">Animals</option>
+          <option style="color:black;">Dogs</option>
+          <option style="color:black;">Cities</option>
+          <option style="color:black;">Birds</option>
+          <option style="color:black;">Houses</option>
+          <option style="color:black;">Nature</option>
+          </select>
+        </span>
       <p id="illegal" style="color:red;text-align: center;"></p>
-
    </div>
      </form>
   </header>
   <!-- End Header -->
 
-  <!-- Section: Main -->
-
+  <h1 align="center">Gallery</h1>
   <!-- Begin Gallery Container-->
   <div class="container">
-    <h1 class="my-4 text-center text-lg-left">Gallery</h1>
     <div class="row text-center text-lg-left">
       <% for (var i =0; i < results.length; i++) { %>
+        <% let extension=results[i].filepath.split('.') %>
+        <% let ext=extension[1] %>
+        <% console.log(ext) %>
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="card">
-          <img class="card-img-top img-fluid img-thumbnail" src="<%=results[i].filepath%>" alt="Card image cap">
+          <img class="card-img-top img-fluid img-thumbnail" src="<%='th_'+results[i].owner_user_id+'_'+results[i].photoid+'.'+ext%>" alt="Card image cap">
           <div class="card-content">
             <!-- Download Button -->
           <% if (session_username) {  %>
             <a href="/<%=results[i].filepath%>" download> <button class="btn">
-            <i class="fa fa-download"></i> Download</button></a>
+            <i class="fas fa-download"></i> Download</button></a>
           <% } else { %>
-            <a href="/login"> <button class="btn">
-            <i class="fa fa-download"></i> Download</button></a>
+            <a href="/login"> 
+              <button class="btn">
+                <i class="fas fa-sign-in-alt"></i> Log-in </button></a>
           <% } %>
             <!-- End Download Button -->
           </div>
