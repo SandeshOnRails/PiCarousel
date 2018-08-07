@@ -33,7 +33,7 @@ con.connect(function(err) {
 
 else {
 
-    con.query("SELECT * FROM image", function(err, result, fields) {
+    con.query("SELECT * FROM image order by photo_id desc ", function(err, result, fields) {
               
 
       if (err) {
