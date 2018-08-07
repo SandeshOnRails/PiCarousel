@@ -60,3 +60,22 @@ function postData(data){
         });
 };
 
+function getData(data){
+
+     var resultdiv= data.resultDiv;
+
+
+     $.ajax({
+            type: "GET",
+            url: "/"+data.operation,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+              //alert('suc');
+                console.log('success post data');
+                            //console.log(JSON.stringify(data));
+                            //alert(resultdiv);
+                            document.getElementById(resultdiv).innerHTML=data;
+            }
+        });
+};

@@ -36,7 +36,7 @@ function suspendUsers(){
       }
         if (vals.length>0){
       vals = vals.substring(0, vals.length - 1); 
-      alert(vals);
+      //alert(vals);
       var data={};
       data.operation = "usersSuspend";
       data.id = vals;

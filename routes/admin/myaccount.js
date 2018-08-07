@@ -23,6 +23,8 @@ module.exports = function (app,dbRequest,con) {
 
 	function initializeListview(callback){
 
+		
+
 		dbRequest.getUserImageCount(con,G_user,function(itemcount){
 
 				_totalpage= Math.ceil(Number.parseInt(itemcount[0].itemcount,10) / Number.parseInt(_recPerPage,10));
@@ -41,6 +43,10 @@ module.exports = function (app,dbRequest,con) {
     		});
     			
     	};
+
+
+
+
 	}
 
 
@@ -72,6 +78,9 @@ module.exports = function (app,dbRequest,con) {
 	}
 
 	app.post('/myaccountProfile', function(req, res){
+		if (typeof req.session.user == 'undefined')
+	 		res.redirect("/admin");
+
 		G_user.id  = req.session.user_id;
 	 	_filter = "no";
 	 	console.log("my account profile");
@@ -100,6 +109,8 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 	app.post('/myaccountImages', function(req, res){
+		if (typeof req.session.user == 'undefined')
+	 		res.redirect("/");
 		G_user.id  = req.session.user_id;
 		_filter = "no";	 	
 	 	console.log("my account images");
@@ -152,10 +163,13 @@ module.exports = function (app,dbRequest,con) {
 	 	if (req.query.page)
 	 		_page = req.query.page;
 
+	 	res.redirect('../../../../');
+/*
 	 	 dbRequest.getCategoriesAll(con,"",function(result){
 
 				res.render('admin/photoUploadForm', {operation:'list',result:result});//from views categories.ejs
     		});
+    		*/
 
 	 })
 /*
