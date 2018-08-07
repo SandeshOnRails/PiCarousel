@@ -163,7 +163,7 @@ module.exports = function (app,dbRequest,con) {
 	 	if (req.query.page)
 	 		_page = req.query.page;
 
-	 	res.redirect('../../../../');
+	 	res.redirect('/../../');
 /*
 	 	 dbRequest.getCategoriesAll(con,"",function(result){
 
