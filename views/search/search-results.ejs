@@ -107,74 +107,94 @@
 </style>
   
 <body>
-  <!-- Header -->
-  <header class="main-header">
-    <nav class="transparent nav-wrapper z-depth-0">
-      <div class="nav-wrapper">
-        <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
-          <i class="material-icons">menu</i>
-        </a>
-        <a href="/" class="brand-logo">PiCarousel</a>
-        <ul class="right hide-on-med-and-down">
-          <li class="active">
+   <!-- Header -->
+   <header class="main-header">
+      <nav class="transparent nav-wrapper z-depth-0">
+        <div class="nav-wrapper">
+          <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
+            <i class="material-icons">menu</i>
+          </a>
+          <a href="/" class="brand-logo">PiCarousel</a>
+          <ul class="right hide-on-med-and-down">
+             <% if(session_username) { %>
+              <li>
+                  Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
+              </li>
+              <%}%>
+            <li class="active">
+              <a href="/imgupload">Upload</a>
+            </li>
+            <li>
+              <a href="/about">Meet the Team</a>
+            </li>
+             <% if(session_username) { %>
+  
+              <li>
+                  <a href="/admin">Manage my pics</a>
+              </li>
+              <li>
+                  <a href="/logout">Logout</a>
+              </li>
+             <% } else { %>
+              <li>
+                  <a href="/imgupload">Login</a>
+              </li>
+              <li>
+                  <a href="/register">Register</a>
+              </li>
+             <% } %>
+          </ul>
+        </div>
+        <ul class="side-nav" id="mobile-nav">
+           <% if(session_username) { %>
+            <li>
+              Welcome : <%=session_username%>
+               </li>
+            <%}%>
+          <li>
             <a href="/imgupload">Upload</a>
           </li>
           <li>
-            <a href="/about">Meet the Team</a>
+            <a href="/about">Meet the team</a>
           </li>
-          <li>
-           <% if(session_username) { %>
-            <a href="/profile"><%=session_username%></a>
-           <% } else { %>
-           <a href="/register">Register</a>
-           
-           <% } %>
-          </li>
-          
+            <% if(session_username) { %>
+                            <li>
+               <a href="/admin">Manage my pics</a>
+                </li>
+                            <li>
+             <a href="/logout">Logout</a>
+              </li>
+             <% } else { %>
+             <li>
+             <a href="/imgupload">Login</a>
+              </li>
+             <li>
+             <a href="/register">Register</a>
+              </li>
+             <% } %>
         </ul>
-      </div>
-      <ul class="side-nav" id="mobile-nav">
-        <li>
-          <a href="/imgupload">Upload</a>
-        </li>
-        <li>
-          <a href="/about">Meet the team</a>
-        </li>
-        <li>
-          <% if(session_username) { %>
-            <a href="/profile"><%=session_username%></a>
-           <% } else { %>
-           <a href="/register">Register</a>
-           
-           <% } %>
-        </li>
-        
-      </ul>
-    </nav>
-    <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
-    <div align="center">
-      <form action="/search" onsubmit="return validate()" method='post'>
-     <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
-     <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
- 
-
-      <span> <select style="display:block; width:100px;color:black;" name="category">
-      <option style="color:black;">All</option>
-      <option style="color:black;">Animals</option>
-      <option style="color:black;">Dogs</option>
-      <option style="color:black;">Cities</option>
-      <option style="color:black;">Birds</option>
-      <option style="color:black;">Houses</option>
-      <option style="color:black;">Nature</option>
-
-
-     </select>
-   </span>
-      <p id="illegal" style="color:red;text-align: center;"></p>
-
-   </div>
-     </form>
-  </header>
+      </nav>
+      <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
+      <div align="center">
+        <form action="/search" onsubmit="return validate()" method='post'>
+       <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
+       <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
+        <span> <select style="display:block; width:100px;color:black;" name="category">
+        <option style="color:black;">All</option>
+        <option style="color:black;">Animals</option>
+        <option style="color:black;">Dogs</option>
+        <option style="color:black;">Cities</option>
+        <option style="color:black;">Birds</option>
+        <option style="color:black;">Houses</option>
+        <option style="color:black;">Nature</option>
+       </select>
+     </span>
+        <p id="illegal" style="color:red;text-align: center;"></p>
+  
+     </div>
+       </form>
+    </header>
+    <!-- End Header -->
 
   
   <!-- Section: Main -->
@@ -185,8 +205,7 @@
       <hr>
       <!-- Row 1 -->
        <% for (var i =0; i < results.length; i++) { %>
-               
-               <% if (!(i%2 === 0)) { %>
+      <% if (!(i%2 === 0)) { %>
       <div class="row row-<%=i%>">
         <div class="col m6 hide-on-small-only">
           <div class="img-content">
@@ -205,8 +224,6 @@
             </div>
             <div class="card-content">
              <% if (session_username) {  %>
-
-              
              <a href="/<%=results[i].filepath%>" download> <button class="btn">
              <i class="fa fa-download"></i> Download</button></a>
              <% } else { %>
