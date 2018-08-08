@@ -93,79 +93,64 @@
 <!-- End Header -->
     
 <body>
-
   <div class="center" style="margin-top:80px;">
+  <form ref='uploadForm' 
+        id='uploadForm' 
+        action='/upload' 
+        method='post' 
+        encType="multipart/form-data">
+    <div class="sections">
 
-<form ref='uploadForm' 
-      id='uploadForm' 
-      action='/upload' 
-      method='post' 
-      encType="multipart/form-data">
-      <div class="sections">
-    
       <div class="inputfield" align='center'>
         <h3>Title</h3> <input type="text" placeholder="Title of the Post"  name='title' style="width: 250px;" required/>
       </div>
 
-       <div class="inputfield"align="center" style="margin-top:20px;">
+      <div class="inputfield"align="center" style="margin-top:20px;">
         <h3>Description</h3><textarea id="subject" name="subject" placeholder="Image decription ...." style="height:150px;width:250px;" required></textarea>
-
       </div>
 
       <div class="radiobuttons">
         <input type="radio" value="free" id="free" name="licenceType" checked />
-            <label for="free">Free</label>
+          <label for="free">Free</label>
         <input type="radio" value="commercial" id="commercial" name="licenceType"  />
-            <label for="commercial">Commercial</label>
+          <label for="commercial">Commercial</label>
         <br>
-      <input type="radio" value="private" id="private" name="privacy" checked />
+        <input type="radio" value="private" id="private" name="privacy" checked />
             <label for="private">Private</label>
-      <input type="radio" value="private" id="public" name="privacy"  />
+        <input type="radio" value="private" id="public" name="privacy"  />
             <label for="public">Public</label>
-
-
       </div>
   
-  <div align='center' style="margin-top:20px;">
+      <div align='center' style="margin-top:20px;">
         <input type="file" name="sampleFile" required/>
-         <p id="wrongFileFormat" style="color:red;"></p>
-       </div>
-
-
-
-  <div align='center' style="margin-top:20px;">
-
-   <h3> Category </h3><select name='category' style="display:block;color:black;width:100px;">
-  <option value="all">All</option>
-  <option value="Animals">Animals</option>
-  <option value="Birds">Birds</option>
-  <option value="Cities">Cities</option>
-  <option value="Dogs">Dogs</option>
-  <option value="Flowers">Flowers </option>
-  <option value="Houses">Houses</option>
-  <option vallue="Nature">Nature</option>
-</select>
-
-</div>
-
-</div>
-
+        <p id="wrongFileFormat" style="color:red;"></p>
+      </div>
+      <div align='center' style="margin-top:20px;">
+        <h3> Category </h3>
+        <select name='category' style="display:block;color:black;width:100px;">
+          <option value="all">All</option>
+          <option value="Animals">Animals</option>
+          <option value="Birds">Birds</option>
+          <option value="Cities">Cities</option>
+          <option value="Dogs">Dogs</option>
+          <option value="Flowers">Flowers </option>
+          <option value="Houses">Houses</option>
+          <option vallue="Nature">Nature</option>
+        </select>
+      </div>
+    </div>
 
     <% if (error){  %>
-  
-  <script>
-  
-  document.getElementById('wrongFileFormat').innerHTML = '<%=error%>';
-
-  </script>
-
-  <% } %>
+      <script>
+       document.getElementById('wrongFileFormat').innerHTML = '<%=error%>';
+      </script>
+    <% } %>
         
-        <div align="center" style="margin-top:40px;color:white;">
-          <input type='submit' value='Upload' style="height:50px;width:100px;color:black" />
-        </div>
-    </form>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <div align="center" style="margin-top:40px;color:white;">
+      <input type='submit' value='Upload' style="height:50px;width:100px;color:black" />
+    </div>
+  </form>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="script/materialize.min.js"></script>
   <script>
     $(document).ready(function () {
