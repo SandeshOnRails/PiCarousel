@@ -182,13 +182,13 @@
       <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
         <span>
           <select style="display:block; width:100px;color:black;" name="category">
-          <option style="color:black;">All</option>
-          <option style="color:black;">Animals</option>
-          <option style="color:black;">Dogs</option>
-          <option style="color:black;">Cities</option>
-          <option style="color:black;">Birds</option>
-          <option style="color:black;">Houses</option>
-          <option style="color:black;">Nature</option>
+
+            <% for(var i =0; i < categories.length; i++) { %>
+
+          <option style="color:black;" name="<%=categories[i]%>"><%=categories[i].categorie%></option>
+
+          <% } %>
+
           </select>
         </span>
       <p id="illegal" style="color:red;text-align: center;"></p>

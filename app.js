@@ -18,7 +18,7 @@ var crypto = require('encryptionhelper') // encryption and decryption package fo
 var session = require('express-session') // user session handling express package
 var loginUser = require('./models/auth/loginUser.js') // login and authenticate user
 var uploadImage = require('./models/upload.js')
-
+var categories = require('./models/categories.js')
 
 
  app.use(session({ secret: 'secret_word', resave: false,
@@ -48,8 +48,8 @@ app.set('view engine', 'ejs');
 // ROUTES
 
 require('./routes/about/about.js')(express,app);
-require('./routes/search/search.js')(app,con,search,checkForKey,searchMatchPercent)
-require('./routes/home/home.js')(app, con, search)
+require('./routes/search/search.js')(app,con,search,checkForKey,searchMatchPercent, categories)
+require('./routes/home/home.js')(app, con, search, categories)
 require('./routes/img-upload/upload.js')(app,uploadImage,con,dbRequest)
 
 //admin pages

@@ -1,5 +1,5 @@
 
-module.exports = function (app, con, search, checkForKey, findMatchPercent) {
+module.exports = function (app, con, search, checkForKey, findMatchPercent, categories) {
 
 
 // '/search' route to the search engine
@@ -14,11 +14,16 @@ module.exports = function (app, con, search, checkForKey, findMatchPercent) {
 
         search(req.body.category, con, result=>{
 
-            console.log(result.length)
+             categories(app, con, categories => {
+                    
+
+             
               
-              res.render('search/search-results', {session_username: req.session.user || '', results: result, searchkey: req.body.searchKey})
+              res.render('search/search-results', {session_username: req.session.user || '', results: result, searchkey: req.body.searchKey, categories: categories})
 
         })
+
+         })
 
 
        

@@ -180,13 +180,12 @@
        <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
        <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
         <span> <select style="display:block; width:100px;color:black;" name="category">
-        <option style="color:black;">All</option>
-        <option style="color:black;">Animals</option>
-        <option style="color:black;">Dogs</option>
-        <option style="color:black;">Cities</option>
-        <option style="color:black;">Birds</option>
-        <option style="color:black;">Houses</option>
-        <option style="color:black;">Nature</option>
+            <% for(var i =0; i < categories.length; i++) { %>
+
+          <option style="color:black;" name="<%=categories[i]%>"><%=categories[i].categorie%></option>
+
+          <% } %>
+
        </select>
      </span>
         <p id="illegal" style="color:red;text-align: center;"></p>
@@ -208,7 +207,7 @@
             <div class="card-content">
               <!-- Download Button -->
             <% if (session_username) {  %>
-              <a href="/<%=results[i].filepath%>" download> <button class="btn">
+              <a href="/download/<%=results[i].photo_id%>/<%=results[i].filepath%>" download> <button class="btn">
               <i class="fas fa-download"></i> Download</button></a>
             <% } else { %>
               <a href="/login"> <button class="btn">
