@@ -92,7 +92,7 @@
 </header>
 <!-- End Header -->
     
-<body>
+<body style="background-color: #D5B78B">
   <div class="center" style="margin-top:80px;">
   <form ref='uploadForm' 
         id='uploadForm' 
@@ -102,41 +102,36 @@
     <div class="sections">
 
       <div class="inputfield" align='center'>
-        <h3>Title</h3> <input type="text" placeholder="Title of the Post"  name='title' style="width: 250px;" required/>
+        <h3 style="color: #292f33; font: 30px Trebuchet MS, Helvetica, sans-serif">Title</h3> <input type="text" placeholder="Title of the Post"  name='title' style="border:2px solid black; width: 250px;margin-top:20px;padding:0px; background-color:white; color: black" required/>
       </div>
 
       <div class="inputfield"align="center" style="margin-top:20px;">
-        <h3>Description</h3><textarea id="subject" name="subject" placeholder="Image decription ...." style="height:150px;width:250px;" required></textarea>
+        <h3 style="color: #292f33; font: 30px Trebuchet MS, Helvetica, sans-serif">Description</h3><textarea id="subject" name="subject" placeholder="Image decription ...." style="border:2px solid black; width: 250px; height:150px;margin-top:20px;padding:0px; background-color:white; color: black" required></textarea>
       </div>
 
       <div class="radiobuttons">
         <input type="radio" value="free" id="free" name="licenceType" checked />
-          <label for="free">Free</label>
+          <label for="free" style="color: #292f33; font: 20px Trebuchet MS, Helvetica, sans-serif">Free</label>
         <input type="radio" value="commercial" id="commercial" name="licenceType"  />
-          <label for="commercial">Commercial</label>
+          <label for="commercial" style="color: #292f33; font: 20px Trebuchet MS, Helvetica, sans-serif">Commercial</label>
         <br>
         <input type="radio" value="private" id="private" name="privacy" checked />
-            <label for="private">Private</label>
+            <label for="private" style="color: #292f33; font: 20px Trebuchet MS, Helvetica, sans-serif">Private</label>
         <input type="radio" value="private" id="public" name="privacy"  />
-            <label for="public">Public</label>
+            <label for="public" style="color: #292f33; font: 20px Trebuchet MS, Helvetica, sans-serif">Public</label>
       </div>
   
       <div align='center' style="margin-top:20px;">
-        <input type="file" name="sampleFile" required/>
+        <input type="file" name="sampleFile"  style="color: #292f33; font: 20px Trebuchet MS, Helvetica, sans-serif" required/>
         <p id="wrongFileFormat" style="color:red;"></p>
       </div>
       <div align='center' style="margin-top:20px;">
-        <h3> Category </h3>
+        <h3 style="color: #292f33; font: 30px Trebuchet MS, Helvetica, sans-serif"> Category </h3>
         <select name='category' style="display:block;color:black;width:100px;">
-          <option value="all">All</option>
-          <option value="Animals">Animals</option>
-          <option value="Birds">Birds</option>
-          <option value="Cities">Cities</option>
-          <option value="Dogs">Dogs</option>
-          <option value="Flowers">Flowers </option>
-          <option value="Houses">Houses</option>
-          <option vallue="Nature">Nature</option>
-        </select>
+          <% for(var i =0; i < categories.length; i++) { %>
+            <option style="color:black;" name="<%=categories[i]%>"><%=categories[i].categorie%></option>
+          <% } %>
+         </select>
       </div>
     </div>
 
