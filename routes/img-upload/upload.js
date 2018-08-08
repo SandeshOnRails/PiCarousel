@@ -6,7 +6,7 @@ function isFileFormatValid(req, res, next) {
   let type = req.files.sampleFile.mimetype.toString();
   
 
-    if(type === 'image/jpeg' || type === 'image/png') return next()
+    if(type === 'image/jpeg' || type === 'image/png' || type==='image/jpg') return next()
       res.render('img_upload/imgupload', {error:'Sorry only jpeg and png file format allowed', session_username: req.session.user || ''})
 }
 
