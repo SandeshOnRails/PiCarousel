@@ -50,7 +50,7 @@ app.set('view engine', 'ejs');
 require('./routes/about/about.js')(express,app);
 require('./routes/search/search.js')(app,con,search,checkForKey,searchMatchPercent, categories)
 require('./routes/home/home.js')(app, con, search, categories)
-require('./routes/img-upload/upload.js')(app,uploadImage,con,dbRequest, categories)
+require('./routes/img-upload/upload.js')(app,uploadImage,con,dbRequest)
 
 //admin pages
 require('./routes/admin/admin.js')(app,crypto)

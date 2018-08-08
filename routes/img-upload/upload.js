@@ -26,11 +26,7 @@ function isFileSizeValid (req, res, next) {
 
 
 var photoid="";
-<<<<<<< HEAD
-module.exports = function (app, upload, con,dbrequest, categories_db) {
-=======
-module.exports = function (app, upload, con,dbrequest, categories) {
->>>>>>> 1664ec98dfd0f1747826ec0f5784bd099a9cb33f
+module.exports = function (app, upload, con,dbrequest) {
 var imagename="";
 var Jimp = require('jimp');
 
@@ -38,15 +34,11 @@ var Jimp = require('jimp');
 
       app.get('/imgupload', function(req, res){
 
+          
+        
             if(req.session.user){
 
-              categories_db(app, con, categories => {
-
-
-         res.render('img_upload/imgupload', {error:'', session_username: req.session.user || '', categories: categories})
-
-                       })
-
+         res.render('img_upload/imgupload', {error:'', session_username: req.session.user || '', categories: ''})
       } 
       else {
           
@@ -65,19 +57,6 @@ var Jimp = require('jimp');
      
 
       // post upload file. middleware function to check if the file is either png or jpeg format
-      function instertBlankImageRecord (req,res,next){
-               
-
-               dbrequest.insertImageRecordForUpload(con,req.session.user_id,function(result){
-
-                  
-                return next();
-                });
-
-           
-
-      }
-
       function imageresize (req,res,next){
                
 
@@ -92,7 +71,7 @@ var Jimp = require('jimp');
 
       }
 
-      app.post('/upload',instertBlankImageRecord,imageresize, isFileFormatValid, isFileSizeValid ,function(req, res,next) {
+      app.post('/upload', isFileFormatValid, isFileSizeValid, imageresize,function(req, res,next) {
 
     
       next()
@@ -106,7 +85,7 @@ var Jimp = require('jimp');
        
           
           let myFile = req.files.sampleFile;
-          str = myFile.name.split('.');
+          str = myFile.mimetype.split('/');
           let originalName = req.session.user_id+"_"+res.locals.photoid+"."+str[1];
           myFile.mv('original/'+originalName, function(err) {
          
@@ -128,8 +107,7 @@ var Jimp = require('jimp');
             var title = req.body.title
             var licencetype = req.body.licenceType
             var privacy = req.body.privacy
-            var user_id = req.session.user_id
-            var photoid = res.locals.photoid
+            var user_id = req.session.user_id;
 
             upload(con, {
 
@@ -140,7 +118,6 @@ var Jimp = require('jimp');
                 privacy: privacy,
                 title: title,
                 userID: req.session.user_id,
-                photo_id:photoid
 
             }, isSuccess => {
 
@@ -149,7 +126,8 @@ var Jimp = require('jimp');
                            
                                 myimg.scaleToFit( 400, 300 );
                                 myimg.quality(60) // set JPEG quality
-                                myimg.write("assets/th_"+res.locals.originalName); // save
+                                myimg.greyscale() // set greyscale
+                                myimg.write("assets/th_"+ res.locals.originalName); // save
                         })
                         .catch(err => {
                             console.error(err);
