@@ -62,7 +62,16 @@ var Jimp = require('jimp');
 
 
       //post search results to the search-results.ejs page
+      function insertBlankRecord(req,res,next){
 
+        dbrequest.insertImageRecordForUpload(con,req.session.user_id,function(result){
+
+                  //console.log("itcnt:"+itemcount[0].itemcount);
+                 //res.locals.photoid =  result[0].photo_id;
+                return next();
+                });
+
+      }
      
 
       // post upload file. middleware function to check if the file is either png or jpeg format
@@ -72,7 +81,8 @@ var Jimp = require('jimp');
                dbrequest.getUserLastImageId(con,req.session.user_id,function(result){
 
                   //console.log("itcnt:"+itemcount[0].itemcount);
-                 res.locals.photoid =  result[0].photo_id;
+                  console.log("last id :"+result[0].photo_id);
+                 res.locals.photo_id =  result[0].photo_id;
                 return next();
                 });
 
@@ -80,22 +90,22 @@ var Jimp = require('jimp');
 
       }
 
-      app.post('/upload', isFileFormatValid, isFileSizeValid, imageresize,function(req, res,next) {
+      app.post('/upload',insertBlankRecord, imageresize,isFileFormatValid, isFileSizeValid ,function(req, res,next) {
 
     
       next()
 
      },function(req,res,next){
 
-        console.log("   ======"+res.locals.photoid);
+        console.log("   ======"+res.locals.photo_id);
                       
         if (!req.files)
           return res.status(400).send('No files were uploaded.');
        
           
           let myFile = req.files.sampleFile;
-          str = myFile.mimetype.split('/');
-          let originalName = req.session.user_id+"_"+res.locals.photoid+"."+str[1];
+          str = myFile.name.split('.');
+          let originalName = req.session.user_id+"_"+res.locals.photo_id+"."+str[1];
           myFile.mv('original/'+originalName, function(err) {
          
             if (err)
@@ -117,6 +127,7 @@ var Jimp = require('jimp');
             var licencetype = req.body.licenceType
             var privacy = req.body.privacy
             var user_id = req.session.user_id;
+            var photo_id = res.locals.photo_id;
 
             upload(con, {
 
@@ -127,6 +138,7 @@ var Jimp = require('jimp');
                 privacy: privacy,
                 title: title,
                 userID: req.session.user_id,
+                photo_id : photo_id
 
             }, isSuccess => {
 
