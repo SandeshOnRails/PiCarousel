@@ -128,15 +128,10 @@
       <div align='center' style="margin-top:20px;">
         <h3> Category </h3>
         <select name='category' style="display:block;color:black;width:100px;">
-          <option value="all">All</option>
-          <option value="Animals">Animals</option>
-          <option value="Birds">Birds</option>
-          <option value="Cities">Cities</option>
-          <option value="Dogs">Dogs</option>
-          <option value="Flowers">Flowers </option>
-          <option value="Houses">Houses</option>
-          <option vallue="Nature">Nature</option>
-        </select>
+          <% for(var i =0; i < categories.length; i++) { %>
+            <option style="color:black;" name="<%=categories[i]%>"><%=categories[i].categorie%></option>
+          <% } %>
+         </select>
       </div>
     </div>
 
