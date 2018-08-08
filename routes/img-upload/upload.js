@@ -147,7 +147,6 @@ var Jimp = require('jimp');
                            
                                 myimg.scaleToFit( 400, 300 );
                                 myimg.quality(60) // set JPEG quality
-                                myimg.greyscale() // set greyscale
                                 myimg.write("assets/th_"+ res.locals.originalName); // save
                         })
                         .catch(err => {
