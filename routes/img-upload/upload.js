@@ -157,8 +157,11 @@ var Jimp = require('jimp');
                  }
 
                  else {
+                     dbrequest.deleteImageOnUploadError(con,res.locals.photo_id,function(result){
 
-                  res.send('not done')
+                          res.send('An error occurd during image upload <br>Please check your file and try again.');
+                      });
+                  
                   
                  }
 

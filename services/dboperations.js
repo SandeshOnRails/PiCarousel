@@ -203,7 +203,20 @@ module.exports = {
                 this.resulta = con.query("Select * from image inner join user on image.owner_user_id = user.user_id order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
                     if (err) throw err;
-                    console.log("in sendQuery Result: " + result);
+                    //console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
+            deleteImageOnUploadError: function(con, photo_id, callback) {
+               
+               
+                var returnValue;
+                this.resulta = con.query("delete from image where photo_id = "+photo_id+";", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    //console.log("in sendQuery Result: " + result);
                     callback(result);
                     //con.release();
 
