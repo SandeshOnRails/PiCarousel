@@ -517,6 +517,17 @@
       Materialize.scrollFire(options);
 
     });
+
+
+    function validate() {
+      let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+      //alert(document.getElementById('searchKey').value)
+      if(special.test(document.getElementById('searchKey').value)){
+        document.getElementById('illegal').innerHTML = '* Illegal character encountered'
+        return false
+      }
+      
+    }
   </script>
 
 </body>
