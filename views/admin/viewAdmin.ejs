@@ -13,6 +13,14 @@
   <script src="js/userServices.js"></script>
   <script src="js/imageServices.js"></script>
   <script src="js/myaccountServices.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123573094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123573094-1');
+</script>
   <style>
 
   /*For the image design*/
@@ -100,7 +108,7 @@ a:hover {
 
 </style>
 </head>
-<body onload="gotoMenu('myaccountImages');">
+<body onload="gotoMenu('images');">
 
 <div class="container">
   <h2>PiCarousel</h2>

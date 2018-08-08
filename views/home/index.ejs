@@ -14,6 +14,14 @@
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
   <script src="js/services.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123573094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123573094-1');
+</script>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PiCarousel</title>
@@ -201,7 +209,7 @@
         <% let ext=extension[1] %>
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="card">
-          <img onclick="popimage('showimage',this.name);" name="<%= results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" class="card-img-top img-fluid img-thumbnail" src="<%= 'th_'+results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" alt="Card image cap">
+          <img style="cursor:pointer;" onclick="popimage('showimage',this.name);" name="<%= results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" class="card-img-top img-fluid img-thumbnail" src="<%= 'th_'+results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" alt="Card image cap">
           <div class="card-content">
             <!-- Download Button -->
           <% if (session_username) {  %>
