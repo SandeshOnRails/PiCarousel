@@ -58,6 +58,23 @@ module.exports = function (app,dbRequest,con) {
 
     });
 
+        app.post('/recover', function(req, res){
+			console.log("geldi gelid"+req.body.email);
+			dbRequest.getUserEmail(con,req.body.email,function(result){
+
+				if (result[0].email == 1)
+				res.send("new password has been send to your email "+req.body.email);
+			else
+				res.send("provided email does not exist :"+req.body.email);
+				
+		 	
+	                         
+	    	});
+		
+		console.log("geldi gelid");
+
+    });
+
 
     app.post('/usersActivate', function(req, res){
 		

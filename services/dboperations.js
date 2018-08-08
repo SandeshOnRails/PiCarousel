@@ -51,6 +51,18 @@ module.exports = {
 
                   });
             },
+            getUserEmail: function(con, email, callback) {
+               //SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+                var returnValue;
+                this.resulta = con.query("Select count(*) as email from user where email='"+email+"'", function (err, result , fields) {
+                   
+                    if (err) throw err;
+                    console.log("in sendQuery Result: " + result);
+                    callback(result);
+                    //con.release();
+
+                  });
+            },
 
             suspendUser: function(con, data, callback) {
 

@@ -102,3 +102,28 @@ function getData(data){
             }
         });
 };
+
+function passRecover(email){
+  if (email == "")
+    alert("please provide an email address to recover your password");
+  else{
+      var data={};
+      data.email = email;
+      data.operation = "recover";
+       $.ajax({
+            type: "POST",
+            url: "/"+data.operation,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+              //alert('suc');
+                console.log('success post data');
+                            //console.log(JSON.stringify(data));
+                            //alert(resultdiv);
+                            document.getElementById('recov').innerHTML=data;
+            }
+        });
+
+     }
+
+}

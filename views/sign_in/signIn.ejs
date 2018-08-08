@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
@@ -127,7 +128,10 @@ hr {
     }
 }
 </style>
+  <script src="js/services.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+</head>
 <body>
 
 <div id="SignIn" class="tabcontent">
@@ -146,16 +150,17 @@ hr {
       <hr>
 
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
-      <div id="button1"><a href="passwordReset.html">Forgot Password?</a></div> </p>
+      <div id="button1"><a onclick="passRecover(document.getElementById('email').value);">Forgot Password?</a></div> </p>
 
 
       <div class="clearfix">
        <a href='/'><button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button></a>
         <button type="submit" class="signinbtn">Sign In</button>
+        <p id="recov"></p>
       </div>
     </div>
   </form>
