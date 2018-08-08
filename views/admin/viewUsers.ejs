@@ -22,7 +22,7 @@
 
 
  <% for (var i=0; i<result.length; i++) {%>
- <%console.log(result[i].firstname);%>
+
             <tr id = "categorie<%=result[i].categorie_id %>">
               <td>
                 <a onclick="makeCategorieEditable(<%=result[i].categorie_id %>,'<%=result[i].categorie %>');"  href="#<%=result[i].firstname %>"><%= result[i].firstname +" "+ result[i].lastname %></a>

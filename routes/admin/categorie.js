@@ -21,7 +21,7 @@ module.exports = function (app,dbRequest,con) {
     		});
 
 	 	function next(totalpage,page){
-    		console.log("after list : ");
+    		
     		 dbRequest.getCategories(con,page,_recPerPage,"",function(result){
 
 				_listcategories = result;
@@ -34,7 +34,7 @@ module.exports = function (app,dbRequest,con) {
 	}
 
 	 app.post('/categories', function(req, res){
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 	 	initializeListview(function(){

@@ -199,7 +199,7 @@
       <% for (var i =0; i < results.length; i++) { %>
         <% let extension=results[i].filepath.split('.') %>
         <% let ext=extension[1] %>
-      <div class="col-lg-4 col-md-4 col-xs-6">
+      <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="card">
           <img name="<%= results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" class="card-img-top img-fluid img-thumbnail" src="<%= 'th_'+results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" alt="Card image cap">
           <div class="card-content">
@@ -220,8 +220,42 @@
     </div>
   </div>
   <!-- End Gallery -->
-
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="script/materialize.min.js"></script>
   <script>
+    $(document).ready(function () {
+      // Init Sidenav
+      $('.button-collapse').sideNav();
+
+      // Init Modal
+      $('.modal').modal();
+
+      // Scrollfire
+      const options = [
+        {
+          selector: '.row-1', offset: 50, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        },
+        {
+          selector: '.row-2', offset: 300, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        },
+        {
+          selector: '.row-3', offset: 400, callback: function (el) {
+            Materialize.fadeInImage($(el));
+          }
+        }
+      ];
+
+      Materialize.scrollFire(options);
+
+    });
+    
     function validate() {
       let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
       //alert(document.getElementById('searchKey').value)
