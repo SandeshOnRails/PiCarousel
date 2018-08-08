@@ -22,108 +22,107 @@
   <!-- Header -->
 
   <style>
-.btn {
-    background-color: grey;
-    border: none;
-    color: white;
-    padding: 5px 30px;
-    cursor: pointer;
-    font-size: 20px;
-    height:40px;
-}
+    .btn {
+        background-color: grey;
+        border: none;
+        color: white;
+        padding: 5px 30px;
+        cursor: pointer;
+        font-size: 20px;
+        height:40px;
+    }
 
-/* Darker background on mouse-over */
-.btn:hover {
-    background-color: RoyalBlue;
-}
+    /* Darker background on mouse-over */
+    .btn:hover {
+        background-color: RoyalBlue;
+    }
 
 
 
-.show {
-    display: block;
-}
+    .show {
+        display: block;
+    }
 
-.radio-inline {
-    display: inline-block;
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+    .radio-inline {
+        display: inline-block;
+        position: relative;
+        padding-left: 35px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 
-/* Hide the browser's default checkbox */
-.radio-inline input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
+    /* Hide the browser's default checkbox */
+    .radio-inline input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
 
-/* Create a custom checkbox */
-.checkmark {
-    position: absolute;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-}
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
 
-/* On mouse-over, add a grey background color */
-.radio-inline:hover input ~ .checkmark {
-    background-color: #ccc;
-}
+    /* On mouse-over, add a grey background color */
+    .radio-inline:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
 
-/* When the checkbox is checked, add a blue background */
-.radio-inline input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
+    /* When the checkbox is checked, add a blue background */
+    .radio-inline input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
 
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
 
-/* Show the checkmark when checked */
-.radio-inline input:checked ~ .checkmark:after {
-    display: inline-block;
-}
+    /* Show the checkmark when checked */
+    .radio-inline input:checked ~ .checkmark:after {
+        display: inline-block;
+    }
 
-/* Style the checkmark/indicator */
-.radio-inline .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
+    /* Style the checkmark/indicator */
+    .radio-inline .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
 
 </style>
   
-<body>
+<body style="background-color: #D5B78B">
   <!-- Header -->
-  <header class="main-header">
+  <header class="main-header"  style="background-image: url(../images/background-18.jpg); background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-position-y: 35%">
     <nav class="transparent nav-wrapper z-depth-0">
       <div class="nav-wrapper">
         <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
           <i class="material-icons">menu</i>
         </a>
-        <a href="/" class="brand-logo">PiCarousel</a>
+        <a href="/" class="brand-logo active">PiCarousel</a>
         <ul class="right hide-on-med-and-down">
            <% if(session_username) { %>
             <li>
               Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
             </li>
             <%}%>
-          <li class="active">
+          <li>
             <a href="/imgupload">Upload</a>
           </li>
           <li>
@@ -178,17 +177,13 @@
     <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
     <div align="center">
       <form action="/search" onsubmit="return validate()" method='post'>
-      <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
+      <input type="text" style="border:2px solid black;width:30%;margin-top:20px;padding:0px; background-color:white; color: black" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
       <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
         <span>
           <select style="display:block; width:100px;color:black;" name="category">
-
             <% for(var i =0; i < categories.length; i++) { %>
-
-          <option style="color:black;" name="<%=categories[i]%>"><%=categories[i].categorie%></option>
-
-          <% } %>
-
+              <option style="color:black;" name="<%=categories[i]%>"><%=categories[i].categorie%></option>
+            <% } %>
           </select>
         </span>
       <p id="illegal" style="color:red;text-align: center;"></p>
@@ -197,14 +192,14 @@
   </header>
   <!-- End Header -->
 
-  <h1 align="center">Gallery</h1>
+  <h1 align="center" style="color: #292f33; font: 40px Trebuchet MS, Helvetica, sans-serif">Browse our Gallery</h1>
   <!-- Begin Gallery Container-->
   <div class="container">
     <div class="row text-center text-lg-left">
       <% for (var i =0; i < results.length; i++) { %>
         <% let extension=results[i].filepath.split('.') %>
         <% let ext=extension[1] %>
-      <div class="col-lg-3 col-md-4 col-xs-6">
+      <div class="col-lg-4 col-md-4 col-xs-6">
         <div class="card">
           <img name="<%= results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" class="card-img-top img-fluid img-thumbnail" src="<%= 'th_'+results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" alt="Card image cap">
           <div class="card-content">
@@ -227,28 +222,20 @@
   <!-- End Gallery -->
 
   <script>
-
-           function validate() {
-
-                let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
-                //alert(document.getElementById('searchKey').value)
-                 if(special.test(document.getElementById('searchKey').value)){
-                     document.getElementById('illegal').innerHTML = '* Illegal character encountered'
-                     return false
-                 }
-
-                 if(document.getElementById('searchKey').value.length < 1) {
-
-                   document.getElementById('illegal').innerHTML = '* Please provide a search key'
-
-                   return false
-
-                 }
-           }
-
+    function validate() {
+      let special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+      //alert(document.getElementById('searchKey').value)
+      if(special.test(document.getElementById('searchKey').value)){
+        document.getElementById('illegal').innerHTML = '* Illegal character encountered'
+        return false
+      }
+      if(document.getElementById('searchKey').value.length < 1) {
+        document.getElementById('illegal').innerHTML = '* Please provide a search key'
+      return false
+      }
+    }
   </script>
 
-  
 </body>
 
 </html>

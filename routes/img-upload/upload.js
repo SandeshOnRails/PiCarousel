@@ -26,7 +26,11 @@ function isFileSizeValid (req, res, next) {
 
 
 var photoid="";
+<<<<<<< HEAD
 module.exports = function (app, upload, con,dbrequest, categories_db) {
+=======
+module.exports = function (app, upload, con,dbrequest, categories) {
+>>>>>>> 1664ec98dfd0f1747826ec0f5784bd099a9cb33f
 var imagename="";
 var Jimp = require('jimp');
 
@@ -34,8 +38,6 @@ var Jimp = require('jimp');
 
       app.get('/imgupload', function(req, res){
 
-          
-        
             if(req.session.user){
 
               categories_db(app, con, categories => {

@@ -1,75 +1,199 @@
 <html lang="en">
 
-<head>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/main.css" />
+   
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PiCarousel</title>
+  </head>
+  
+    <!-- Header -->
+  
+    <style>
+  .btn {
+      background-color: grey;
+      border: none;
+      color: white;
+      padding: 5px 30px;
+      cursor: pointer;
+      font-size: 20px;
+      height:40px;
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+      background-color: RoyalBlue;
+  }
   
   
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="../css/main.css" />
-
-
-  <!--Let browser know website is optimized for mobile-->
-
-  <!--Let browser know website is optimized for mobile-->
-  <title>PiCarousel</title>
-  <title>About</title>
-
   
-</head>
- <header class="main-header">
-    <nav class="transparent nav-wrapper z-depth-0">
-      <div class="nav-wrapper">
-        <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
-          <i class="material-icons">menu</i>
-        </a>
-        <a href="/" class="brand-logo">PiCarousel</a>
-        <ul class="right hide-on-med-and-down">
-          <li class="active">
+  .show {
+      display: block;
+  }
+  
+  .radio-inline {
+      display: inline-block;
+      position: relative;
+      padding-left: 35px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .radio-inline input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+      position: absolute;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .radio-inline:hover input ~ .checkmark {
+      background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .radio-inline input:checked ~ .checkmark {
+      background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .radio-inline input:checked ~ .checkmark:after {
+      display: inline-block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .radio-inline .checkmark:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+  
+  
+  </style>
+    
+  <body style="background-color: #D5B78B">
+    <!-- Header -->
+    <header class="main-header"  style="background-image: url(../images/background-18.jpg); background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-position-y: 35%">
+      <nav class="transparent nav-wrapper z-depth-0">
+        <div class="nav-wrapper">
+          <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
+            <i class="material-icons">menu</i>
+          </a>
+          <a href="/" class="brand-logo">PiCarousel</a>
+          <ul class="right hide-on-med-and-down">
+             <% if(session_username) { %>
+              <li>
+                Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
+              </li>
+              <%}%>
+            <li class="active">
+              <a href="/imgupload">Upload</a>
+            </li>
+            <li>
+              <a href="/about">Meet the Team</a>
+            </li>
+             <% if(session_username) { %>
+              <li>
+                  <a href="/admin">Manage my pics</a>
+              </li>
+              <li>
+                  <a href="/logout">Logout</a>
+              </li>
+             <% } else { %>
+              <li>
+                  <a href="/imgupload">Login</a>
+              </li>
+              <li>
+                  <a href="/register">Register</a>
+              </li>
+             <% } %>
+          </ul>
+        </div>
+        <ul class="side-nav" id="mobile-nav">
+          <% if(session_username) { %>
+          <li>
+            Welcome : <%=session_username%>
+          </li>
+            <%}%>
+          <li>
             <a href="/imgupload">Upload</a>
           </li>
           <li>
-            <a href="/about">Meet the Team</a>
+            <a href="/about">Meet the team</a>
           </li>
-                    <li>
-           <% if(session_username) { %>
-            <a href="/profile"><%=session_username%></a>
-           <% } else { %>
-           <a href="/register">Register</a>
-           
-           <% } %>
+            <% if(session_username) { %>
+          <li>
+              <a href="/admin">Manage my pics</a>
           </li>
-          
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+          <% } else { %>
+          <li>
+            <a href="/imgupload">Login</a>
+          </li>
+          <li>
+            <a href="/register">Register</a>
+          </li>
+             <% } %>
         </ul>
-      </div>
-      <ul class="side-nav" id="mobile-nav">
-        <li>
-          <a href="/imgupload">Upload</a>
-        </li>
-        <li>
-          <a href="/about">Meet the team</a>
-        </li>
-                  <li>
-           <% if(session_username) { %>
-            <a href="/profile"><%=session_username%></a>
-           <% } else { %>
-           <a href="/register">Register</a>
-           
-           <% } %>
-          </li>
-        
-      </ul>
-    </nav>
-    <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
-
-  </header>
-</head>
-
-<body style="background-color:white;">
-    
-    <!-- End Navbar-->
+      </nav>
+      <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
+      <div align="center">
+        <form action="/search" onsubmit="return validate()" method='post'>
+        <input type="text" style="border:2px solid black;width:30%;margin-top:20px;padding:0px; background-color:white; color: black" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
+        <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
+          <span>
+            <select style="display:block; width:100px;color:black;" name="category">
+            <option style="color:black;">All</option>
+            <option style="color:black;">Animals</option>
+            <option style="color:black;">Dogs</option>
+            <option style="color:black;">Cities</option>
+            <option style="color:black;">Birds</option>
+            <option style="color:black;">Houses</option>
+            <option style="color:black;">Nature</option>
+            </select>
+          </span>
+        <p id="illegal" style="color:red;text-align: center;"></p>
+     </div>
+       </form>
+    </header>
+    <!-- End Header -->
 
 
     <!-- First Container -->
