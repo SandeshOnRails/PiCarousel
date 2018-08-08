@@ -60,6 +60,29 @@ function postData(data){
         });
 };
 
+function popimage(dest,imname){
+
+     
+    var data={};
+    data.imgname = imname;
+
+     $.ajax({
+            type: "POST",
+            url: "/"+dest,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+              //alert('suc');
+                console.log('success post data');
+                            //console.log(JSON.stringify(data));
+                            //alert(resultdiv);
+                            var w = window.open('about:blank', 'windowname');
+                            w.document.write(data);
+                            w.document.close();
+            }
+        });
+};
+
 function getData(data){
 
      var resultdiv= data.resultDiv;

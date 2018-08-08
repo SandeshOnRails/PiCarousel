@@ -84,6 +84,24 @@ module.exports = function (app,dbRequest,con) {
 
 	 })
 
+	 	app.post('/showimage', function(req, res){
+	 	
+	 	console.log("shoqikmage"+req.body.imgname);
+	 	var path = require('path');
+		var fs = require('fs');
+		
+				  fs.readFile( path.resolve('original/'+req.body.imgname), function(err, data) {
+				  if (err) throw err; // Fail if the file can't be read.
+				 
+						res.writeHead(200, {'Content-Type': 'text/html'});
+						res.write('<html><body><img src="data:image/jpeg;base64,');
+						res.write(Buffer.from(data).toString('base64'));
+						res.end('"/></body></html>');
+
+					 })
+					 
+		});
+
 	 app.post('/imagesListRejected', function(req, res){
 	 	//console.log("images");
 	 	//console.log("admin page session id: " + req.session.user_id)

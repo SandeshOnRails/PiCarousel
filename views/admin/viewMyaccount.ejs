@@ -34,8 +34,8 @@
 
             <tr id = "photo<%=result[i].photo_id %>">
               <td>
-                <a target="_blank" onclick="makeCategorieEditable(<%=result[i].photo_id %>,'<%=result[i].photo_id %>');"  href="<%=result[i].filepath %>">
-                <img src="<%=result[i].filepath %>" alt="Image" style="width:150px">
+                
+                <img onclick="popimage('showimage',this.name);" name="<%= result[i].owner_user_id+'_'+result[i].photo_id+'.'+ext%>" src="<%= 'th_'+result[i].owner_user_id+'_'+result[i].photo_id+'.'+ext%>" alt="Image" style="width:150px">
                 </a>
               </td>
               <td>
