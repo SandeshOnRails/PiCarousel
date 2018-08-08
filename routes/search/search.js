@@ -19,7 +19,7 @@ module.exports = function (app, con, search, checkForKey, findMatchPercent, cate
 
              
               
-              res.render('search/search-results', {session_username: req.session.user || '', results: result, searchkey: req.body.searchKey, categories: categories})
+              res.render('search/search-results', {session_username: req.session.user || '', results: result, searchkey: req.body.searchKey, categories:categories})
 
         })
 
