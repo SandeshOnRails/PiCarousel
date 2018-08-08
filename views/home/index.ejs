@@ -107,7 +107,7 @@
 
 </style>
   
-<body>
+<body style="background-color: #D5B78B">
   <!-- Header -->
   <header class="main-header"  style="background-image: url(../images/background-18.jpg); background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-position-y: 35%">
     <nav class="transparent nav-wrapper z-depth-0">
@@ -115,14 +115,14 @@
         <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
           <i class="material-icons">menu</i>
         </a>
-        <a href="/" class="brand-logo">PiCarousel</a>
+        <a href="/" class="brand-logo active">PiCarousel</a>
         <ul class="right hide-on-med-and-down">
            <% if(session_username) { %>
             <li>
               Welcome : <%=session_username%>  &nbsp;&nbsp;&nbsp;|
             </li>
             <%}%>
-          <li class="active">
+          <li>
             <a href="/imgupload">Upload</a>
           </li>
           <li>
