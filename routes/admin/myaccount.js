@@ -129,7 +129,7 @@ module.exports = function (app,dbRequest,con) {
 
 	app.post('/myaccountImagesChangePhotoProperties', function(req, res){
 		G_user.id  = req.session.user_id;
-		_filter = "no";	 	
+		//_filter = "no";	 	
 	 	//console.log("my account images change image properties section");
 	 	//console.log("admin page session id: " + req.session.user_id)
 	 	
