@@ -11,9 +11,9 @@ module.exports = function (app,dbRequest,con) {
 		accounttype : ''
 	}
 	var G_listcondition = {
-    	licence: 'all',
-    	privacy: 'all',
-    	status : 'all',
+    	licence: 'All',
+    	privacy: 'All',
+    	status : 'All',
     	user : G_user
 	};
 	
@@ -122,7 +122,7 @@ module.exports = function (app,dbRequest,con) {
 	 		_page = req.query.page;
 
 	 	initializeListview(function(){
-	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page,listcon:G_listcondition});//from views categories.ejs		
 	 	});
 
 	 })
@@ -142,7 +142,7 @@ module.exports = function (app,dbRequest,con) {
 
 					imageListviewByFilter(function(){
 						//console.log("page next / prev"+G_listcondition);
-	 					res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 					res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page,listcon:G_listcondition});//from views categories.ejs		
 	 				},G_listcondition);
     			});
         		//console.log("editPropertiesUserImages");
@@ -206,7 +206,7 @@ module.exports = function (app,dbRequest,con) {
 		console.log("myaccountImagesByConditionFilter %%%%filter:"+_filter);
 			imageListviewByFilter(function(){
 				//console.log("page next / prev"+G_listcondition);
-	 			res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 			res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page,listcon:G_listcondition});//from views categories.ejs		
 	 		},G_listcondition);
 		/*
 	 	console.log("my account images condition");
@@ -240,12 +240,12 @@ module.exports = function (app,dbRequest,con) {
 console.log("myaccountimagesChangePage %%%%filter:"+_filter);
 		if (_filter=="no"){
 			initializeListview(function(){
-	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page,listcon:G_listcondition});//from views categories.ejs		
 	 	});
 		}else{
 			imageListviewByFilter(function(){
 				//console.log("page next / prev"+G_listcondition);
-	 			res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
+	 			res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page,listcon:G_listcondition});//from views categories.ejs		
 	 		},G_listcondition);
 		}
 

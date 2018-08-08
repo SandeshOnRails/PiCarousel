@@ -33,27 +33,82 @@
           <td > </td>
           <td>
              <select id="licence" class="selectpicker">
-                <option>All</option>
+             <% if (listcon.licence == 'All'){%>
+                <option selected>All</option>
                 <option>Free</option>
                 <option>Commercial</option>
               </select>
+              <%}%>
+              <% if (listcon.licence == 'Free'){%>
+                <option >All</option>
+                <option selected>Free</option>
+                <option>Commercial</option>
+              </select>
+              <%}%>
+              <% if (listcon.licence == 'Commercial'){%>
+                <option >All</option>
+                <option>Free</option>
+                <option selected>Commercial</option>
+              </select>
+              <%}%>
 
           </td>
           <td>
+           <% if (listcon.privacy == 'All'){%>
               <select id="privacy" class="selectpicker">
-                <option>All</option>
+                <option selected>All</option>
                 <option>Private</option>
                 <option>Public</option>
               </select>
-
+               <%}%>
+            <% if (listcon.privacy == 'Private'){%>
+              <select id="privacy" class="selectpicker">
+                <option >All</option>
+                <option selected>Private</option>
+                <option>Public</option>
+              </select>
+               <%}%>
+                <% if (listcon.privacy == 'Public'){%>
+              <select id="privacy" class="selectpicker">
+                <option>All</option>
+                <option selected>Private</option>
+                <option>Public</option>
+              </select>
+               <%}%>
           </td>
           <td>
+           <% if (listcon.status == 'All'){%>
               <select id="status" class="selectpicker">
-                <option>All</option>
+                <option selected>All</option>
                 <option>Waiting</option>
                 <option>Rejected</option>
                 <option>Verified</option>
               </select>
+              <%}%>
+             <% if (listcon.status == 'Waiting'){%>
+              <select id="status" class="selectpicker">
+                <option>All</option>
+                <option selected>Waiting</option>
+                <option>Rejected</option>
+                <option>Verified</option>
+              </select>
+              <%}%>
+                         <% if (listcon.status == 'Rejected'){%>
+              <select id="status" class="selectpicker">
+                <option>All</option>
+                <option>Waiting</option>
+                <option selected>Rejected</option>
+                <option>Verified</option>
+              </select>
+              <%}%>
+               <% if (listcon.status == 'Verified'){%>
+              <select id="status" class="selectpicker">
+                <option>All</option>
+                <option>Waiting</option>
+                <option >Rejected</option>
+                <option selected>Verified</option>
+              </select>
+              <%}%>
 
           </td>
           <td><button style="color:white;background-color:#d65151;" type="button" onclick="filterMyPhoto('myaccountImagesByConditionFilter','categorieContent');" class="btn btn-secondary btn-sm">Filter </button></td>
