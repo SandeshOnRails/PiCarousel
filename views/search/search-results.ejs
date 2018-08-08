@@ -199,27 +199,30 @@
 <h2 style="text-align:center;">Showing results for <i><%=searchkey%></i></h2>
   <!-- Begin Gallery Container-->
   <div class="container">
-      <div class="row text-center text-lg-left">
-        <% for (var i =0; i < results.length; i++) { %>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="card">
-            <img class="card-img-top img-fluid img-thumbnail" src="<%=results[i].filepath%>" alt="Card image cap">
-            <div class="card-content">
-              <!-- Download Button -->
-            <% if (session_username) {  %>
-              <a href="/download/<%=results[i].photo_id%>/<%=results[i].filepath%>" download> <button class="btn">
-              <i class="fas fa-download"></i> Download</button></a>
-            <% } else { %>
-              <a href="/login"> <button class="btn">
+    <div class="row text-center text-lg-left">
+      <% for (var i =0; i < results.length; i++) { %>
+        <% let extension=results[i].filepath.split('.') %>
+        <% let ext=extension[1] %>
+      <div class="col-lg-3 col-md-4 col-xs-6">
+        <div class="card">
+          <img style="cursor:pointer;" onclick="popimage('showimage',this.name);" name="<%= results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" class="card-img-top img-fluid img-thumbnail" src="<%= 'th_'+results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" alt="Card image cap">
+          <div class="card-content">
+            <!-- Download Button -->
+          <% if (session_username) {  %>
+            <a href="/download/<%=results[i].photo_id%>/<%=results[i].filepath%>"> <button class="btn">
+            Download</button></a>
+          <% } else { %>
+            <a href="/login"> 
+              <button class="btn">
                 <i class="fas fa-sign-in-alt"></i> Log-in </button></a>
-            <% } %>
-              <!-- End Download Button -->
-            </div>
+          <% } %>
+            <!-- End Download Button -->
           </div>
         </div>
-        <% } %>
       </div>
+      <% } %>
     </div>
+  </div>
     <!-- End Gallery -->
 
   <!-- Footer -->
