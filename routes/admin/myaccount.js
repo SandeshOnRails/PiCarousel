@@ -33,7 +33,7 @@ module.exports = function (app,dbRequest,con) {
     		});
 
 	 	function next(totalpage,page){
-    		console.log("after list : ");
+    		//console.log("after list : ");
     		 dbRequest.getUserImages(con,page,_recPerPage,G_user,function(result){
 
 				_list = result;
@@ -54,9 +54,11 @@ module.exports = function (app,dbRequest,con) {
 
 	function imageListviewByFilter(callback ,G_listcondition){
 
-		console.log("a cond :"+G_listcondition);
+		//console.log("a cond :"+G_listcondition);
 		G_listcondition = G_listcondition;
-
+				console.log("imgaelistviewfilter %%%%%%%licence:"+G_listcondition.licence);
+		console.log("imgaelistviewfilter %%%%%%5priv:"+G_listcondition.privacy);
+		console.log("imgaelistviewfilter %%%%status"+G_listcondition.status);
 		dbRequest.getUserImageCountByFiler(con,G_listcondition,G_user,function(itemcount){
 
 				_totalpage= Math.ceil(Number.parseInt(itemcount[0].itemcount,10) / Number.parseInt(_recPerPage,10));
@@ -65,7 +67,7 @@ module.exports = function (app,dbRequest,con) {
     		});
 
 	 	function next(totalpage,page,G_listcondition){
-    		console.log("db cond: "+G_listcondition);
+    		//console.log("db cond: "+G_listcondition);
     		 dbRequest.getUserImagesByFilter(con,page,_recPerPage,G_listcondition,G_user,function(result){
 
 				_list = result;
@@ -83,8 +85,8 @@ module.exports = function (app,dbRequest,con) {
 
 		G_user.id  = req.session.user_id;
 	 	_filter = "no";
-	 	console.log("my account profile");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("my account profile");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 		
 	 		dbRequest.getOneUser(con,G_user,function(data){
 				res.render('admin/viewMyaccountProfile', {operation:'list',result:data});//from views categories.ejs					
@@ -96,7 +98,7 @@ module.exports = function (app,dbRequest,con) {
 	app.post('/myaccountProfileSave', function(req, res){
 		G_user.id  = req.session.user_id;
 		_filter = "no";
-		console.log("my acount profile save ");
+		//console.log("my acount profile save ");
 	 	dbRequest.editUserProfile(con,req.body,function(result){
 			callnext();
     	});
@@ -113,8 +115,8 @@ module.exports = function (app,dbRequest,con) {
 	 		res.redirect("/");
 		G_user.id  = req.session.user_id;
 		_filter = "no";	 	
-	 	console.log("my account images");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("my account images");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	
 	 	if (req.query.page)
 	 		_page = req.query.page;
@@ -128,8 +130,8 @@ module.exports = function (app,dbRequest,con) {
 	app.post('/myaccountImagesChangePhotoProperties', function(req, res){
 		G_user.id  = req.session.user_id;
 		_filter = "no";	 	
-	 	console.log("my account images change image properties section");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("my account images change image properties section");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	
 	 	if (req.query.page)
 	 		_page = req.query.page;
@@ -139,11 +141,11 @@ module.exports = function (app,dbRequest,con) {
     			dbRequest.editPropertiesUserImages(con,req.body,function(result){
 
 					imageListviewByFilter(function(){
-						console.log("page next / prev"+G_listcondition);
+						//console.log("page next / prev"+G_listcondition);
 	 					res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 				},G_listcondition);
     			});
-        		console.log("editPropertiesUserImages");
+        		//console.log("editPropertiesUserImages");
 
 
 	 	/*
@@ -158,8 +160,8 @@ module.exports = function (app,dbRequest,con) {
 	app.post('/myaccountImagesUpload', function(req, res){
 		G_user.id  = req.session.user_id;
 		_filter = "no";
-	 	console.log("my account images");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("my account images");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 
@@ -190,7 +192,7 @@ module.exports = function (app,dbRequest,con) {
 	app.post('/myaccountImagesByConditionFilter', function(req, res){
 		G_user.id  = req.session.user_id;
 		_filter = "yes";
-		console.log("filter"+_filter);
+		//console.log("filter"+_filter);
 		//console.log(data.sampleTime);
 		//console.log(req.body.privacy);
 		//console.log(req.body.status);
@@ -198,8 +200,12 @@ module.exports = function (app,dbRequest,con) {
 		G_listcondition.licence = req.body.licence;
 		G_listcondition.privacy = req.body.privacy;
 		G_listcondition.status = req.body.status;
+		console.log("myaccountImagesByConditionFilter %%%%%%%licence:"+req.body.licence);
+		console.log("myaccountImagesByConditionFilter %%%%%%5priv:"+req.body.privacy);
+		console.log("myaccountImagesByConditionFilter %%%%status:"+req.body.status);
+		console.log("myaccountImagesByConditionFilter %%%%filter:"+_filter);
 			imageListviewByFilter(function(){
-				console.log("page next / prev"+G_listcondition);
+				//console.log("page next / prev"+G_listcondition);
 	 			res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		},G_listcondition);
 		/*
@@ -228,13 +234,17 @@ module.exports = function (app,dbRequest,con) {
 			_page--;
 		}else
 		_page = Number.parseInt(req.body.page,10);
+		console.log("myaccountimagesChangePage %%%%%%%licence:"+G_listcondition.licence);
+		console.log("myaccountimagesChangePage %%%%%%5priv:"+G_listcondition.privacy);
+		console.log("myaccountimagesChangePage %%%%status"+G_listcondition.status);
+console.log("myaccountimagesChangePage %%%%filter:"+_filter);
 		if (_filter=="no"){
 			initializeListview(function(){
 	 		res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 	});
 		}else{
 			imageListviewByFilter(function(){
-				console.log("page next / prev"+G_listcondition);
+				//console.log("page next / prev"+G_listcondition);
 	 			res.render('admin/viewMyaccountImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		},G_listcondition);
 		}

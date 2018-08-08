@@ -15,7 +15,7 @@ module.exports = function (app,dbRequest,con) {
     		});
 
 	 	function next(totalpage,page){
-    		console.log("after list : ");
+    		//console.log("after list : ");
     		 dbRequest.getUsers(con,page,_recPerPage,"",function(result){
 
 				_list = result;
@@ -28,8 +28,8 @@ module.exports = function (app,dbRequest,con) {
 	}
 
 	 app.post('/users', function(req, res){
-	 	console.log("userrs");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("userrs");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 	 	initializeListview(function(){

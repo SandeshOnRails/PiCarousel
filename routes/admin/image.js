@@ -16,7 +16,7 @@ module.exports = function (app,dbRequest,con) {
     		});
 
 	 	function next(totalpage,page){
-    		console.log("after list : ");
+    		//console.log("after list : ");
     		 dbRequest.getImages(con,page,_recPerPage,"",function(result){
 
 				_list = result;
@@ -30,7 +30,7 @@ module.exports = function (app,dbRequest,con) {
 
 	function ListviewBycondition(callback ,listcondition){
 
-		console.log("a cond :"+listcondition);
+		//console.log("a cond :"+listcondition);
 		_listcondition = listcondition;
 
 		dbRequest.getImageCountBycondition(con,_listcondition,"",function(itemcount){
@@ -41,7 +41,7 @@ module.exports = function (app,dbRequest,con) {
     		});
 
 	 	function next(totalpage,page,_listcondition){
-    		console.log("db cond: "+_listcondition);
+    		//console.log("db cond: "+_listcondition);
     		 dbRequest.getImagesBycondition(con,page,_recPerPage,_listcondition,"",function(result){
 
 				_list = result;
@@ -55,8 +55,8 @@ module.exports = function (app,dbRequest,con) {
 
 	 app.post('/images', function(req, res){
 	 	_listcondition = "all";
-	 	console.log("images");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("images");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 	 	else
@@ -70,8 +70,8 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 	 app.post('/imagesListWaiting', function(req, res){
-	 	console.log("images");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("images");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 	 	else
@@ -85,8 +85,8 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 	 app.post('/imagesListRejected', function(req, res){
-	 	console.log("images");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("images");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 	 	else
@@ -100,8 +100,8 @@ module.exports = function (app,dbRequest,con) {
 	 })
 
 	 app.post('/imagesListVerified', function(req, res){
-	 	console.log("images");
-	 	console.log("admin page session id: " + req.session.user_id)
+	 	//console.log("images");
+	 	//console.log("admin page session id: " + req.session.user_id)
 	 	if (req.query.page)
 	 		_page = req.query.page;
 	 	else
@@ -116,7 +116,7 @@ module.exports = function (app,dbRequest,con) {
 
     app.post('/waitingImage', function(req, res){
 		
-		console.log("images waiting ids"+req.body.id);
+		//console.log("images waiting ids"+req.body.id);
 		if (req.body.id!=""){		
 			dbRequest.waitingImage(con,req.body,function(result){
 
@@ -183,7 +183,7 @@ module.exports = function (app,dbRequest,con) {
 		}else
 		_page = Number.parseInt(req.body.page,10);
 		ListviewBycondition(function(){
-			console.log("page next / prev"+_listcondition);
+			//console.log("page next / prev"+_listcondition);
 	 			res.render('admin/viewImages', {operation:'list',result:_list,totalpage:_totalpage,page:_page});//from views categories.ejs		
 	 		},_listcondition);
     	

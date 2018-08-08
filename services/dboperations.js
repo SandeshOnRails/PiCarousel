@@ -214,17 +214,18 @@ module.exports = {
                 let first =(page-1)*recPerPage;
                 var sql="";
                 
-                if (listcondition.licence != "all" ){
+                if (listcondition.licence != "All" ){
                   sql = sql + " and licencetype = '"+listcondition.licence+"' ";
                 }
-                if (listcondition.privacy != "all" ){
+                if (listcondition.privacy != "All" ){
                   sql = sql + " and privacy = '"+listcondition.privacy+"' ";
                 }
-                if (listcondition.status != "all" ){
+                if (listcondition.status != "All" ){
                   sql = sql + " and adminverified = '"+listcondition.status+"' ";
                 }
 
-                console.log("sql : "+sql);
+                console.log("sql getUserImagesByFilter: "+sql);
+                console.log("user.id getUserImagesByFilter:"+user.id)
                 var returnValue;
                 this.resulta = con.query("Select * from image where owner_user_id = "+user.id+" and deleted = 0 "+ sql +" order by photo_id desc limit "+first+","+recPerPage+" ;", function (err, result , fields) {
                    
@@ -282,20 +283,20 @@ module.exports = {
                
                 var sql="";
                 
-                if (listcondition.licence != "all" ){
+                if (listcondition.licence != "All" ){
                   sql = sql + " and licencetype = '"+listcondition.licence+"' ";
                 }
-                if (listcondition.privacy != "all" ){
+                if (listcondition.privacy != "All" ){
                   sql = sql + " and privacy = '"+listcondition.privacy+"' ";
                 }
-                if (listcondition.status != "all" ){
+                if (listcondition.status != "All" ){
                   sql = sql + " and adminverified = '"+listcondition.status+"' ";
                 }
 
-                console.log("sql : "+sql);
+                console.log("sql filter count : "+sql);
 
                
-                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id ="+user.id+" and deleted =0"+sql, function (err, result , fields) {
+                  this.resulta = con.query("Select count(*)  as itemcount from image where owner_user_id ="+user.id+" and deleted =0 "+sql, function (err, result , fields) {
                    
                     if (err) throw err;
                     console.log("in sendQuery Result: " + result);
