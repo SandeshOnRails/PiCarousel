@@ -110,7 +110,7 @@
   
 <body>
   <!-- Header -->
-  <header class="main-header">
+  <header class="main-header"  style="background-image: url(../images/background-18.jpg); background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-position-y: 35%">
     <nav class="transparent nav-wrapper z-depth-0">
       <div class="nav-wrapper">
         <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large">
@@ -178,7 +178,7 @@
     <h4 class="center">SFSU Software Engineering Project CSC 648-848, Summer 2018. For Demonstration Only</h4>
     <div align="center">
       <form action="/search" onsubmit="return validate()" method='post'>
-      <input type="text" style="border:2px solid white;width:30%;margin-top:20px;padding:0px;" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
+      <input type="text" style="border:2px solid black;width:30%;margin-top:20px;padding:0px; background-color:white; color: black" placeholder='Search images from different categories...' name="searchKey" id="searchKey">
       <button type='submit' style="height:50px;width:50px;padding:0px;color:black;"><i class="fa fa-search" style=""></i></button>
         <span>
           <select style="display:block; width:100px;color:black;" name="category">
@@ -197,14 +197,14 @@
   </header>
   <!-- End Header -->
 
-  <h1 align="center">Gallery</h1>
+  <h1 align="center" style="color: #292f33; font: 40px Trebuchet MS, Helvetica, sans-serif">Browse our Gallery</h1>
   <!-- Begin Gallery Container-->
   <div class="container">
     <div class="row text-center text-lg-left">
       <% for (var i =0; i < results.length; i++) { %>
         <% let extension=results[i].filepath.split('.') %>
         <% let ext=extension[1] %>
-      <div class="col-lg-3 col-md-4 col-xs-6">
+      <div class="col-lg-4 col-md-4 col-xs-6">
         <div class="card">
           <img name="<%= results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" class="card-img-top img-fluid img-thumbnail" src="<%= 'th_'+results[i].owner_user_id+'_'+results[i].photo_id+'.'+ext%>" alt="Card image cap">
           <div class="card-content">
