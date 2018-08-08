@@ -26,20 +26,29 @@ function isFileSizeValid (req, res, next) {
 
 
 var photoid="";
-module.exports = function (app, upload, con,dbrequest) {
+module.exports = function (app, upload, con,dbrequest, categories) {
 var imagename="";
 var Jimp = require('jimp');
 
 
 
-      app.get('/imgupload', function(req, res){
+      app.get('/imgupload', function(req, res) {
 
           
         
-            if(req.session.user){
+            if (req.session.user) {
 
-         res.render('img_upload/imgupload', {error:'', session_username: req.session.user || '', categories: ''})
+              categories(app, con, cats => {
+
+
+
+         res.render('img_upload/imgupload', {error:'', session_username: req.session.user || '', categories: cats})
+
+         })
+
       } 
+
+
       else {
           
          res.render('sign_in/signIn', {no_account_found:false})
