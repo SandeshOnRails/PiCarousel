@@ -210,8 +210,8 @@
           <div class="card-content">
             <!-- Download Button -->
           <% if (session_username) {  %>
-            <a href="/<%=results[i].filepath%>" download> <button class="btn">
-            <i class="fas fa-download"></i> Download</button></a>
+            <a href="/download/<%=results[i].photo_id%>/<%=results[i].filepath%>"> <button class="btn">
+            Download</button></a>
           <% } else { %>
             <a href="/login"> 
               <button class="btn">

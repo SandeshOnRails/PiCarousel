@@ -64,6 +64,9 @@ require('./routes/login/login.js')(app, loginUser, con, crypto)
 require('./routes/logout/logout.js')(app)
 
 
+require('./routes/download/download.js')(app)
+
+
 
 // test homepage.ejs route
 
