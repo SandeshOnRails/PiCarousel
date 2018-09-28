@@ -1,8 +1,1 @@
-# csc648-su18-TeamNN
-
-## Please do the following steps before completing Milestone 0.
-1. Change the name of the repo from csc648-su18-TeamNN. All that needs to chanage is the NN to your respective team number. Team numbers whos value is less than 10, please pad with a 0. Ex team 1 is Team01 team 11 is Team11. Please make sure to also remove the username from the repo as well.
-
-2. Add ALL members of your team to this repo. For it to count, they must ACCEPT the invite.
-
-
+Full Stack Photo Sharing Web Application using Express.js Node run time framework. The application is deployed on AWS and uses static Elastic IP http://13.59.250.236/ . This application uses MySQL database server configured on AWS RDS. My role in this project was a Backend Lead, and I configured AWS server on Ubuntu, and AWS RDS MySQL server. I designed the MVC models for this project and modularized the functionalities using functional programming paradigm.
